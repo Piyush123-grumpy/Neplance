@@ -1,26 +1,4 @@
-ul{
-    list-style-type: none;
-}
-nav{
-    background-color: #0065AD;
-}
-.nav-title{
-    color:white;
-    margin-top: auto;
-    margin-bottom: auto;
-    text-decoration: none;
-}
-.nav-content{
-    color:white;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-left: 20px !important;
-    text-decoration: none;
-}
 
-.navbar-brand{
-    height: auto;
-}
 .carousel-sec{
     object-fit:scale-down;
     max-height: 80vh;
@@ -31,3 +9,4 @@ img {
     min-width:100%;
 
 }
+
