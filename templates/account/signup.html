@@ -1,0 +1,9 @@
+{% extends 'account/basic.html' %}
+{%block title%} Register {%endblock%}
+{% load static %}
+{%block body%}
+<form action="">
+    {% csrf_token %}
+    {{form.password1}}
+</form>
+{% endblock%}
