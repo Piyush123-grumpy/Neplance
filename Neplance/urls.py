@@ -25,5 +25,5 @@ import Homepage.views as homepage;
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage.home, name='homepage'),
-    path('accounts/', include('account.urls')),
+    path('', include('account.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
