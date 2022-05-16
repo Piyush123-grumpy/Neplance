@@ -153,10 +153,14 @@ a:hover {
   font-weight: 500;
   text-align: center;
 }
+.batta :hover{
+  background-color: #0065ad;
+  color: white;
+}
 
 .select img {
   height: 60px;
-  width: 90px;
+  width: 70px;
 }
 
 .imeg {
@@ -196,4 +200,30 @@ a:hover {
 }
 .bichhako_button a:hover {
   color: white;
+}
+.acc{
+  border-style: solid;
+  width: 60%!important;
+  border-width: 1px;
+  border-color: gainsboro;
+  margin-top: 20px;
+  text-align: center;
+  
+}
+.but{
+  width: 400px;
+  height: 35px;
+  margin-bottom: 20px;
+  padding: 12px;
+  font-size: 16;
+}
+
+#create{
+  font-size: 26px;
+  color: #0065ad;
+  padding-top: 20px;
+  
+}
+.type{
+  text-decoration: none;
 }
