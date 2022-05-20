@@ -78,8 +78,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Neplance',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': '127.0.0.2',
+        'PORT': '3307',
         'USER': 'root',
         'PASSWORD': '',
     }
