@@ -1,21 +1,17 @@
-# from django.test import SimpleTestCase
-# from django.urls import reverse,resolve
-# # from customers.views import *
+# from signal import SIGINFO
+# from typing_extensions import Self
+# from urllib.parse import urlparse
+from django.test import SimpleTestCase
+from django.urls import reverse,resolve
+from account.views import *
 
-# class TestUrls(SimpleTestCase):
-#     def test_customerDashboard_is_resolved(self):
-#       url=reverse('account')
-#       view=resolve(url).func
-#       self.assertEquals(view,login)
-    
-#     def test_myBookings_is_resolved(self):
-#       url=reverse('my_bookings')
-#       view=resolve(url).func
-#       self.assertEquals(view,myBookings)
+class TestUrls(SimpleTestCase):
+      def test_signin_urls_is_resolved(self):
+        url=reverse('signin')
+        view=resolve(url).func
+        Self.assertEquals(view,SIGINFO)
 
-#     def test_feedbackForm_is_resolved(self):
-#       url=reverse('feedback_form',args=[1])
-#       view=resolve(url).func
-#       self.assertEquals(view,feedbackForm)
-
-      
+      def test_usersignup_urls_is_resolved(self):
+        url=reverse('usersignup')
+        view=resolve(url).func
+        self.assertEquals(view,userSignup)

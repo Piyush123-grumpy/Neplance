@@ -27,14 +27,3 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     is_freelancer=models.BooleanField(default=False)
     is_employer=models.BooleanField(default=False)
-
-
-# class gigs(models.Model):
-
-#     job_name = models.CharField(max_length=200, null=True, validators=[validator.MinLengthValidator(2)])
-#     job_description = models.TextField(null=True)
-#     job_photo = models.FileField(upload_to='static/images',default='static/images/no_image_service_watermarked.png', null=True)
-#     job_price = models.IntegerField(null=True)
-#     job_created_date = models.DateField(auto_now_add=True, null=True)
-#     def __str__(self):
-#         return self.job_name

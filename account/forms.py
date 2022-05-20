@@ -37,12 +37,3 @@ class EmployerSignUpForm(UserCreationForm):
             user.save()
         return user
 
-
-from django.forms import ModelForm
-from account.models import gigs
-
-class gigs(ModelForm):
-  class Meta:
-    model = gigs
-    fields = "__all__"
-    exclude = ['user']
