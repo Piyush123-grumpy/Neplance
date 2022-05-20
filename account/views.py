@@ -61,3 +61,7 @@ def loginpage(request):
                 print("Okay")
                 return redirect("/login")
         return render(request,"account/login.html")
+
+
+def gigs(request):
+    return render(request, 'account/addgigs.html')

@@ -6,6 +6,8 @@ from django.contrib.auth.forms import UserCreationForm
 from account.models import User
 from django.db import transaction
 
+# from account.views import gigs
+
 class FreelancerSignUpForm(UserCreationForm):
     username=forms.CharField(widget=forms.TextInput(attrs={'class':'but','placeholder':'Username'}))
     email=forms.CharField(widget=forms.EmailInput(attrs={'class':'but','placeholder':'Email'}))
@@ -34,3 +36,13 @@ class EmployerSignUpForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+from django.forms import ModelForm
+from account.models import gigs
+
+class gigs(ModelForm):
+  class Meta:
+    model = gigs
+    fields = "__all__"
+    exclude = ['user']
