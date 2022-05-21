@@ -34,6 +34,7 @@ def signup_employer(request):
 
 def loginpage(request):
     if request.user.is_authenticated:
+        print("okay")
         messages.warning(request,"You are already logged in")
         return redirect('/')
 
