@@ -7,5 +7,6 @@ urlpatterns = [
     path('signup_freelancer/',views.signup_freelancer,name='signup_freelancer'),
     path('signup_employer/',views.signup_employer,name='signup_employer'),
     path('login/', views.loginpage,name='login_dashboard'),
-    path('gigs/', views.gigs,name='addgigs'),
+    path('addgigs/', views.addgigs,name='addgigs'),
+
 ]

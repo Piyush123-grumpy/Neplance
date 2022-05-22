@@ -1,5 +1,6 @@
 from wsgiref.validate import validator
 from django.db import models
+
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
 from django.forms import ModelForm
@@ -27,3 +28,4 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     is_freelancer=models.BooleanField(default=False)
     is_employer=models.BooleanField(default=False)
+    
