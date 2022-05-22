@@ -1,0 +1,18 @@
+
+.carousel-sec{
+    object-fit:scale-down;
+    max-height: 80vh;
+    overflow:hidden;
+}
+img {
+    height: inherit;
+    min-width:100%;
+
+}
+
+
+
+
+/* Carousel */
+
+
