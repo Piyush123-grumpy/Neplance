@@ -37,8 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'bootstrapform',
+
+    'crispy_forms',
     'account',
 ]
+SITE_ID =1
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -78,8 +84,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Neplance',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'HOST': '127.0.0.2',
+        'PORT': '3307',
         'USER': 'root',
         'PASSWORD': '',
     }
