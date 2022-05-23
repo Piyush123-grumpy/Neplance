@@ -61,3 +61,6 @@ def loginpage(request):
                 print("Okay")
                 return redirect("/login")
         return render(request,"account/login.html")
+
+def editUser(request):
+    return render(request, 'userdetail/profile.html')
