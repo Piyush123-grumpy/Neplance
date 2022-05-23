@@ -1,0 +1,41 @@
+{% extends 'base/UserNavbar.html'%}{% block title%}{% load static %} Profile{% endblock %} {% block body%}
+<link rel="stylesheet" href="{% static 'css/account_detail.css'%}">
+<div class="container prof-det">
+    <div class="Profile">
+        <div class="profile_name">
+            <H3>Grumpy</H3>
+            <h8> Kathmandu, Nepal – 12:14 am local time</h8>
+        </div>
+        <div class="change_details">
+            <a href="/signup/">Edit Profile</a>
+        </div>
+    </div>
+    <div class="row" style="margin: 0;">
+        <div class="col-lg-4 desc ">
+            <div class="desc-margin ">
+                <h5>Hours per week</h5>
+                <p>More than 30 hrs/week</p>
+            </div>
+            <div class="desc-margin ">
+                <h5>Languages</h5>
+                <p>English: Conversational</p>
+            </div>
+            <div class="desc-margin ">
+                <h5>Education</h5>
+                <p>Siddartha vanasthali institute</p>
+
+            </div>
+        </div>
+        <div class=col-lg-8>
+            <div class="row">
+                <div class="col-lg-8">
+                    <h3>Full Stack Developer</h3>
+                </div>
+                <div class="col-lg-4">
+                    <h5>$5.00/hr</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

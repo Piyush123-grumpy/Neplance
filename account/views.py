@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.shortcuts import render,redirect 
 from .forms import FreelancerSignUpForm,UserCreationForm,EmployerSignUpForm
 from django.contrib import auth, messages
+from .models import Employer, Freelancer
 
 # Create your views here.
 
@@ -16,7 +17,9 @@ def signup_freelancer(request):
         print(form)
         if form.is_valid():
             print("asdasd")
-            form.save()
+            f=form.save()
+            f.save()
+            Freelancer.objects.create(user=f)
             return redirect('/')
     context={"form":form}
     return render (request,"account/signup.html",context)
@@ -27,7 +30,9 @@ def signup_employer(request):
         print(form)
         if form.is_valid():
             print("asdasd")
-            form.save()
+            f=form.save()
+            f.save()
+            Employer.objects.create(user=f)
             return redirect('/')
     context={"form":form}
     return render (request,"account/employer_signup.html",context)
@@ -62,3 +67,4 @@ def loginpage(request):
                 print("Okay")
                 return redirect("/login")
         return render(request,"account/login.html")
+

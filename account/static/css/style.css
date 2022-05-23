@@ -1,13 +1,13 @@
 * {
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  list-style: none;
-  box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
 }
 
 body {
-  font-family: montserrat;
+    font-family: montserrat;
 }
 
 
@@ -121,119 +121,113 @@ a:hover {
   }
 } */
 
-
-
-
-
 .join_text {
-  margin: auto;
-  width: 50%;
-
-  padding: 10px;
-
+    margin: auto;
+    width: 50%;
+    padding: 10px;
 }
 
 .join_text p {
-  margin-top: 60px;
-  text-align: center;
-  font-weight: 500;
-  color: #0065ad;
+    margin-top: 60px;
+    text-align: center;
+    font-weight: 500;
+    color: #0065ad;
 }
 
 .join_box {
-  margin: auto;
-  width: 50%;
-
-  padding: 10px;
-
+    margin: auto;
+    width: 50%;
+    padding: 10px;
 }
 
 .select {
-  border: #0065ad;
-  border-style: solid;
-  border-width: 1px;
-  border-radius: 10px;
-  font-weight: 500;
-  text-align: center;
-  
-}
-.select :hover{
-  background-color: #0065ad;
+    border: #0065ad;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 10px;
+    font-weight: 500;
+    text-align: center;
 }
 
-
+.select :hover {
+    background-color: #0065ad;
+}
 
 .select img {
-  height: 60px;
-  width: 70px;
+    height: 60px;
+    width: 70px;
 }
 
 .imeg {
-  padding-top: 11px;
-  margin: auto;
-  width: 90px;
+    padding-top: 11px;
+    margin: auto;
+    width: 90px;
 }
 
 .select p {
-  margin-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 .type {
-  padding-top: 10px;
-  padding-bottom: 20px;
-  text-decoration:none!important; 
+    padding-top: 10px;
+    padding-bottom: 20px;
+    text-decoration: none!important;
 }
 
 .bichhako_button {
-  display: flex;
-  justify-content: center;
-
+    display: flex;
+    justify-content: center;
 }
 
 .bichhako_button a {
-  background-color: #0065ad;
-  /* Green */
-  border: none;
-  color: white;
-  padding: 9px 90px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: 500;
-  border-radius: 25px;
-}
-.bichhako_button a:hover {
-  color: white;
-}
-.acc{
-  border-style: solid;
-  width: 60%!important;
-  border-width: 1px;
-  border-color: gainsboro;
-  margin-top: 20px;
-  text-align: center;
-  
-}
-.but{
-  width: 400px;
-  height: 35px;
-  margin-bottom: 20px;
-  padding: 12px;
-  font-size: 16;
+    background-color: #0065ad;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 9px 90px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 25px;
 }
 
-#create{
-  font-size: 26px;
-  color: #0065ad;
-  padding-top: 20px;
-  
+.bichhako_button a:hover {
+    color: white;
 }
-.batta{
-  padding-top: 15px;
-  padding-bottom: 15px;
+
+.acc {
+    border-style: solid;
+    width: 60%!important;
+    border-width: 1px;
+    border-color: gainsboro;
+    margin-top: 20px;
+    text-align: center;
 }
-.select:hover{
-  background-color: #0065ad;
-  color: white;
+
+.but {
+    width: 400px;
+    height: 35px;
+    margin-bottom: 20px;
+    padding: 12px;
+    font-size: 16;
 }
+
+#create {
+    font-size: 26px;
+    color: #0065ad;
+    padding-top: 20px;
+}
+
+.batta {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.select:hover {
+    background-color: #0065ad;
+    color: white;
+}
+
+.desc {}

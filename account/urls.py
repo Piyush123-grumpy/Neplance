@@ -1,5 +1,5 @@
 from django.urls import path
-from account import views
+from account import views,accounts
 
 
 urlpatterns = [
@@ -7,4 +7,5 @@ urlpatterns = [
     path('signup_freelancer/',views.signup_freelancer,name='signup_freelancer'),
     path('signup_employer/',views.signup_employer,name='signup_employer'),
     path('login/', views.loginpage,name='login_dashboard'),
+    path('account_detail',accounts.account_detail,name='account_detail')
 ]
