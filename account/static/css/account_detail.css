@@ -5,6 +5,7 @@ body {
 .prof-det {
     margin-top: 80px;
     background-color: white;
+    padding: 0;
 }
 
 .Profile {
@@ -15,6 +16,7 @@ body {
     border-width: 1px;
     border-color: #e0e0e0;
     border-radius: 1px;
+    border-bottom: none;
 }
 
 .profile_name {
@@ -53,4 +55,14 @@ body {
     border-width: 1px;
     border-color: #e0e0e0;
     border-radius: 1px;
+}
+.title-price{
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+.user_detail{
+    padding-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
