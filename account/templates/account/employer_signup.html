@@ -1,13 +1,13 @@
-{% extends 'account/basic.html' %}
+{% extends 'base/UserNavbar.html' %}
 {%block title%} Register {%endblock%}
 {% load static %}
 {%block body%}
 <div class="container">
-    <form action="/signup_freelancer/" method="POST">
+    <form action="/signup_employer/" method="POST">
         {% csrf_token %}
         <div class="join_box acc">
             <p id="create"> Create Account</p>
-            <p>SignUp As a Freelancer</p>
+            <p>SignUp As a Employer</p>
             <div>
                 {{form.username}}
                 {% if form.errors.username %}

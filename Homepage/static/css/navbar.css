@@ -18,7 +18,7 @@ nav{
     margin-right: 30px;
     text-decoration: none;
 }
-a{
+.navbar-list{
     color:white !important;
 }
 .nav-content{
