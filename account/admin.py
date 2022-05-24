@@ -4,3 +4,6 @@ from .models import *
 admin.site.register(User)
 admin.site.register(Freelancer)
 admin.site.register(Employer)
+admin.site.register(employment_history)
+admin.site.register(Other_experience)
+admin.site.register(portfolio)

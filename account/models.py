@@ -45,6 +45,28 @@ class Freelancer(models.Model):
     def __str__(self):
         return self.user.username
 
+class portfolio(models.Model): 
+    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE, primary_key=True)
+    Project_title=models.CharField(verbose_name="Porject Title",max_length=100,blank=True, null=True)
+
+
+class Other_experience(models.Model): 
+    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE, primary_key=True)
+    SUbject=models.CharField(verbose_name="Subject",max_length=100,blank=True, null=True)
+    description=models.CharField(verbose_name="Description",max_length=100,blank=True, null=True)
     
+
+
+
+class employment_history(models.Model):
+    freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE, primary_key=True)
+    company=models.CharField(verbose_name="Company",max_length=100,blank=True, null=True)
+    city=models.CharField(verbose_name="City",max_length=100,blank=True, null=True)
+    Title=models.CharField(verbose_name="Title",max_length=100,blank=True, null=True)
+    period=models.CharField(verbose_name="Period",max_length=100,blank=True, null=True) 
+    description=models.CharField(verbose_name="Description",max_length=100,blank=True, null=True)
+
+
+
 class Employer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
