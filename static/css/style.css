@@ -10,12 +10,12 @@ body {
   font-family: montserrat;
 }
 
-nav {
+
+/* nav {
   background: #0065ad;
   height: 80px;
   width: 100%;
 }
-
 label.logo {
   color: white;
   font-size: 35px;
@@ -63,7 +63,6 @@ a:hover {
 #check {
   display: none;
 }
-
 @media (max-width: 952px) {
   nav {
     display: block;
@@ -120,7 +119,11 @@ a:hover {
   #check:checked~ul {
     left: 0;
   }
-}
+} */
+
+
+
+
 
 .join_text {
   margin: auto;
@@ -152,11 +155,13 @@ a:hover {
   border-radius: 10px;
   font-weight: 500;
   text-align: center;
+  
 }
-.batta :hover{
+.select :hover{
   background-color: #0065ad;
-  color: white;
 }
+
+
 
 .select img {
   height: 60px;
@@ -171,12 +176,12 @@ a:hover {
 
 .select p {
   margin-bottom: 0 !important;
-
 }
 
 .type {
   padding-top: 10px;
   padding-bottom: 20px;
+  text-decoration:none!important; 
 }
 
 .bichhako_button {
@@ -224,6 +229,11 @@ a:hover {
   padding-top: 20px;
   
 }
-.type{
-  text-decoration: none;
+.batta{
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+.select:hover{
+  background-color: #0065ad;
+  color: white;
 }

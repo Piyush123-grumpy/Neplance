@@ -1,7 +1,7 @@
 {% extends 'base/UserNavbar.html' %}
 {% load static %}
 {%block title%} Login {%endblock%}
-{% load static %}
+
 {%block content%}
 <div class="container login-container">
             <div class="row">
@@ -20,7 +20,7 @@
                         </div>
                         <div class="form-group">
                             <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label>
-                            <a href="#" class="ForgetPwd m-1" value="Login">Forget Password?</a>
+                            <a href="{% url 'password_reset' %}" class="ForgetPwd m-1" value="Login">Forget Password?</a>
                         </div>
                         <div class="form-group">
                             <input type="submit" class="btnSubmit" value="Login" />

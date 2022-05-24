@@ -1,7 +1,7 @@
-{% extends 'account/basic.html' %}
+{% extends 'base/UserNavbar.html' %}
 {%block title%} Register {%endblock%}
 {% load static %}
-{%block body%}
+{%block content%}
 <div class="container">
     <form action="/signup_freelancer/" method="POST">
         {% csrf_token %}
