@@ -55,7 +55,7 @@ def loginpage(request):
                 login(request, user)
                 print("sss")
                 messages.success(request,"Logged in Successfully")
-                return redirect("dashboard/")
+                return redirect("/")
             elif user is not None and user.is_employer==True:
                 login(request, user)
                 print("ass")
@@ -68,5 +68,3 @@ def loginpage(request):
                 return redirect("/login")
         return render(request,"account/login.html")
 
-def editUser(request):
-    return render(request, 'userdetail/profile.html')
