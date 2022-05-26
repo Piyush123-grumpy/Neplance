@@ -1,85 +1,36 @@
 {% extends 'account/basic.html' %}
+
 {% load bootstrap %}
 (% load crispy_forms_tags %)
 {%block title%} addgigs {%endblock%}
 {% load static %}
 {%block body%}
 
-<style>
-*{
-    box-sizing: border-box;
-}
-body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 15px 25px;
-    font-size: 16px;
-    padding: 9px 6px;
-    background-image: url("https://images.freecreatives.com/wp-content/uploads/2016/04/Abstract-Blue-Web-Background.jpg");
-}
+<div class="container d-flex justify-content-center my-4">  
+    <div class="col-lg-5">
+    <form id="contact" action="" method="post">
+      <h3>Post Your Job</h3>
+      <fieldset>
+        <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Your Email Address" type="email" tabindex="2" required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
+      </fieldset>
+      <fieldset>
+        <textarea placeholder="Your Job Description...." tabindex="5" required></textarea>
+      </fieldset>
+      <fieldset>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+      </fieldset>
 
-.survey-form{
-    background-color: rgb(201, 217, 236);
-    padding: 10px 15px 20px 15px;
-    border: 2px solid rgb(1, 4, 72);
-    border-radius: 10px;
-}
-input[type="text"],
-input[type="email"],
-input[type="date"],
-select,
-textarea{
-    width: 100%;
-    padding: 4px;
-}
-p{
-    font-family: cursive;
-    font-size: 20px;
-    color: darkslateblue;
-}
-h1{
-    font-size: 60px;
-    text-align: center;
-    font-family: cursive;
-    color: cadetblue;
-}
-h4{
-    font-size: 30px;
-    text-align: center;
-    font-family: cursive;
-    color: black;
-}
-input[type="submit"] {
-    background-color: rgb(83, 77, 239);
-    cursor: pointer;
-    width: 100%;
-    padding: 5px;
-    color: black;
-    font-size: 15px;
-
-}
-  </style>
-  
-  <div class="survey-form">
-    <form action="">
-      <div class="upper-headings">
-      <h1><strong> Post Job </strong></h1>
-      <h4>Don’t dream about success. Get out there and work for it.</h4>
-      </div>
-      <hr>
-      <p><input type="text" name="username" required placeholder=" Name of Organization"></p>
-      <p><input type="email" name="email" required placeholder="abc@gmail.com"></p>
-      <p>
-          <select name="gender" id="gender" required>
-              <option value="">--Select your gender--</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-          </select>
-      </p>
-      <p><textarea name="address" id="address" rows="10" cols="30" required placeholder="Job Description"></textarea></p>
-      <p><input type="date" name="d.o.b." required></p>
-      <input type="submit" value="Submit">
-      </form>
+    </form>
+</div>
   </div>
-
 {% endblock%}
 
