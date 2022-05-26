@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrapform',
-
+    'gig',
     'crispy_forms',
     'account',
 ]
@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Neplance',
         'HOST': '127.0.0.2',
-        'PORT': '3307',
+        'PORT': '3306',
         'USER': 'root',
         'PASSWORD': '',
     }

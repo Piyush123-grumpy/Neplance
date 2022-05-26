@@ -63,5 +63,3 @@ def loginpage(request):
         return render(request,"account/login.html")
 
 
-def addgigs(request):
-    return render(request,'account/addgigs.html')
