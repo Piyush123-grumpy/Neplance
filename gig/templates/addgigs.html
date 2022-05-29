@@ -8,22 +8,28 @@
 
 <div class="container d-flex justify-content-center my-4">  
     <div class="col-lg-5">
-    <form id="contact" action="" method="post">
+    <form id="contact" method="POST">
+      {% csrf_token %}
       <h3>Post Your Job</h3>
       <fieldset>
-        <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+        <!-- <input placeholder="Your name" type="text" tabindex="1" required autofocus> -->
+        {{form.title.label}}
+        {{form.title}}
       </fieldset>
       <fieldset>
-        <input placeholder="Your Email Address" type="email" tabindex="2" required>
+        <!-- <input placeholder="Your Email Address" type="email" tabindex="2" required> -->
+        {{form.pay.label}}
+        {{form.pay}}
       </fieldset>
       <fieldset>
-        <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
+        <!-- <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required> -->
+        {{form.category.label}}
+        {{form.category}}
       </fieldset>
       <fieldset>
-        <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
-      </fieldset>
-      <fieldset>
-        <textarea placeholder="Your Job Description...." tabindex="5" required></textarea>
+        <!-- <textarea placeholder="Your Job Description...." tabindex="5" required></textarea> -->
+        {{form.description.label}}
+        {{form.description}}
       </fieldset>
       <fieldset>
         <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
