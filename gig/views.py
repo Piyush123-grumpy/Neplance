@@ -2,4 +2,6 @@ from django.shortcuts import render
 
 # Create your views here.
 def addgigs(request):
-    return render(request,'account/addgigs.html')
+    print(request.user.is_authenticated)
+    # if request.user.is_hirer:
+    return render(request,'gig/addgigs.html')
