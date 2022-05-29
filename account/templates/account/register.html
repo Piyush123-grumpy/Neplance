@@ -1,0 +1,67 @@
+{% extends 'base/UserNavbar.html' %}
+{%block title%} Register {%endblock%}
+{% load static %}
+{%block body%}
+<div class="container">
+    <div class="border" style="margin-top: 20px;">
+        <div class="join_text">
+            <p>Join as a Freelancer or Client</p>
+        </div>
+        <div class="join_box">
+            <div class="row ">
+                <div class="col-xl-6 batta">
+                    <a class="type" href="/signup_employer/">
+                        <div class="select">
+
+                            <div class="imeg">
+                                <img src="{% static 'images/employer.png' %}" alt="">
+                            </div>
+                            <div class="type">
+                                <p>
+                                    I am a client, Hiring for a
+                                </p>
+                                <p>
+                                    project
+                                </p>
+                            </div>
+
+
+                        </div>
+                    </a>
+
+                </div>
+                <div class="col-xl-6 batta">
+                    <a class="type" href="/signup_freelancer/">
+                        <div class="select">
+                            <div class="imeg">
+                                <img src="{% static 'images/freelancer.png' %}" alt="">
+                            </div>
+                            <div class="type">
+                                <p>
+                                    I am a freelancer,looking for
+                                </p>
+                                <p>
+                                    work
+                                </p>
+                            </div>
+
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+        <div class="join_text bichhako_button">
+            <a href="/signup/">Join as a Client</a>
+        </div>
+        <div class="join_box" style="text-align: center;">
+            <p>Already have account ?<a href="">Log in</a></p>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+{%endblock%}

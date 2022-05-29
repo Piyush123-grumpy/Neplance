@@ -1,0 +1,73 @@
+{% extends 'base/UserNavbar.html'%}{% block title%}{% load static %} Profile{% endblock %} {% block body%}
+<link rel="stylesheet" href="{% static 'css/account_detail.css'%}">
+
+<div class="container prof-det">
+    <div class="Profile">
+        <div class="profile_picture">
+            <img src="https://www.qries.com/images/banner_logo.png" alt="">
+        </div>
+        <div class="profile_name">
+            <H3>Grumpy</H3>
+            <h8><i class="fa-solid fa-location-dot"></i> Kathmandu, Nepal – 12:14 am local time</h8>
+        </div>
+        <div class="change_details">
+            <a href="/profile/">Edit Profile</a>
+        </div>
+    </div>
+    <div class="row" style="margin: 0;">
+        <div class="col-lg-4 desc ">
+            <div class="desc-margin ">
+                <h5>Hours per week</h5>
+                <p>More than 30 hrs/week</p>
+            </div>
+            <div class="desc-margin ">
+                <h5>Languages</h5>
+                <p>English: Conversational</p>
+            </div>
+            <div class="desc-margin ">
+                <h5>Education</h5>
+                <p>Siddartha vanasthali institute</p>
+
+            </div>
+        </div>
+        <div class="col-lg-8 desc" style="border-left: none;">
+            <div class="row">
+                <div class="col-lg-8 title-price">
+                    <h3>Full Stack Developer
+                        <a href=""><span class="fa-solid fa-pencil edit-icon"></span></a>
+                    </h3>
+                </div>
+                <div class="col-lg-4 title-price">
+                    <h5>$5.00/hr</h5>
+                </div>
+            </div>
+            <div class="user_detail">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus esse impedit distinctio accusantium officiis perspiciatis. Autem assumenda vero eos aut qui quidem, deserunt vitae eligendi voluptates ipsam necessitatibus modi aspernatur.</p>
+            </div>
+            <div class="user_detail">
+                <h4>Work History <a href=""><span class="fa-solid fa-pencil edit-icon"></span></a></h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus esse impedit distinctio accusantium officiis perspiciatis. Autem assumenda vero eos aut qui quidem, deserunt vitae eligendi voluptates ipsam necessitatibus modi aspernatur.</p>
+            </div>
+            <div class="user_detail">
+                <h3>Portoflio <a href="/portfolio"><span class="fa-solid fa-pencil edit-icon"></span></a></h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus esse impedit distinctio accusantium officiis perspiciatis. Autem assumenda vero eos aut qui quidem, deserunt vitae eligendi voluptates ipsam necessitatibus modi aspernatur.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="container desc prof-det">
+    <div class="profile_name">
+        <h3>Employment History <a href="/employment_history"><span class="fa-solid fa-pencil edit-icon"></span></a></h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam hic soluta officia adipisci consectetur voluptate animi culpa! Voluptatibus deserunt odio atque magni ab dolor quae sit, numquam expedita voluptatem ratione.</p>
+    </div>
+</div>
+<div class="container desc prof-det">
+    <div class="profile_name">
+        <h3>Other Experiences <a href="/other_experience"><span class="fa-solid fa-pencil edit-icon"></span></a></h3>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ullam hic soluta officia adipisci consectetur voluptate animi culpa! Voluptatibus deserunt odio atque magni ab dolor quae sit, numquam expedita voluptatem ratione.</p>
+    </div>
+</div>
+
+
+{% endblock %}

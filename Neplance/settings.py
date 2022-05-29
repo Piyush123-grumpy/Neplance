@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'gig',
     'crispy_forms',
     'account',
+    'Homepage',
 ]
 SITE_ID =1
 
@@ -77,6 +78,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Neplance.wsgi.application'
 
 
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -84,7 +86,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Neplance',
-        'HOST': '127.0.0.2',
+        'HOST': 'localhost',
         'PORT': '3306',
         'USER': 'root',
         'PASSWORD': '',
@@ -128,13 +130,12 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static'),
-]
-MEDIA_URL = '/images/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'static/images')
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')

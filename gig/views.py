@@ -4,4 +4,4 @@ from django.shortcuts import render
 def addgigs(request):
     print(request.user.is_authenticated)
     # if request.user.is_hirer:
-    return render(request,'gig/addgigs.html')
+    return render(request,'addgigs.html')

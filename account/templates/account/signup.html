@@ -1,0 +1,46 @@
+{% extends 'base/UserNavbar.html' %}
+{%block title%} Register {%endblock%}
+{% load static %}
+{%block body%}
+<div class="container">
+    <form action="/signup_freelancer/" method="POST">
+        {% csrf_token %}
+        <div class="join_box acc">
+            <p id="create"> Create Account</p>
+            <p>SignUp As a Freelancer</p>
+            <div>
+                {{form.username}}
+                {% if form.errors.username %}
+                    <label class="text-danger">{{form.errors.username}}</label>
+                {% endif %}
+            </div>
+            <div>
+                {{form.email}}
+                {% if form.errors.email %}
+                    <label class="text-danger">{{form.errors.email}}</label>
+                {% endif %}
+            </div>
+            <div>
+                {{form.password1}}
+                {% if form.errors.password1 %}
+                    <label class="text-danger">{{form.errors.password1}}</label>
+                {% endif %}
+            </div>
+            <div>
+                {{form.password2}}
+                {% if form.errors.password2 %}
+                    <label class="text-danger">{{form.errors.password2}}</label>
+                {% endif %}
+            </div>
+        
+                <button class="join_text bichhako_buttonn" type="submit">Create Account</button>
+            <div class="join_box" style="text-align: center;">
+                <p>Already have account ?<a href="">Log in</a></p>
+            </div>
+    
+            
+        </div>
+    </form>
+    
+</div>
+{% endblock%}

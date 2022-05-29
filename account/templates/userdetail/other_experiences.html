@@ -1,0 +1,36 @@
+{% extends 'base/UserNavbar.html'%} {% load static %} {% block body %}
+
+
+<body>
+
+    <form action="/save_other_experience" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="container rounded bg-white mt-5 mb-5">
+            <div class="row">
+                <div class="col-md-5 border-right">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Other Experiences</h4>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12 d-none"><label class="labels">User id</label><input type="text" name="user" class="form-control" placeholder="User id" value="{{user.id}}"></div>
+                            <div class="col-md-12"><label class="labels">Subject</label><input type="text" name="SUbject" class="form-control" placeholder="Subject" value=""></div>
+
+                            <div class="col-md-12"><label class="labels">Description</label><input type="text" name="description" class="form-control" placeholder="" value=""></div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <button class="btn btn-primary profile-button" type="submit">Save
+                            Profile</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</html>
+{%endblock%}

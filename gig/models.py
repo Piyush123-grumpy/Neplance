@@ -12,5 +12,5 @@ class Gig (models.Model):
     description = models.CharField(max_length=255, null=True)
     pay = models.IntegerField(null=True)
     User = models.ForeignKey(User, on_delete=models.CASCADE)
-    category = models.OneToOneField(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, unique=True)
     
