@@ -75,3 +75,44 @@ html{
 }
 
 /* ==================================================================================================== */
+
+.adver{
+    margin: 3%;
+}
+.adver .container{
+    width: 60%;
+}
+.adver .container .advertise {
+    height: auto;
+    justify-content: space-between;
+    
+}
+
+.adver .container .advertise .panel{
+    flex-direction: row;
+    display: flex;
+    justify-content: space-between;
+
+}
+.adver .container .advertise .text{
+    border: 2px solid #93b7e6;
+    border-radius: 6px;
+    display: flex;
+    width: 40%;
+    flex-direction: column;
+}
+
+.adver .container .advertise .text {
+    padding: 10px;
+}
+
+.adver .container .advertise .text {
+    width: 200px;
+}
+
+.adver .container .advertise ,.text span{
+    text-align: center;
+    align-items: center;
+    display: flex;
+}
+
