@@ -17,22 +17,25 @@ html{
 .home{
     display: flex;
     background: url("/static/images/landingpage.png") no-repeat center;
-    height: 100vh;
     color: #fff;
     min-height: 500px;
     background-size: cover;
     /* background-attachment: fixed; */
     font-family: 'Ubuntu', sans-serif;
+    width: 100%;
+    height: auto;
 }
 .home .max-width{
   width: 100%;
   text-align:right;
+  word-wrap: break-word;
   /* display: flex; */
 }
 
 .home .home-content{
-    color: black;
-    width: 600px;
+    color: rgb(2, 27, 109);
+    width: 400px;
+    flex-direction: row;
 }
 
 
@@ -55,66 +58,20 @@ html{
 
 .home .home-content a{
     display: inline-block;
-    background: #0065ad;
+    background: #4fb3fa;
     /* color: #fff; */
-    font-size: 25px;
-    padding: 12px 36px;
+    font-size: 20px;
+    padding: 6px 20px;
     margin-top: 20px;
     font-weight: 400;
-    border-radius: 15px;
-    border: 2px solid #0065ad;
+    border: 2px solid #4fb3fa;
+    border-radius: 40px;
     transition: all 0.3s ease;
 }
 .home .home-content a:hover{
-    color: #0065ad;
+    /* color: #0065ad; */
     background: none;
+    border: 2px solid #4fb3fa;
 }
 
 /* ==================================================================================================== */
-
-.market .max-width .image{
-    height:23px;
-}
-
-
-
-
-
-
-
-
-/* 
-.carousel-sec{
-    object-fit:scale-down;
-    max-height: 100%;
-    overflow:hidden;
-}
-
-.carousel-caption{
-    font-family: "Playfair Display", serif;
-}
-.carousel-caption h5{
-    font-size: 60px;
-    color: #000000 ;
-    margin: right;
-    line-height: 70px;
-    text-align: -webkit-right;
-    padding-bottom: 180px;
-    color: #0842a5;
-}
-
-@media screen and (max-width:700px) {
-    .top{
-        display: none;
-    }
-    .carousel-caption h5{
-        font-size:2em;
-    }
-    .carousel-caption p{
-        font-size:2em;
-    }
-    #slider .purchase{
-        visibility:visible;
-    }
-}
- */
