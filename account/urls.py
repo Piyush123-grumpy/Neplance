@@ -16,5 +16,8 @@ urlpatterns = [
     path('save_employment_history',accounts.save_employment_history,name='save_employment_history'),
     path('other_experience',accounts.other_experience,name='other_experience'),
     path('save_other_experience',accounts.save_other_experience,name='save_other_experience'),
+    path('delete_employment/<str:pk>',accounts.delete_employment,name='delete_employment'),
+    path('delete_portofolio/<str:pk>',accounts.delete_portofolio,name='delete_portofolio'),
+    path('delete_other_exp/<str:pk>',accounts.delete_other_exp,name='delete_other_exp'),
     
 ]

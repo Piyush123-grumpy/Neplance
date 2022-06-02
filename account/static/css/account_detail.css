@@ -88,8 +88,11 @@ body {
     padding-left: 30px;
     padding-bottom: 30px;
 }
-
+.portofolio h4{
+    font-weight: 700;
+}
 .user_detail {
+    height: 200px;
     padding-top: 15px;
     padding-left: 20px;
     padding-right: 20px;
