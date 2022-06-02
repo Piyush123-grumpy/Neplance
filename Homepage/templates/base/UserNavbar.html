@@ -40,6 +40,9 @@
           <li class="nav-item active">
             <a class="nav-link navbar-list" href="/account_detail">{{user.username}}</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-list" href="{%url 'logout'%}">Logout</a>
+          </li>
         </ul>
       </span> {% else %}
             <span class="navbar-text">

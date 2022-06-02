@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'widget_tweaks',
     'gig',
     'account',
     'Homepage',
@@ -148,3 +149,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'tdummy833@gmail.com'
 EMAIL_HOST_PASSWORD = 'password@gmail'
+
+LOGOUT_REDIRECT_URL = "/"
