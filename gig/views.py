@@ -4,7 +4,7 @@ from .forms import AddGigForm
 from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-@login_required(login_url='') # Redirect when user is not logged in.
+@login_required(login_url='/login/') # Redirect when user is not logged in.
 def addgigs(request):
     # Validate if use is an employer.
     if request.user.is_employer:
@@ -22,9 +22,9 @@ def addgigs(request):
                 f.user = request.user # Set user to current user.
                 f.save()
                 print('saved gig') # Print alert message.
-                return redirect('')
+                return redirect('/')
             return render(request,'addgigs.html', {'form': form})
 
     # If user is not logged in redirect to home page.
     else:
-        return redirect('')
+        return redirect('/')

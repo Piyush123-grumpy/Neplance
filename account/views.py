@@ -60,7 +60,7 @@ def loginpage(request):
                 login(request, user)
                 print("ass")
                 messages.success(request,"Logged in Successfully")
-                return redirect("dashboard/")
+                return redirect("/")
             
             else:
                 messages.error(request, "Invalid Username or Password")

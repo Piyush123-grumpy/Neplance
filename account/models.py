@@ -55,5 +55,7 @@ class employment_history(models.Model):
         return self.company
 
 
+
+
 class Employer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)

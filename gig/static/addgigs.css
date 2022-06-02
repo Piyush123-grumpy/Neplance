@@ -18,15 +18,14 @@ body {
   font-size: 12px;
   line-height: 30px;
   color: #777;
-  background: #0065ad;
 }
 
-.container {
-  max-width: 400px;
+/* .container {
+  max-width: 800px;
   width: 100%;
   margin: 0 auto;
   position: relative;
-}
+} */
 
 
 
