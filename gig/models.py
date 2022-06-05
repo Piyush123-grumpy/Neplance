@@ -17,7 +17,7 @@ class Gig (models.Model):
     description = models.CharField(max_length=255, null=True)
     pay = models.IntegerField(null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, unique=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     
     def __str__(self):
         return self.title

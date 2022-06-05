@@ -1,5 +1,10 @@
 from ast import Add
+from django.http import HttpResponse, JsonResponse
+from django.db.models import Max
+from unicodedata import category
 from django.shortcuts import redirect, render
+
+from gig.models import Category, Gig
 from .forms import AddGigForm
 from django.contrib.auth.decorators import login_required
 
@@ -28,3 +33,28 @@ def addgigs(request):
     # If user is not logged in redirect to home page.
     else:
         return redirect('/')
+
+def search(request):
+    categories = Category.objects.all
+    context = {'categories': categories}
+    print(Gig.objects.filter(pay__range=[10000,20000]))
+    return render(request, 'search.html', context)
+
+def filterSearch(request, category, min, max):
+    data = None
+
+    data = list(Gig.objects.values().filter(category = category, pay__range=[min, max]))
+    # If only Max value is given.
+    if min == -9999 and max != -9999:
+        min = 0
+        # data = list(Gig.objects.values().filter(category = category, pay__range=[0, max]))
+    # If only Min value is given.
+    elif max == -9999 and min != -9999:
+        max = Gig.objects.aggregate(Max('pay'))
+        # data = list(Gig.objects.values().filter(category = category, pay__range=[min, Gig.objects.aggregate(Max('pay'))]))
+    # If category not given.
+    if category == -9999:
+        data = list(Gig.objects.values().filter(pay__range=[min, max]))
+    else:
+        data = list(Gig.objects.values().filter(category = category, pay__range=[min, max]))
+    return JsonResponse(data, safe=False)

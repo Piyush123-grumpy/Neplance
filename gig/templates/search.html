@@ -1,0 +1,56 @@
+{% extends 'base/UserNavbar.html'%}
+
+{% load static %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+
+<body>
+   <div class="container d-flex justify-content-start">
+      <div class="title container-fluid py-5">
+         <h2><strong>Search results for "Django developer."</strong></h2>
+         <!-- Advance search -->
+         <h6 class="text-m adv-title">Advance Options</h6>
+
+         <div class="advance-sec py-3 d-flex justify-content-center">
+            <div class="d-inline mx-5">
+               <h6 class="d-inline ml-3">Min Pay</h6>
+               <input type="number" min='0' placeholder="$" class="py-2" id="min-pay" >
+            </div>
+
+            <div class="d-inline mx-5">
+               <h6 class="d-inline ml-3">Max Pay</h6>
+               <input type="number" min='0' placeholder="$" class="py-2" id="max-pay" >
+            </div>
+
+            <div class="d-inline mx-5">
+               <h6 class="d-inline ml-3">Category</h6>
+               <!-- <button type="button" class="py-2" id="category-btn">Category</button> -->
+               <select name="Categories" id="categories" class="py-2">
+                  <option value=-9999>None</option>
+                  {% for i in categories %}
+                  <option value="{{i.id}}">{{i}}</option>
+                  {% endfor %}
+               </select>
+            </div>
+
+            <div class="d-inline mx-5">
+                  <button class="btn btn-success py-2" id="SearchBtn"> Search </button>
+            </div>
+            
+            <!-- <div class="dropdownList hide" id="dropdownList">
+               <ul class="menu">
+                  {% for i in categories %}
+                     <li><a href="#">{{i}}</a></li>
+                  {% endfor %} 
+                </ul>
+            </div> -->
+         </div>
+
+         <div class="gig-list my-3" id="gig-list">
+         </div>
+      </div>
+   </div>
+   <script src="{% static 'JS/search.js' %}"></script>
+</body>
+{% endblock %}
