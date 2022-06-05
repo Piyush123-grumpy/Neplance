@@ -28,3 +28,6 @@ def addgigs(request):
     # If user is not logged in redirect to home page.
     else:
         return redirect('')
+
+def jobdetail(request):
+    return render(request, 'jobdetail.html')
