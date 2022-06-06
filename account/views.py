@@ -65,3 +65,6 @@ def loginpage(request):
 
 def addgigs(request):
     return render(request,'account/addgigs.html')
+
+def reviews(request):
+    return render(request,'account/review.html')
