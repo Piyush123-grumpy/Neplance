@@ -1,0 +1,29 @@
+{% extends 'base/UserNavbar.html'%}{% block title%}{% load static %} Profile{% endblock %} {% block body%}
+<form action="{% url 'submit_review' freelancer.user_id %}" method="POST" style="display: block;">
+    {% csrf_token %}
+    <!-- creating stars -->
+    <label for="">How do you rate this freelancer</label>
+    <br>
+    <div class="rate">
+        <input type="radio" name="rating" id="rating10" value="5" required><label for="rating10" title="5"></label>
+        <input type="radio" name="rating" id="rating9" value="4.5" required><label for="rating9" class="half" title="4.5"></label>
+        <input type="radio" name="rating" id="rating8" value="4" required><label for="rating8" title="4"></label>
+        <input type="radio" name="rating" id="rating7" value="3.5" required><label for="rating7" class="half" title="3.5"></label>
+        <input type="radio" name="rating" id="rating6" value="3" required><label for="rating6" title="3"></label>
+        <input type="radio" name="rating" id="rating5" value="2.5" required><label for="rating5" class="half" title="2.5"></label>
+        <input type="radio" name="rating" id="rating4" value="2" required><label for="rating4" title="2"></label>
+        <input type="radio" name="rating" id="rating3" value="1.5" required><label for="rating3" class="half" title="1.5"></label>
+        <input type="radio" name="rating" id="rating2" value="1" required><label for="rating2" title="1"></label>
+        <input type="radio" name="rating" id="rating1" value="0.5" required><label for="rating1" class="half" title="0.5"></label>
+
+
+
+
+    </div>
+    <div>
+        <h5>Write your Review</h5>
+        <textarea name="review" rows="4"></textarea>
+
+    </div>
+    <input type="submit" class="btn-btn-primary">
+</form>{% endblock %}
