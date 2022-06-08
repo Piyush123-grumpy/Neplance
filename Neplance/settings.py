@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-hbq(y%$%k3)f1n(p5lw)8qpe71#p#q656p%+4vx@m70vuivi+6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['neplance.azurewebsites.net', 'https://neplance.azurewebsites.net/', ]
+
 
 AUTH_USER_MODEL='account.User'
 # Application definition
@@ -49,6 +50,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -83,12 +85,13 @@ WSGI_APPLICATION = 'Neplance.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Neplance',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'neplance-db',
+        'USER': 'Abhinna@neplance-db',
+        'PASSWORD': '$Abhi123',
+        'HOST': 'neplance-db.postgres.database.azure.com',
+        'PORT': '5432',
+        'OPTIONS': {'sslmode':'require'},
     }
 }
 
@@ -127,7 +130,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
-STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'static')
+# STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'static')
+STATIC_ROOT = BASE_DIR/'static'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_URL = 'static/'
 
 
