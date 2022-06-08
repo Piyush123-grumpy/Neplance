@@ -158,4 +158,8 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'tdummy833@gmail.com'
 EMAIL_HOST_PASSWORD = 'password@gmail'
 
+<<<<<<< HEAD
 django_heroku.settings(locals())
+=======
+LOGOUT_REDIRECT_URL = "/"
+>>>>>>> origin/logout

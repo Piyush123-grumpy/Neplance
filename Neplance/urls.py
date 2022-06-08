@@ -27,6 +27,7 @@ urlpatterns = [
     path('', homepage.home, name='homepage'),
     path('', include('account.urls')),
 <<<<<<< HEAD
+<<<<<<< HEAD
     path('gig/', include('gig.urls')),
     path('reset_password/',auth_views.PasswordResetView.as_view(),name='password_reset'),
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(),name='password_reset_done'),
@@ -36,4 +37,9 @@ urlpatterns = [
 =======
     path('', include('forgotPassword.urls')),
 >>>>>>> origin/forGotPassword
+=======
+    path("accounts/", include("django.contrib.auth.urls")),
+    path('gig/', include('gig.urls')),
+    path('',include('forgotPassword.urls')),
+>>>>>>> origin/logout
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
