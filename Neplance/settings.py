@@ -89,6 +89,7 @@ WSGI_APPLICATION = 'Neplance.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'neplance-db',
         'USER': 'Abhinna@neplance-db',
@@ -96,6 +97,14 @@ DATABASES = {
         'HOST': 'neplance-db.postgres.database.azure.com',
         'PORT': '5432',
         'OPTIONS': {'sslmode':'require'},
+=======
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'Neplance',
+        'HOST': '127.0.0.2',
+        'PORT': '3306',
+        'USER': 'root',
+        'PASSWORD': '',
+>>>>>>> origin/self
     }
 }
 

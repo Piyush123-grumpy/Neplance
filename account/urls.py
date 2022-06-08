@@ -7,6 +7,7 @@ urlpatterns = [
     path('signup_freelancer/',views.signup_freelancer,name='signup_freelancer'),
     path('signup_employer/',views.signup_employer,name='signup_employer'),
     path('login/', views.loginpage,name='login_dashboard'),
+<<<<<<< HEAD
     
     path('profile/', accounts.editUser,name='editUser'),
     path('account_detail',accounts.account_detail,name='account_detail'),
@@ -19,4 +20,10 @@ urlpatterns = [
     path('save_other_experience',accounts.save_other_experience,name='save_other_experience'),
     
     
+=======
+    path('addgigs/', views.addgigs,name='addgigs'),
+    path('reviews/', views.reviews,name='reviews'),
+
+
+>>>>>>> origin/self
 ]
