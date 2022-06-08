@@ -32,6 +32,7 @@ def addgigs(request):
 
     # If user is not logged in redirect to home page.
     else:
+<<<<<<< HEAD
         return redirect('/')
 
 def search(request):
@@ -58,3 +59,9 @@ def filterSearch(request, category, min, max):
     else:
         data = list(Gig.objects.values().filter(category = category, pay__range=[min, max]))
     return JsonResponse(data, safe=False)
+=======
+        return redirect('')
+
+def jobdetail(request):
+    return render(request, 'jobdetail.html')
+>>>>>>> origin/gig-frontend

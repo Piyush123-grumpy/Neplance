@@ -18,4 +18,5 @@ urlpatterns = [
     path('other_experience',accounts.other_experience,name='other_experience'),
     path('save_other_experience',accounts.save_other_experience,name='save_other_experience'),
     
+    
 ]
