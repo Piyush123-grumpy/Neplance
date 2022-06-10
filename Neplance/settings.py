@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+# import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-hbq(y%$%k3)f1n(p5lw)8qpe71#p#q656p%+4vx@m70vuivi+6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['neplance.azurewebsites.net', 'https://neplance.azurewebsites.net/', ]
+ALLOWED_HOSTS = ['neplance.azurewebsites.net', 'https://neplance.azurewebsites.net/', '127.0.0.1']
 
 
 AUTH_USER_MODEL='account.User'
@@ -89,7 +89,6 @@ WSGI_APPLICATION = 'Neplance.wsgi.application'
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'neplance-db',
         'USER': 'Abhinna@neplance-db',
@@ -97,14 +96,6 @@ DATABASES = {
         'HOST': 'neplance-db.postgres.database.azure.com',
         'PORT': '5432',
         'OPTIONS': {'sslmode':'require'},
-=======
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Neplance',
-        'HOST': '127.0.0.2',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '',
->>>>>>> origin/self
     }
 }
 
@@ -167,8 +158,5 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'tdummy833@gmail.com'
 EMAIL_HOST_PASSWORD = 'password@gmail'
 
-<<<<<<< HEAD
-django_heroku.settings(locals())
-=======
+# django_heroku.settings(locals())
 LOGOUT_REDIRECT_URL = "/"
->>>>>>> origin/logout

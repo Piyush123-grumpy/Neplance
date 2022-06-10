@@ -26,20 +26,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage.home, name='homepage'),
     path('', include('account.urls')),
-<<<<<<< HEAD
-<<<<<<< HEAD
     path('gig/', include('gig.urls')),
     path('reset_password/',auth_views.PasswordResetView.as_view(),name='password_reset'),
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(),name='password_reset_done'),
     path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
     path('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(),name='password_reset_complete'),
     # path('', include('forgotPassword.urls')),
-=======
     path('', include('forgotPassword.urls')),
->>>>>>> origin/forGotPassword
-=======
+
     path("accounts/", include("django.contrib.auth.urls")),
-    path('gig/', include('gig.urls')),
     path('',include('forgotPassword.urls')),
->>>>>>> origin/logout
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
