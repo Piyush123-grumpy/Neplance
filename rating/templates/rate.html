@@ -2,7 +2,7 @@
 <form action="{% url 'submit_review' freelancer.user_id %}" method="POST" style="display: block;">
     {% csrf_token %}
     <!-- creating stars -->
-    <label for="">How do you rate this freelancer</label>
+    <label for="">How do you rate this freelancer{{avg_rating}}</label>
     <br>
     <div class="rate">
         <input type="radio" name="rating" id="rating10" value="5" required><label for="rating10" title="5"></label>
@@ -20,6 +20,15 @@
 
 
     </div>
+    <div>
+        <i class="{% if avg_rating > 0 %}  {% if avg_rating > 0.4 and avg_rating < 0.7 %} fa-solid fa-star-half-stroke checked {% endif %} fa fa-star checked {% else %} fa fa-star {% endif %} "></i>
+        <i class="{% if avg_rating > 1 %}  {% if avg_rating > 1.4 and avg_rating < 1.7 %} fa-solid fa-star-half-stroke checked {% endif %} fa fa-star checked {% else %} fa fa-star {% endif %} "></i>
+        <i class="{% if avg_rating > 2 %}  {% if avg_rating > 2.4 and avg_rating < 2.7 %} fa-solid fa-star-half-stroke checked {% endif %} fa fa-star checked {% else %} fa fa-star {% endif %} "></i>
+        <i class="{% if avg_rating > 3 %}  {% if avg_rating > 3.4 and avg_rating < 3.7 %} fa-solid fa-star-half-stroke checked {% endif %} fa fa-star checked {% else %} fa fa-star {% endif %} "></i>
+        <i class="{% if avg_rating > 4 %}  {% if avg_rating > 4.4 and avg_rating < 4.7 %} fa-solid fa-star-half-stroke checked {% endif %} fa fa-star checked {% else %} fa fa-star {% endif %} "></i>
+
+    </div>
+
     <div>
         <h5>Write your Review</h5>
         <textarea name="review" rows="4"></textarea>

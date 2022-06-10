@@ -23,6 +23,10 @@
     cursor: pointer;
 }
 
+.checked {
+    color: #ffb503;
+}
+
 
 /* half star */
 
