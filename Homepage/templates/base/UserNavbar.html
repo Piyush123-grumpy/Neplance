@@ -67,6 +67,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    
+    <script src="https://accounts.google.com/gsi/client" async defer></script> 
 </body>
 <div class="container prof-det"></div>
 <footer class="desc">
@@ -117,7 +119,12 @@
             <li><a href="#"><i class="fab fa-youtube"></i></a></li>
         </ul>
     </section>
-
+    <div id="g_id_onload"
+        data-client_id="YOUR_GOOGLE_CLIENT_ID"
+        data-login_uri="https://your.domain/your_login_endpoint"
+        data-your_own_param_1_to_login="any_value"
+        data-your_own_param_2_to_login="any_value">
+    </div>
     <!-- Footer legal -->
     <section class="ft-legal">
         <ul class="ft-legal-list">
