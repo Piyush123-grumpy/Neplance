@@ -7,6 +7,8 @@ from account.forms import freelancer
 from rating.forms import ReviewForm
 from .models import Employer, Freelancer,ReviewRating
 # Create your views here.
+def review(request):
+    return render(request,'review.html')
 def rating(request):
     freelancer=Freelancer.objects.get(user_id=2)
     sum=ReviewRating.objects.filter(freelancer_id=2).aggregate(Sum('rating'))
@@ -47,5 +49,6 @@ def submit_review(request,freelancer_id):
             data.freelancer=freelance
             data.save()
             return redirect(url)
+
 
     
