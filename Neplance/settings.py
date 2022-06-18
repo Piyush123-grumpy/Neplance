@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-hbq(y%$%k3)f1n(p5lw)8qpe71#p#q656p%+4vx@m70vuivi+6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['neplance.azurewebsites.net', 'https://neplance.azurewebsites.net/', '127.0.0.1']
+ALLOWED_HOSTS = ['neplance.azurewebsites.net', 'https://neplance.azurewebsites.net/', '127.0.0.1', '*']
 
 
 AUTH_USER_MODEL='account.User'
@@ -89,13 +89,12 @@ WSGI_APPLICATION = 'Neplance.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'neplance-db',
-        'USER': 'Abhinna@neplance-db',
-        'PASSWORD': '$Abhi123',
-        'HOST': 'neplance-db.postgres.database.azure.com',
-        'PORT': '5432',
-        'OPTIONS': {'sslmode':'require'},
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'neplance',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
     }
 }
 

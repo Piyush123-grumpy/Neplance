@@ -4,6 +4,7 @@ from unittest.util import strclass
 from django.db import models
 from account.models import User
 
+
 # Create your models here.
 
 class Category(models.Model):
@@ -21,3 +22,10 @@ class Gig (models.Model):
     
     def __str__(self):
         return self.title
+
+class Application (models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    gig = models.ForeignKey(Gig, on_delete=models.CASCADE, null=True)
+    message = models.CharField(max_length=255, null=True)
+    def __str__(self):
+        return self.gig.title
