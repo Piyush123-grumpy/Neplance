@@ -24,7 +24,7 @@ function applyJob(){
 
     // XMLHttpRequest used for sending POST request.
     var req = new XMLHttpRequest();
-    req.open("POST", 'http://127.0.0.1:8000/gig/applyjson/', true);
+    req.open("POST", '/gig/applyjson/', true);
 
     // Headers.
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");

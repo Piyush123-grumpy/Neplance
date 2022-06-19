@@ -5,6 +5,8 @@ from django.shortcuts import render,redirect
 from .forms import FreelancerSignUpForm,UserCreationForm,EmployerSignUpForm
 from django.contrib import auth, messages
 from .models import Employer, Freelancer
+from gig.models import Gig, Application
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -71,3 +73,10 @@ def loginpage(request):
 
 def reviews(request):
     return render(request,'account/review.html')
+
+@login_required(login_url='/login/')
+def appliedJobs(request):
+    applied = Application.objects.filter(user=request.user)
+    print(applied)
+    context = {'applied': applied}
+    return render(request, 'account/appliedJobs.html', context)

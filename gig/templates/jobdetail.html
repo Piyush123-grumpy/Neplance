@@ -9,26 +9,28 @@
                 <h3 class="card-title">{{jobdetail.title}}</h3>
                 <h6 class="card-subtitle">Allocated by {{jobdetail.user}}</h6>
                 <div class="row">
-                    <div class="col-lg-5 col-md-5 col-sm-6">
-                        <div class="white-box text-center"><img src="https://via.placeholder.com/430x600/00CED1/000000" class="img-responsive"></div>
+                    <div class="col-lg-5 col-md-5 col-sm-6 align-middle img-div">
+                        <div class="white-box "><img src={{jobdetail.image.url}} class="img-responsive img-fluid align-middle" ></div>
                     </div>
                     <div class="col-lg-7 col-md-7 col-sm-6">
                         <h4 class="box-title mt-5">Job description</h4>
                         <p>{{jobdetail.description}}</p>
-                        
-                        {% if exists %}
-                            <button class="btn btn-primary btn-rounded hide" id="apply-btn">Apply Your CV Here</button>
-                            <button class="btn btn-primary btn-rounded disabled" id="applied-btn">Applied for job</button>
-                        {% else %}
-                            <button class="btn btn-primary btn-rounded" id="apply-btn">Apply Your CV Here</button>
-                            <button class="btn btn-primary btn-rounded disabled hide" id="applied-btn">Applied for job</button>
+                        {% if user.is_authenticated %}
+                            {% if user.is_freelancer %}
+                                {% if exists %}
+                                    <button class="btn btn-primary btn-rounded hide" id="apply-btn">Apply Your CV Here</button>
+                                    <button class="btn btn-primary btn-rounded disabled" id="applied-btn">Applied for job</button>
+                                {% else %}
+                                    <button class="btn btn-primary btn-rounded" id="apply-btn">Apply Your CV Here</button>
+                                    <button class="btn btn-primary btn-rounded disabled hide" id="applied-btn">Applied for job</button>
+                                {% endif %}
+                            {% endif %}
                         {% endif %}
                         <h3 class="box-title mt-5">Requirements</h3>
                         <ul class="list-unstyled">
-                            <li><i class="fa fa-check text-success"></i>The freelancer should have knowledge about PS Adobe Xd and other related tools.</li>
-                            <li><i class="fa fa-check text-success"></i>Should be workoholics and have rough idea about working with a team.</li>
-                            <li><i class="fa fa-check text-success"></i>Should always have laptops and other necessary resources</li>
-                            <li><i class="fa fa-check text-success"></i>Basic knowledge in coding sectors too.</li>
+                        {% for i in requirements %}
+                        <li><i class="fa fa-check text-success"></i>{{i.requirement}}</li>
+                        {% endfor %} 
                         </ul>
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12">
@@ -80,10 +82,33 @@
     </div>
     <script>
         let gig = "{{jobdetail.id}}"
-        let user = "{{userid}}"
+        let user = "{{user.id}}"
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
     <script src="{% static 'JS/jobdetail.js' %}"></script>
+    <!-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣄⣀⣀⣠⡴⠶⣄⠀⢀⣤⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣄⠀⠹⠤⠃⠀⡏⠉⠉⠳⢾⡿⣻⡆⠀⠀⠀⠀⠀⠀⠀⠀ 
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢦⡀⠀⠀⠀⠇⠀⠀⠀⣠⠞⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣴⡀⡀⠀⣴⣆⡾⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣷⣷⣷⣶⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢨⣿⡿⢻⣿⢻⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⠏⠜⠀⠈⢉⣿⡟⢿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡞⠁⠀⠀⠀⠀⠀⠉⠁⠈⢻⠳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+    ⠀⠀⠀⠀⠀⠀⠀⢀⡴⠋⠀⠀⠀⠀⢀⣤⣄⠀⠀⠀⠀⠣⠙⢦⡀⠀⠀⠀⠀⠀⠀⠀ zz
+    ⠀⠀⠀⠀⠀⠀⣰⠟⠀⠀⠀⠀⠀⠀⣿⣿⣿⠀⠀⠀⠀⠀⠰⠂⠙⣦⠀⠀⠀⠀⠀⠀ 
+    ⠀⠀⠀⠀⢀⡾⠁⠀⠀⠀⠀⣀⣴⣾⣿⣿⣿⣿⣶⣤⡀⠀⠀⠐⣂⠈⢳⡄⠀⠀⠀⠀ 
+    ⠀⠀⠀⣠⠟⠀⠀⠀⠀⠀⣴⣿⣿⡿⣿⣿⣿⠿⣿⣿⣿⣆⠀⠀⠰⢒⠵⢻⣆⠀⠀⠀ 
+    ⠀⠀⣰⠏⠀⠀⠀⠀⠀⠀⣿⣿⣿⠀⣿⣿⣿⠀⠈⢿⣿⣿⠄⠀⠀⠄⢊⡡⠜⣦⠀⠀ 
+    ⠀⢠⡏⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣷⣿⣿⣿⠀⠀⠈⠙⠉⠀⠀⠀⢒⡡⠔⣋⠼⡇⠀ 
+    ⠀⣼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⣷⣶⣄⠀⠀⠀⠀⠀⠐⣈⠤⠒⢻⡄ 
+    ⢀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⣿⣟⠛⢿⣿⣿⣷⠀⠀⠀⠐⣉⠤⠒⣉⠬⣇ 
+    ⢸⠇⢀⠀⠀⠀⠀⠀⠀⣠⣤⡀⠀⠀⣿⣿⣿⠀⠀⣹⣿⣿⡇⠀⠀⡈⠤⠒⣉⠤⠀⣿ 
+    ⢸⠀⠘⣆⡀⠀⠀⠀⠀⢿⣿⣿⣄⠀⣿⣿⣿⢀⣴⣿⣿⡿⠀⠀⠀⠤⠒⣉⠤⠒⠀⡿ 
+    ⢸⡆⢰⡆⠁⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⡿⠟⠀⠀⠀⠠⢒⣉⠤⠒⠁⣸⠃ 
+    ⠀⢳⡀⠙⠒⢷⣀⠀⠀⠀⠀⠈⠛⠻⣿⣿⣿⠛⠉⠀⠀⠀⠀⠐⢊⣁⠤⠒⠋⣠⠏⠀ 
+    ⠀⠀⠳⣤⣧⡀⠸⡀⠀⠀⠀⠀⠀⠀⠻⣿⠟⠀⠀⠀⠀⠀⠔⣊⡡⠤⠒⢉⡴⠋⠀⠀ 
+    ⠀⠀⠀⠀⠙⠳⠦⣌⣁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣁⣤⣴⡾⠟⠋⠀⠀⠀⠀ 
+    ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠒⠒⠶⠦⠤⠤⠤⠴⠶⠒⠒⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀  -->
     {% endblock %}

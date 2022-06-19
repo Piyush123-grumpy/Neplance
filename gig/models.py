@@ -13,8 +13,11 @@ class Category(models.Model):
         return self.category_name
 
 
+
+
 class Gig (models.Model):
     title = models.CharField(max_length=100, null=True)
+    image = models.ImageField(upload_to ='gigs/', null=False, default="gigs/default.png")
     description = models.CharField(max_length=255, null=True)
     pay = models.IntegerField(null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
@@ -23,9 +26,16 @@ class Gig (models.Model):
     def __str__(self):
         return self.title
 
+class Requirement(models.Model):
+    gig = models.ForeignKey(Gig, on_delete=models.CASCADE)
+    requirement = models.CharField(max_length=255, null=False)
+    def __str__(self):
+        return self.gig.title
+
 class Application (models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     gig = models.ForeignKey(Gig, on_delete=models.CASCADE, null=True)
     message = models.CharField(max_length=255, null=True)
+    applied_date = models.DateField(auto_now=True)
     def __str__(self):
         return self.gig.title

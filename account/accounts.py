@@ -5,6 +5,10 @@ from django.shortcuts import render,redirect
 from account.forms import freelancer,Portofolio,employmentHistory,otherExperience
 from .models import Employer, Freelancer
 
+from django.contrib.auth.decorators import login_required
+
+
+@login_required(login_url='/login/')
 def account_detail(request):
     return render(request,'account/account_detail.html')
 

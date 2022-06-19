@@ -8,6 +8,13 @@
     transform: translate(-50%, -50%);
 }
 
+.img-div{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #F9F2ED;
+}
+
 .hide{
     display: none;
 }

@@ -20,6 +20,6 @@ urlpatterns = [
     
     
     path('reviews/', views.reviews,name='reviews'),
-
+    path('appliedjobs/', views.appliedJobs,name='appliedJobs'), 
 
 ]
