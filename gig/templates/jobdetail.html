@@ -16,7 +16,13 @@
                         <h4 class="box-title mt-5">Job description</h4>
                         <p>{{jobdetail.description}}</p>
                         
-                        <button class="btn btn-primary btn-rounded" id="apply-btn">Apply Your CV Here</button>
+                        {% if exists %}
+                            <button class="btn btn-primary btn-rounded hide" id="apply-btn">Apply Your CV Here</button>
+                            <button class="btn btn-primary btn-rounded disabled" id="applied-btn">Applied for job</button>
+                        {% else %}
+                            <button class="btn btn-primary btn-rounded" id="apply-btn">Apply Your CV Here</button>
+                            <button class="btn btn-primary btn-rounded disabled hide" id="applied-btn">Applied for job</button>
+                        {% endif %}
                         <h3 class="box-title mt-5">Requirements</h3>
                         <ul class="list-unstyled">
                             <li><i class="fa fa-check text-success"></i>The freelancer should have knowledge about PS Adobe Xd and other related tools.</li>
@@ -72,6 +78,10 @@
             <button class="btn btn-success" id="submit-apply">Apply</button>
         </div>
     </div>
+    <script>
+        let gig = "{{jobdetail.id}}"
+        let user = "{{userid}}"
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 

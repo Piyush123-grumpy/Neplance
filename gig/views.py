@@ -1,5 +1,5 @@
 from ast import Add
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, QueryDict
 from django.db.models import Max
 from unicodedata import category
 from django.shortcuts import redirect, render
@@ -8,6 +8,7 @@ from account.models import User
 from gig.models import Application, Category, Gig
 from .forms import AddGigForm
 from django.contrib.auth.decorators import login_required
+import json
 
 import json
 
@@ -63,71 +64,62 @@ def filterSearch(request, category, min, max):
 
 def jobdetail(request, job):
     jobdetail = Gig.objects.get(id=job)
-    return render(request, 'jobdetail.html', {'jobdetail': jobdetail})
+    userid = request.user.id
+    exists = Application.objects.filter(user=request.user, gig=job).exists()
+    
+    return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'userid': userid, 'exists': exists})
 
 def joblist(request):
     return render(request, 'joblist.html', {'jobs': Gig.objects.all})
 
 def applyJob(request):
-        # Stuts code meanings:
-# <---------------------------------------------------> #
+# <--------------- STATUS CODE MEANINGS ---------------> #
         # 0: Default status.
             # 420: User doesn't exist.
                 # 69: Gig doesn't exist.
                     # 69420: Application already exists.
                         # 6969: Application saved.
                             # 9999: Recieved Get request.
+# <--------------- STATUS CODE MEANINGS ---------------> #
 
+# VALIDATIONS
+    # If recieves POST request.
     if request.method == 'POST':
-        # userid = request.POST['user']
-        # gigid = request.POST['gig']
-        # print('------------------------------------------')
-        # print('user: ', userid, ' gig: ', gigid)
-        # print('------------------------------------------')
-        print('posted data:::::::::', str(request.POST['user']))
+        # Recieves QueryDict. Convert to python dict.
+        data = QueryDict.dict(request.POST)
+        # Recieves data in str format. Parse to int.
+        userid = int(data['user'])
+        gigid = int(data['gig'])
 
+    # CREDENTIALS VALIDATION
 
-# 5:20 6-18-2020 Update: validationi working properly. Views working all good
-# But data not pasing through javascript.
+        # If user doesn't exists.
+        if not User.objects.filter(id = userid).exists():
+            return JsonResponse(420, safe=False)
 
+        # If gig doesn't exist.
+        elif not Gig.objects.filter(id = gigid).exists():
+            return JsonResponse(69, safe=False)
 
+        user = User.objects.get(id = userid)
+        gig = Gig.objects.get(id = gigid)
 
+        # If application already exists.
+        if Application.objects.filter(user=user, gig=gig).exists():
+            return JsonResponse(69420, safe=False)
 
-
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    #     # credential validation
-
-    #     # if user doesn't exists.
-    #     if not User.objects.filter(id = userid).exists():
-    #         return JsonResponse(420, safe=False)
-
-    #     # if gig doesn't exist.
-    #     elif not Gig.objects.filter(id = gigid).exists():
-    #         return JsonResponse(69, safe=False)
-
-
-    #     user = User.objects.get(id = userid)
-    #     gig = Gig.objects.get(id = gigid)
-
-        
-
-    #     # if application already exists.
-    #     if Application.objects.filter(user=user, gig=gig).exists():
-    #         return JsonResponse(69420, safe=False)
-    #     # If all criterias are fulfilled.
-    #     else:
-    #         # save application.
-    #         # application = Application()
-    #         # application.user = user
-    #         # application.gig = gig
-    #         # application.save()
-    #         return JsonResponse(6969, safe=False)
-    # else:
+        # If all criterias are fulfilled.
+        else:
+            # Save application.
+            application = Application()
+            application.user = user
+            application.gig = gig
+            application.save()
+            return JsonResponse(6969, safe=False)
+    # If recieves GET request.
+    else:
         return JsonResponse(9999, safe=False)
-# +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
-# <---------------------------------------------------> #
 #                      ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣄⣀⣀⣠⡴⠶⣄⠀⢀⣤⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
 #              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣄⠀⠹⠤⠃⠀⡏⠉⠉⠳⢾⡿⣻⡆⠀⠀⠀⠀⠀⠀⠀⠀ 
 #              ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢦⡀⠀⠀⠀⠇⠀⠀⠀⣠⠞⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
@@ -151,4 +143,3 @@ def applyJob(request):
 #              ⠀⠀⠳⣤⣧⡀⠸⡀⠀⠀⠀⠀⠀⠀⠻⣿⠟⠀⠀⠀⠀⠀⠔⣊⡡⠤⠒⢉⡴⠋⠀⠀ 
 #              ⠀⠀⠀⠀⠙⠳⠦⣌⣁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣁⣤⣴⡾⠟⠋⠀⠀⠀⠀ 
 #              ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠒⠒⠶⠦⠤⠤⠤⠴⠶⠒⠒⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀ 
-# <---------------------------------------------------> #
