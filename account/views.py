@@ -71,6 +71,7 @@ def loginpage(request):
         return render(request,"account/login.html")
 
 
+<<<<<<< HEAD
 def reviews(request):
     return render(request,'account/review.html')
 
@@ -80,3 +81,8 @@ def appliedJobs(request):
     print(applied)
     context = {'applied': applied}
     return render(request, 'account/appliedJobs.html', context)
+=======
+def addgigs(request):
+    return render(request,'account/addgigs.html')
+
+>>>>>>> self

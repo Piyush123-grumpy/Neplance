@@ -145,9 +145,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media/'
 
-MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 
 # LOGIN_URL='/login'
 #SMTP Configuration
@@ -160,3 +158,12 @@ EMAIL_HOST_PASSWORD = 'password@gmail'
 
 # django_heroku.settings(locals())
 LOGOUT_REDIRECT_URL = "/"
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static'),
+]
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
