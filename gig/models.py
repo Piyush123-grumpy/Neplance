@@ -19,6 +19,9 @@ class Gig (models.Model):
     title = models.CharField(max_length=100, null=True)
     image = models.ImageField(upload_to ='gigs/', null=False, default="gigs/default.png")
     description = models.CharField(max_length=255, null=True)
+    country = models.CharField(max_length=50, null=False)
+    city = models.CharField(max_length=50, null=False)
+    area = models.CharField(max_length=50, null=False) # Locality area name
     pay = models.IntegerField(null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
