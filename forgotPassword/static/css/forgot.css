@@ -1,11 +1,16 @@
+body{
+    background-color: #f0f0f0 !important;
+}
 .forgot-container{
+    
     margin-top: 2%;
     margin-bottom: 2%;
 }
 .forgot-form{
+    background-color: #fff;
     border-style: solid;
     border-width: 1px;
-    border-color: #d8deda;
+    border-color: #8e8e8e;
     border-radius: 10px;
 }
 .forgot-form .immg{
@@ -16,7 +21,7 @@
 }
 .forgot-form h5{
     text-align: center;
-    /* padding-left: 10%; */
+    font-weight: 600;
     color: rgb(0, 0, 0);
 }
 .forgot-form p{
@@ -39,10 +44,10 @@
     cursor: pointer;
 }
 .forgot-form .int{
-    /* border-radius: 100%/5%!important; */
-    color: #000000 !important;
-    border-color: #000000;
-    /* background-color: white!important; */
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 3px!important;
+    border-color: #6e6e6e;
 }
 .forgot-form .btnSubmit{
     font-weight: 600;
@@ -53,4 +58,11 @@
     color: #fff;
     font-weight: 600;
     text-decoration: none;
+}
+.forgot-form .head{
+    margin-top:20px;
+}
+.forgot-form .email{
+    margin-top:10px;
+    font-size: 14px;
 }
