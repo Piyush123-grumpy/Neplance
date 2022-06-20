@@ -4,6 +4,8 @@ from django.db import models
 
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
+
+
 # Create your models here.
 
 class User(AbstractUser):
@@ -24,7 +26,7 @@ class Freelancer(models.Model):
     def __str__(self):
         return self.user.username
 class portfolio(models.Model): 
-    user=models.ForeignKey(User,on_delete=models.CASCADE, primary_key=True)
+    freelancer=models.ForeignKey(Freelancer,on_delete=models.CASCADE,blank=True, null=True)
     Project_title=models.CharField(verbose_name="Porject Title",max_length=100,blank=True, null=True)
     description=models.CharField(verbose_name="Description",max_length=300,blank=True, null=True)
     date=models.DateField(blank=True, null=True)
@@ -35,7 +37,7 @@ class portfolio(models.Model):
 
 
 class Other_experience(models.Model): 
-    user=models.ForeignKey(User,on_delete=models.CASCADE, primary_key=True)
+    freelancer=models.ForeignKey(Freelancer,on_delete=models.CASCADE,blank=True, null=True)
     SUbject=models.CharField(verbose_name="Subject",max_length=100,blank=True, null=True)
     description=models.CharField(verbose_name="Description",max_length=300,blank=True, null=True)
     
@@ -43,7 +45,7 @@ class Other_experience(models.Model):
 
 
 class employment_history(models.Model):
-    user=models.ForeignKey(User,on_delete=models.CASCADE, primary_key=True)
+    freelancer=models.ForeignKey(Freelancer,on_delete=models.CASCADE,blank=True, null=True)
     company=models.CharField(verbose_name="Company",max_length=100,blank=True, null=True)
     city=models.CharField(verbose_name="City",max_length=100,blank=True, null=True)
     Title=models.CharField(verbose_name="Title",max_length=100,blank=True, null=True)
@@ -57,4 +59,4 @@ class employment_history(models.Model):
 
 
 class Employer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)

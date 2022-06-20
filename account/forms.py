@@ -1,7 +1,6 @@
 import email
 from pyexpat import model
 from statistics import mode
-from attr import fields
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from account.models import User

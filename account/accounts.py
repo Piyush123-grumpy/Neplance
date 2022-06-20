@@ -3,14 +3,25 @@ from django.http import HttpResponse
 from django.shortcuts import render,redirect
 
 from account.forms import freelancer,Portofolio,employmentHistory,otherExperience
-from .models import Employer, Freelancer
+from .models import Employer, Freelancer,portfolio,employment_history,Other_experience
 
 from django.contrib.auth.decorators import login_required
 
 
 @login_required(login_url='/login/')
 def account_detail(request):
-    return render(request,'account/account_detail.html')
+    user=request.user
+    freelancer=Freelancer.objects.filter(user=user)[0]
+    Portfolio=portfolio.objects.filter(freelancer=freelancer)
+    Employment=employment_history.objects.filter(freelancer=freelancer)
+    other_exp=Other_experience.objects.filter(freelancer=freelancer)
+    context={
+        'user':user,
+        'freelancer':freelancer,
+        'portoflio':Portfolio,
+        'Employment':Employment,
+        'other_exp':other_exp}
+    return render(request,'account/account_detail.html',context)
 
 def editUser(request):
     return render(request, 'userdetail/profile.html')
@@ -35,7 +46,20 @@ def save_protfolio(request):
         form.save()
     return redirect("account_detail")
 
+def delete_employment(request,pk):
+    employment_his=employment_history.objects.get(id=pk)
+    employment_his.delete()
+    return redirect("account_detail")
+    
+def delete_portofolio(request,pk):
+    portofolio=portfolio.objects.get(id=pk)
+    portofolio.delete()
+    return redirect('account_detail')
 
+def delete_other_exp(request,pk):
+    other_exp=Other_experience.objects.get(id=pk)
+    other_exp.delete()
+    return redirect('account_detail')
 
 def Employment_history(request):
     user=request.user
