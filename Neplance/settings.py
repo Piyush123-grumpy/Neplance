@@ -160,10 +160,14 @@ EMAIL_HOST_PASSWORD = 'password@gmail'
 LOGOUT_REDIRECT_URL = "/"
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static'),
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR,'static'),
+# ]
 
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+# Phone number field settings
+PHONENUMBER_DEFAULT_FORMAT="NATIONAL"
+PHONENUMBER_DEFAULT_REGION="NP"

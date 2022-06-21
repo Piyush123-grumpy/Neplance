@@ -1,4 +1,5 @@
 from ast import Add
+from datetime import datetime
 from django.http import HttpResponse, JsonResponse, QueryDict
 from django.db.models import Max
 from unicodedata import category
@@ -14,6 +15,7 @@ import json
 # Create your views here.
 @login_required(login_url='/login/')
 def addgigs(request):
+    
     # Validate if use is an employer.
     if request.user.is_employer:
         # Executes before form submission.
@@ -123,4 +125,12 @@ def applyJob(request):
     else:
         return JsonResponse(9999, safe=False)
 
-
+def postedGigs(request):
+    if request.user.is_employer:
+        gigs = Gig.objects.filter(user = request.user)
+        applications = []
+        print('apps::::::::::', gigs[0].getApplicationCount())
+        
+        return render(request, 'postedjobs.html', {'gigs':gigs})
+    else:
+        return redirect('/')

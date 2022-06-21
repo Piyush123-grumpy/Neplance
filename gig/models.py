@@ -3,6 +3,9 @@ from unicodedata import category
 from unittest.util import strclass
 from django.db import models
 from account.models import User
+from django_countries.fields import CountryField
+from phonenumber_field.modelfields import PhoneNumberField
+
 
 
 # Create your models here.
@@ -12,20 +15,24 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
 
-
-
-
 class Gig (models.Model):
     title = models.CharField(max_length=100, null=True)
+    company = models.CharField(max_length=50, null=False)
     image = models.ImageField(upload_to ='gigs/', null=False, default="gigs/default.png")
     description = models.CharField(max_length=255, null=True)
-    country = models.CharField(max_length=50, null=False)
+    country = country = CountryField(null=False, blank_label='(select country)')
     city = models.CharField(max_length=50, null=False)
     area = models.CharField(max_length=50, null=False) # Locality area name
     pay = models.IntegerField(null=True)
+    # contact = PhoneNumberField(default=None)
+    contact = PhoneNumberField()
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    
+
+    def getApplicationCount(self):
+        count= self.application_set.all().count()
+        return count
+
     def __str__(self):
         return self.title
 
