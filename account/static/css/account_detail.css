@@ -11,14 +11,14 @@ body {
 .profile_picture {
     background: lightblue;
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 
 .profile_picture img {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
 }
 
 .Profile {
@@ -88,11 +88,13 @@ body {
     padding-left: 30px;
     padding-bottom: 30px;
 }
-.portofolio h4{
+
+.portofolio h4 {
     font-weight: 700;
 }
+
 .user_detail {
-    height: 200px;
+    height: auto;
     padding-top: 15px;
     padding-left: 20px;
     padding-right: 20px;

@@ -1,4 +1,5 @@
 
+from MySQLdb import ProgrammingError
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render,redirect 
@@ -71,18 +72,15 @@ def loginpage(request):
         return render(request,"account/login.html")
 
 
-<<<<<<< HEAD
 def reviews(request):
     return render(request,'account/review.html')
 
 @login_required(login_url='/login/')
 def appliedJobs(request):
     applied = Application.objects.filter(user=request.user)
-    print(applied)
     context = {'applied': applied}
     return render(request, 'account/appliedJobs.html', context)
-=======
+
 def addgigs(request):
     return render(request,'account/addgigs.html')
 
->>>>>>> self

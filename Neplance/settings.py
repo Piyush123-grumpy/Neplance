@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'Homepage',
     'forgotPassword',
     'widget_tweaks',
+    'phonenumber_field',
     'rating',
 ]
 SITE_ID =1
@@ -93,7 +94,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'neplance',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '123456abc',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
@@ -135,7 +136,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 # STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'static')
-STATIC_ROOT = BASE_DIR/'static'
+STATIC_ROOT = '/static'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATIC_URL = 'static/'
 

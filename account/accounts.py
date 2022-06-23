@@ -10,19 +10,21 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='/login/')
 def account_detail(request):
-    user=request.user
-    freelancer=Freelancer.objects.filter(user=user)[0]
-    Portfolio=portfolio.objects.filter(freelancer=freelancer)
-    Employment=employment_history.objects.filter(freelancer=freelancer)
-    other_exp=Other_experience.objects.filter(freelancer=freelancer)
-    context={
-        'user':user,
-        'freelancer':freelancer,
-        'portoflio':Portfolio,
-        'Employment':Employment,
-        'other_exp':other_exp}
-    return render(request,'account/account_detail.html',context)
-
+    if request.user.is_freelancer:
+        user=request.user
+        freelancer=Freelancer.objects.filter(user=user)[0]
+        Portfolio=portfolio.objects.filter(freelancer=freelancer)
+        Employment=employment_history.objects.filter(freelancer=freelancer)
+        other_exp=Other_experience.objects.filter(freelancer=freelancer)
+        context={
+            'user':user,
+            'freelancer':freelancer,
+            'portoflio':Portfolio,
+            'Employment':Employment,
+            'other_exp':other_exp}
+        return render(request,'account/account_detail.html',context)
+    else:
+        return render(request,'account/employer_detail.html')
 def editUser(request):
     return render(request, 'userdetail/profile.html')
 

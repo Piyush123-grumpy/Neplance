@@ -1,37 +1,46 @@
-ul{
+ul {
     list-style-type: none;
 }
 
-li{
+li {
     list-style-type: none;
 }
-nav{
+
+nav {
     background-color: #0065AD;
     position: sticky;
     top: 0;
     z-index: 100;
 }
-.navbar-brand{
+
+.navbar-brand {
     margin-right: 60px !important;
 }
-.nav-title{
-    color:white;
+
+.nav-title {
+    color: white;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 30px;
     text-decoration: none;
 }
-.navbar-list{
-    color:white !important;
+
+.navbar-list {
+    color: white !important;
 }
-.nav-content{
-    color:white;
+
+.nav-content {
+    color: white;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: 20px !important;
     text-decoration: none;
 }
 
-.navbar-brand{
+.navbar-brand {
     height: auto;
+}
+
+.navbar-margin {
+    margin-left: 30px;
 }
