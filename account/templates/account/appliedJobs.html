@@ -38,7 +38,6 @@
                                             <th></th>
                                         </tr>
                                     </thead>
-
                                     <tbody>
                                         {% for i in applied %}
                                         <tr>
@@ -47,12 +46,8 @@
                                             <td>Kathmandu</td>
                                             <td>{{ i.applied_date }}</td>
                                             <td>2011/04/25</td>
-                                            <td>Pending</td>
+                                            <td>{{i.status}}</td>
                                             <td><a href="/gig/jobdetail/{{i.gig.id}}" class="btn btn-success">View Job</a></td>
-
-                                        </tr>
-                                        {% endfor %}
-                                    </tbody>
 
                                 </table>
                             </div>

@@ -1,4 +1,5 @@
 from ast import Add
+from datetime import datetime
 from django.http import HttpResponse, JsonResponse, QueryDict
 from django.db.models import Max
 from unicodedata import category
@@ -14,6 +15,7 @@ import json
 # Create your views here.
 @login_required(login_url='/login/')
 def addgigs(request):
+    
     # Validate if use is an employer.
     if request.user.is_employer:
         # Executes before form submission.
@@ -64,12 +66,11 @@ def filterSearch(request, category, min, max):
 def jobdetail(request, job):
     jobdetail = Gig.objects.get(id=job)
     user = request.user
-    requirements = Requirement.objects.filter(gig = jobdetail)
     if request.user.is_authenticated:
         exists = Application.objects.filter(user=user, gig=job).exists()
-        return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'requirements': requirements, 'user': user, 'exists': exists})
+        return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'user': user, 'exists': exists})
     else:
-        return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'requirements': requirements, 'user': user})
+        return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'user': user})
 
 
 def joblist(request):
@@ -123,4 +124,50 @@ def applyJob(request):
     else:
         return JsonResponse(9999, safe=False)
 
+def postedGigs(request):
+    if request.user.is_employer:
+        gigs = Gig.objects.filter(user = request.user)
+        return render(request, 'postedjobs.html', {'gigs':gigs})
+    else:
+        return redirect('/')
 
+def applicationList(request, gigid):
+    if request.user.is_employer:
+        gig = Gig.objects.get(id=gigid)
+        applications = Application.objects.filter(gig=gig)
+        return render(request, 'applicationlist.html', {'applications':applications})
+
+    return redirect('/')
+
+def removeGig(request):
+    gigid = request.POST['gig']
+    exists = Gig.objects.filter(id=gigid).exists()
+    if exists:
+        Gig.objects.get(id=gigid).delete()
+        return JsonResponse(69, safe=False)
+    else:
+        return JsonResponse(420, safe=False)
+
+@login_required(login_url='/login/')
+def updateApplicationStat(request):
+    if request.method=="POST":
+        if request.user.is_employer:
+            appId = request.POST['application']
+            status = request.POST['status']
+            if Application.objects.filter(id=appId).exists():
+                app = Application.objects.get(id=appId)
+                if status == "Rejected":
+                    app.status="Rejected"
+                    app.save()
+                    return JsonResponse("Updated", safe=False)
+                elif status == "Hired":
+                    app.status="Hired"
+                    app.save()
+                    return JsonResponse("Updated", safe=False)
+                else:
+                    return JsonResponse("Invalid Status", safe=False)
+            else:
+                return JsonResponse("Application doesn't exist.", safe=False)
+    else:
+        return JsonResponse("Invalid Method.", safe=False)
+    
