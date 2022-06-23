@@ -12,7 +12,7 @@ class User(AbstractUser):
     is_freelancer=models.BooleanField(default=False)
     is_employer=models.BooleanField(default=False)
     def getFreelancer(self):
-        return self.freelancer_set.filter(user=self)
+        return self.freelancer_set.get(user=self)
 
 class Freelancer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -21,7 +21,7 @@ class Freelancer(models.Model):
     current_job=models.CharField(verbose_name="Current Job",max_length=100,blank=True, null=True)
     city=models.CharField(verbose_name="City",max_length=100,blank=True, null=True)
     country=models.CharField(verbose_name="Country",max_length=100,blank=True, null=True)
-    profile_picture=models.ImageField(upload_to='',default='',blank=True, null=True)
+    profile_picture=models.ImageField(upload_to='',default='default.jpg',blank=True, null=True)
     description=models.CharField(verbose_name="Description",max_length=300,blank=True, null=True)
 
     def __str__(self):

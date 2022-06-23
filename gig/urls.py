@@ -11,5 +11,6 @@ urlpatterns = [
         path('applyjson/', views.applyJob, name='applyJson'),
         path('postedgigs/', views.postedGigs, name='postedGigs'),
         path('applicationlist/<int:gigid>', views.applicationList, name='applicationlist'),
+        path('updateApplication/', views.updateApplicationStat, name='updateApplication'),
         path('removeGig/', views.removeGig, name='removeGig'),
 ]

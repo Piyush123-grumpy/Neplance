@@ -51,14 +51,9 @@
                       <td>
                         <div class="avatar-group">
                           {% for application in i.getApplications %}
-                              {% for freelancer in application.user.getFreelancer %}
                                 <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                  <img alt="Image placeholder" src="{{freelancer.profile_picture.url}}" class="rounded-circle">
+                                  <img alt="Image placeholder" src="{{application.user.getFreelancer.profile_picture.url}}" class="rounded-circle">
                                 </a>
-                                <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                                  <img alt="Image placeholder" src="{{freelancer.profile_picture.url}}" class="rounded-circle">
-                                </a>
-                              {% endfor %}    
                           {% endfor %}
                         </div>
                       </td>

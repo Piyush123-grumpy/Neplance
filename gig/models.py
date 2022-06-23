@@ -53,7 +53,7 @@ class Requirement(models.Model):
 class Application (models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     gig = models.ForeignKey(Gig, on_delete=models.CASCADE, null=True)
-    message = models.CharField(max_length=255, null=True)
     applied_date = models.DateField(auto_now=True)
+    status = models.CharField(max_length=50, default="Pending")
     def __str__(self):
         return self.gig.title

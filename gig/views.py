@@ -127,9 +127,6 @@ def applyJob(request):
 def postedGigs(request):
     if request.user.is_employer:
         gigs = Gig.objects.filter(user = request.user)
-        for i in gigs:
-            for j in gigs[0].user.getFreelancer():
-                print(j.language)
         return render(request, 'postedjobs.html', {'gigs':gigs})
     else:
         return redirect('/')
@@ -150,4 +147,27 @@ def removeGig(request):
         return JsonResponse(69, safe=False)
     else:
         return JsonResponse(420, safe=False)
+
+@login_required(login_url='/login/')
+def updateApplicationStat(request):
+    if request.method=="POST":
+        if request.user.is_employer:
+            appId = request.POST['application']
+            status = request.POST['status']
+            if Application.objects.filter(id=appId).exists():
+                app = Application.objects.get(id=appId)
+                if status == "Rejected":
+                    app.status="Rejected"
+                    app.save()
+                    return JsonResponse("Updated", safe=False)
+                elif status == "Hired":
+                    app.status="Hired"
+                    app.save()
+                    return JsonResponse("Updated", safe=False)
+                else:
+                    return JsonResponse("Invalid Status", safe=False)
+            else:
+                return JsonResponse("Application doesn't exist.", safe=False)
+    else:
+        return JsonResponse("Invalid Method.", safe=False)
     
