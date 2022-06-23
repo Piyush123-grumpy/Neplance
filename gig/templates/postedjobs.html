@@ -1,26 +1,99 @@
 {% extends 'base/UserNavbar.html' %}
 {% load static %}
 {% block body %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/postedjobs.css' %}">
-    <div class="container py-3">
-        <div class="container">
-            <h2>Responsive Tables Using LI <small>Triggers on 767px</small></h2>
-            <ul class="responsive-table">
-              <li class="table-header">
-                <div class="col col-1">Job Id</div>
-                <div class="col col-2">Job Title</div>
-                <div class="col col-3">Total Applications</div>
-                <div class="col col-3"></div>
-              </li>
-              {% for i in gigs %}
-              <li class="table-row">
-                <div class="col col-1" data-label="Job Id">{{i.id}}</div>
-                <div class="col col-2" data-label="Customer Name">{{i.title}}</div>
-                <div class="col col-2" data-label="Customer Name">{{i.getApplicationCount}}</div>
-                <div class="col col-2" data-label="Customer Name"><button class="btn btn-success">View Application</button></div>
-              </li>
-              {% endfor %}
-            </ul>
-          </div>
-    </div>
+
+
+
+    <div class="main-content">
+      <div class="container mt-5">
+        <!-- Table -->  
+          <div class="col">
+            <div class="card shadow">
+              <div class="card-header border-0">
+                <h3 class="mb-0">Gigs</h3>
+              </div>
+              <div class="table-responsive">
+                <table class="table align-items-center table-flush">
+                  <thead class="thead-light">
+                    <tr>
+                      <th scope="col">Project</th>
+                      <th scope="col">Applications</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Users</th>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for i in gigs %}
+                    <tr>
+                      <th scope="row">
+                        <div class="media align-items-center">
+                          <a href="/gig/jobdetail/{{i.id}}" class="avatar rounded-circle mr-3">
+                            <img alt="Image placeholder" src="{{ i.image.url }}">
+                          </a>
+                          <div class="media-body">
+                            <span class="mb-0 text-sm">{{i.title}}</span>
+                          </div>
+                        </div>
+                      </th>
+                      <td>
+                        {{i.getApplicationCount}}
+                      </td>
+                      <td>
+                        <span class="badge badge-dot mr-4">
+                          <p style="color:black;"><i class="bg-warning"></i>pending</p>
+                        </span>
+                      </td>
+                      <td>
+                        <div class="avatar-group">
+                          {% for application in i.getApplications %}
+                              {% for freelancer in application.user.getFreelancer %}
+                                <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                  <img alt="Image placeholder" src="{{freelancer.profile_picture.url}}" class="rounded-circle">
+                                </a>
+                                <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
+                                  <img alt="Image placeholder" src="{{freelancer.profile_picture.url}}" class="rounded-circle">
+                                </a>
+                              {% endfor %}    
+                          {% endfor %}
+                        </div>
+                      </td>
+
+                      <td>
+                        <button class="del-btn" data-id="{{i.id}}">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill trash-icon" viewBox="0 0 16 16">
+                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                          </svg>
+                        </button>
+                      </td>
+                      
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+
+
+
+    <div class="popup hide bg-warning rounded" id="popup">
+      <button id = "x">
+          X
+      </button>
+      <div class="content">
+          {% csrf_token %}
+          <h3>Are you sure you want to delete this gig?</h3>
+          <button class="btn btn-danger" id="cfm-delete">Delete</button>
+      </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <script src="{% static 'JS/postedjobs.js' %}"></script>
+
 {% endblock %}

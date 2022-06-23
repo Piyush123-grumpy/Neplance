@@ -30,8 +30,16 @@ class Gig (models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def getApplicationCount(self):
-        count= self.application_set.all().count()
+        count = self.application_set.all().count()
         return count
+    
+    def getRequiremets(self):
+        requirements = self.requirement_set.filter(gig=self)
+        return requirements
+    
+    def getApplications(self):
+        applications = self.application_set.all()
+        return applications
 
     def __str__(self):
         return self.title

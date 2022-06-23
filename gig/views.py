@@ -66,12 +66,11 @@ def filterSearch(request, category, min, max):
 def jobdetail(request, job):
     jobdetail = Gig.objects.get(id=job)
     user = request.user
-    requirements = Requirement.objects.filter(gig = jobdetail)
     if request.user.is_authenticated:
         exists = Application.objects.filter(user=user, gig=job).exists()
-        return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'requirements': requirements, 'user': user, 'exists': exists})
+        return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'user': user, 'exists': exists})
     else:
-        return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'requirements': requirements, 'user': user})
+        return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'user': user})
 
 
 def joblist(request):
@@ -128,9 +127,27 @@ def applyJob(request):
 def postedGigs(request):
     if request.user.is_employer:
         gigs = Gig.objects.filter(user = request.user)
-        applications = []
-        print('apps::::::::::', gigs[0].getApplicationCount())
-        
+        for i in gigs:
+            for j in gigs[0].user.getFreelancer():
+                print(j.language)
         return render(request, 'postedjobs.html', {'gigs':gigs})
     else:
         return redirect('/')
+
+def applicationList(request, gigid):
+    if request.user.is_employer:
+        gig = Gig.objects.get(id=gigid)
+        applications = Application.objects.filter(gig=gig)
+        return render(request, 'applicationlist.html', {'applications':applications})
+
+    return redirect('/')
+
+def removeGig(request):
+    gigid = request.POST['gig']
+    exists = Gig.objects.filter(id=gigid).exists()
+    if exists:
+        Gig.objects.get(id=gigid).delete()
+        return JsonResponse(69, safe=False)
+    else:
+        return JsonResponse(420, safe=False)
+    

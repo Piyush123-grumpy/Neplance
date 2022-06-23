@@ -11,10 +11,11 @@ from django.contrib.auth.base_user import BaseUserManager
 class User(AbstractUser):
     is_freelancer=models.BooleanField(default=False)
     is_employer=models.BooleanField(default=False)
+    def getFreelancer(self):
+        return self.freelancer_set.filter(user=self)
 
 class Freelancer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     language=models.CharField(verbose_name="Language",max_length=30,blank=True, null=True)
     education=models.CharField(verbose_name="Education",max_length=30,blank=True, null=True)
     current_job=models.CharField(verbose_name="Current Job",max_length=100,blank=True, null=True)
@@ -59,4 +60,4 @@ class employment_history(models.Model):
 
 
 class Employer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
