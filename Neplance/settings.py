@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'forgotPassword',
     'widget_tweaks',
     'rating',
+    'profilePage'
 ]
 SITE_ID =1
 
