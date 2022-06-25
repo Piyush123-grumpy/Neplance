@@ -1,32 +1,75 @@
 
-
-
-
 // Reject buttons
 let rejectBtns = document.getElementsByClassName('btn-reject')
 var rejArr = [].slice.call(rejectBtns);
+
+let currentApplication = null;
+let currentAmount = null;
+let currentUser = null;
+
+rejArr.forEach(element => {
+    let app = element.dataset.app
+    let status = element.dataset.status
+    element.addEventListener('click', ()=>{
+        updateApp(app, status);
+        // console.log('id'+ app)
+        console.log()
+
+    })
+});
+
+// Hire Buttons
+let hireBtns = document.getElementsByClassName('btn-hire')
+var hireArr = [].slice.call(hireBtns);
+hireArr.forEach(element => {
+    let app = element.dataset.app;
+    let status = element.dataset.status;
+    let username = element.dataset.user;
+    let amount = element.dataset.amount;
+    element.addEventListener('click', ()=>{
+        // updateApp(app, status);
+        currentApplication = app;
+        currentAmount = amount;
+        currentUser = username;
+        let popup = document.getElementById('popup');
+        popup.style.transition = "500ms";
+        popup.style.transform = "translate(-50%, -50%)";
+
+        // Update hire message.
+        document.getElementById('hire-message').innerHTML = "Are you sure you want to hire " + username + '?';
+
+    })
+});
+
+document.getElementById('x').addEventListener('click', ()=>{
+    let popup = document.getElementById('popup');
+    popup.style.transition = "500ms";
+    popup.style.transform = "translate(-50%, -500%)";
+})
+
+
+
+
+
 
 // Khalti
 var config = {
     // replace the publicKey with yours
     "publicKey": "test_public_key_126703ef5476440c8ae6c68da6f938d8",
-    "productIdentity": "123456789",
-    "productName": "test",
+    "productIdentity": toString(currentApplication),
+    "productName": toString(currentUser),
     "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
     "paymentPreference": [
         "KHALTI",
-        "EBANKING",
-        "MOBILE_BANKING",
         "CONNECT_IPS",
-        "SCT",
         ],
     "eventHandler": {
         onSuccess (payload) {
             // hit merchant api for initiating verfication
             console.log(payload);
-            console.log('token'+payload.token)
             csrftoken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
 
+            // Send token and amount data to khalti url.
             var req = new XMLHttpRequest();
             req.open("POST", '/khalti/verifypayment/', true);
         
@@ -34,10 +77,14 @@ var config = {
             req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             req.setRequestHeader("x-csrfToken", csrftoken);
             // Send data.
-            let statement = 'token=' + payload.token + '&amount=1000'
+            let statement = 'token=' + payload.token + '&amount=' + currentAmount;
             req.send(statement);
             req.onload = ()=>{
-                console.log('response:::::::::::    '+req.response);
+                response = JSON.parse(req.response)
+                if(response.status == true){
+                    updateApp(currentApplication, "Hired");
+                    window.location.reload();
+                }
             }
         },
         onError (error) {
@@ -53,54 +100,9 @@ var checkout = new KhaltiCheckout(config);
 var btn = document.getElementById("payment-button");
 btn.onclick = function () {
     // minimum transaction amount must be 10, i.e 1000 in paisa.
-    checkout.show({amount: 1000});
+    checkout.show({amount: currentAmount});
 }
 
-// Update Status
-rejArr.forEach(element => {
-    let app = element.dataset.app
-    let status = element.dataset.status
-    element.addEventListener('click', ()=>{
-        updateApp(app, status);
-        // console.log('id'+ app)
-
-    })
-});
-
-
-document.getElementById('btn-test').addEventListener('click', ()=>{
-    // CSRF token taken from DOM.
-    csrftoken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
-    // XMLHttpRequest used for sending POST request.
-    var req = new XMLHttpRequest();
-    req.open("POST", '/khalti/verifypayment/', true);
-    req.setRequestHeader("x-csrfToken", csrftoken);
-
-    // Headers.
-    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-
-    // Send data.
-    let statement = 'token=QUao9cqFzxPgvWJNi9aKac&amount=150'
-    req.send(statement);
-
-    // Recieve response.
-    req.onload = ()=>{
-        console.log('response:::::::'+req.response);
-        // window.location.reload();
-
-    };
-})
-
-// Hire Buttons
-let hireBtns = document.getElementsByClassName('btn-hire')
-var hireArr = [].slice.call(hireBtns);
-hireArr.forEach(element => {
-    let app = element.dataset.app
-    let status = element.dataset.status
-    element.addEventListener('click', ()=>{
-        updateApp(app, status);
-    })
-});
 
 function updateApp(app, status){
     // CSRF token taken from DOM.

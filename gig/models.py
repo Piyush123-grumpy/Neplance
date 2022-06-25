@@ -1,4 +1,5 @@
 from ast import Str
+from email.mime import application
 from unicodedata import category
 from unittest.util import strclass
 from django.db import models
@@ -57,3 +58,10 @@ class Application (models.Model):
     status = models.CharField(max_length=50, default="Pending")
     def __str__(self):
         return self.gig.title
+
+class Hired (models.Model):
+    application = models.ForeignKey(Application, on_delete=models.CASCADE, null=False)
+    freelancer_completed = models.BooleanField(default=False)
+    employer_verified = models.BooleanField(default=False)
+    def __str__(self):
+        return self.application.gig.title
