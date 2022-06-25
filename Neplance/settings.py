@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'phonenumber_field',
     'rating',
+    'profilePage'
 ]
 SITE_ID =1
 
