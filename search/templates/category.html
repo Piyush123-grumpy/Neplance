@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category page</title>
+    <link rel="stylesheet" href="{% static 'css/category.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor" aria-controls="navbarColor" aria-expanded="false" aria-label="Toggle navigation"> 
+            <span class="navbar-toggler-icon"></span> 
+        </button>                
+        <div class="collapse navbar-collapse" id="navbarColor">
+            <ul class="navbar-nav">
+                <li class="nav-item rounded bg-light search-nav-item"><input type="text" id="search" class="bg-light" placeholder="Search Jobs"><span class="fa fa-search text-muted"></span></li>
+            </ul>        
+        </div>    
+    </nav> 
+
+    <div class="filter">
+        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter"
+            aria-expanded="true" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
+            
+    </div>
+    <div id="mobile-filter">
+        <p class="pl-sm-0 pl-2"><p>Category Home|<b>Gig listing</b></p>
+        <div class="border-bottom pb-2 ml-2">
+            <h4 id="burgundy">Filters</h4>
+        </div>
+        <div class="py-2 border-bottom ml-3">
+            <h6 class="font-weight-bold">Job Categories</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            <form>
+                <div class="form-group">
+                    <input type="checkbox" id="artisan">
+                    <label for="artisan">Freelancing</label>
+                </div>
+
+            </form>
+        </div>
+        <div class="py-2 border-bottom ml-3">
+            <h6 class="font-weight-bold">Sub Categories</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            <form>
+                <div class="form-group">
+                    <input type="checkbox" id="ui">
+                    <label for="ui">UI/UX design</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="fullstack">
+                    <label for="fullstack">MERN FULLSTACK</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="frontend">
+                    <label for="frontend">HTML/CSS based frontend</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="python">
+                    <label for="python">Sr. Python Developer</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="java">
+                    <label for="java">Sr. Java Developer</label>
+                </div>
+            </form>
+        </div>
+        <div class="py-2 ml-3">
+            <h6 class="font-weight-bold">Working Hours</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            <form>
+                <div class="form-group">
+                    <input type="checkbox" id="parttime">
+                    <label for="parttime">Part time</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="fulltime">
+                    <label for="fulltime" id="off">Full Time</label>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Sidebar filter section -->
+
+    <section id="sidebar">
+        <p> Category Home | <b>All Gigs</b></p>
+        <div class="border-bottom pb-2 ml-2">
+            <h4 id="burgundy">Filters</h4>
+            
+        </div>
+        <div class="py-2 border-bottom ml-3">
+            <h6 class="font-weight-bold">Job Categories</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            <form>
+                <div class="form-group">
+                    <input type="checkbox" id="artisan">
+                    <label for="artisan">Freelancing</label>
+                </div>
+
+            </form>
+        </div>
+        <div class="py-2 border-bottom ml-3">
+            <h6 class="font-weight-bold">Sub Categories</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            <form>
+                <div class="form-group">
+                    <input type="checkbox" id="ui">
+                    <label for="ui">UI/UX design</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="fullstack">
+                    <label for="fullstack">MERN FULLSTACK</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="frontend">
+                    <label for="frontend">HTML/CSS based frontend</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="python">
+                    <label for="python">Sr. Python Developer</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="java">
+                    <label for="java">Sr. Java Developer</label>
+                </div>
+            </form>
+        </div>
+        <div class="py-2 ml-3">
+            <h6 class="font-weight-bold">Working Hours</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            <form>
+                <div class="form-group">
+                    <input type="checkbox" id="parttime">
+                    <label for="parttime">Part time</label>
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="fulltime">
+                    <label for="fulltime" id="off">Full Time</label>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- products section -->
+    <section id="products">
+        <div class="container">
+            <div class="d-flex flex-row">
+                <div class="text-muted m-2" id="res">Showing 40 results</div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1">
+                    <div class="card">
+                        <img class="card-img-top" src="https://miro.medium.com/max/1400/1*k0SazfSJ-tPSBbt2WDYIyw.png">
+                        <div class="card-body">
+                            <h5><b>MERN FULLSTACK</b> </h5>
+                            <div class="d-flex flex-row my-2">
+                                <p>Chaudhary group and company</p>
+                            </div>
+                            <button class="btn w-100 rounded my-2">See Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1">
+                    <div class="card">
+                        <img class="card-img-top"
+                            src="https://assets.website-files.com/61f9082050036c6c4b4899f8/61f9082050036c02de489bbf_5fb4d4d03958b76c9444f394_UX%2520vs.%2520UI.jpeg">
+                        <div class="card-body">
+                            <h5><b>UI/UX Design</b> </h5>
+                            <div class="d-flex flex-row my-2">
+                                <p style="display:inline-block;
+                                white-space: nowrap;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                max-width: 13ch;">Get your UI/Ux job and begin your thinking skills.</p>
+                            </div>
+                            <button class="btn w-100 rounded my-2">See Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1">
+                    <div class="card">
+                        <img class="card-img-top"
+                            src="https://www.audero.it/blog/wp-content/uploads/2014/09/front-end-stack.png">
+                        <div class="card-body">
+                            <h5><b>HTML/CSS Frontend</b> </h5>
+                            <div class="d-flex flex-row my-2">
+                                <p>Be a frontend designer.</p>
+                            </div>
+                            <button class="btn w-100 rounded my-2">See Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1">
+                    <div class="card">
+                        <img class="card-img-top" src="https://miro.medium.com/max/825/1*ocOSqSFc_j0rhAaBl-g_0g.png">
+                        <div class="card-body">
+                            <h5><b>MEAN FULLSTACK</b> </h5>
+                            <div class="d-flex flex-row my-2">
+                                <p>Be a part of a MEAN STACK development team.</p>
+                            </div>
+                            <button class="btn w-100 rounded my-2">See Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1">
+                    <div class="card">
+                        <img class="card-img-top" src="https://www.botreetechnologies.com/blog/wp-content/uploads/2022/04/why-choose-python-for-website-development.jpeg">
+                        <div class="card-body">
+                            <h5><b>Sr. Python Developer</b> </h5>
+                            <div class="d-flex flex-row my-2">
+                                <p>Code and Develop with Python Programming Language</p>
+                            </div>
+                            <button class="btn w-100 rounded my-2">See Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1">
+                    <div class="card d-relative">
+                        <img class="card-img-top" src="https://hrinsider.s3.amazonaws.com/wp-content/uploads/2021/01/30164519/Screenshot-2021-01-05-112724.jpg">
+                        <div class="card-body">
+                            <h5><b>Sr. Java Developer</b> </h5>
+                            <div class="d-flex flex-row my-2">
+                                <p>Code and Develop with Java Programming Language</p>
+                            </div>
+                            <button class="btn w-100 rounded my-2">See Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+</html>

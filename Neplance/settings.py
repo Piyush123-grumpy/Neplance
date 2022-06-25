@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rating',
     'rest_framework',
     'khalti',
+    'search',
 ]
 SITE_ID =1
 

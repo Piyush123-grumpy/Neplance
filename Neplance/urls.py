@@ -29,10 +29,12 @@ urlpatterns = [
     path('', homepage.home, name='homepage'),
     path('', include('account.urls')),
     path('gig/', include('gig.urls')),
+    path('category/', include('search.urls')),
     path('reset_password/',auth_views.PasswordResetView.as_view(),name='password_reset'),
     path('reset_password_sent/',auth_views.PasswordResetDoneView.as_view(),name='password_reset_done'),
     path('reset/<uidb64>/<token>/',auth_views.PasswordResetConfirmView.as_view(),name='password_reset_confirm'),
     path('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(),name='password_reset_complete'),
+    
     # path('', include('forgotPassword.urls')),
     path('', include('forgotPassword.urls')),
 
