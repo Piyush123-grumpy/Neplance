@@ -3,7 +3,7 @@ from MySQLdb import ProgrammingError
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render,redirect 
-from .forms import FreelancerSignUpForm,UserCreationForm,EmployerSignUpForm
+from .forms import FreelancerSignUpForm,UserCreationForm,EmployerSignUpForm, freelancer
 from django.contrib import auth, messages
 from .models import Employer, Freelancer
 from gig.models import Gig, Application
@@ -77,7 +77,8 @@ def reviews(request):
 
 @login_required(login_url='/login/')
 def appliedJobs(request):
-    applied = Application.objects.filter(user=request.user)
+    freelancer=Freelancer.objects.get(user_id=request.user.id)
+    applied = Application.objects.filter(Freelancer=freelancer)
     context = {'applied': applied}
     return render(request, 'account/appliedJobs.html', context)
 

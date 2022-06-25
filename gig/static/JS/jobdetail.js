@@ -1,4 +1,3 @@
-
 let apply_btn = document.getElementById('apply-btn');
 let popup = document.getElementById('popup');
 let detailSec = document.getElementById('detail-sec');
@@ -13,12 +12,12 @@ cancel_btn.addEventListener('click', togglePopup);
 // Apply for job action listener.
 $("#submit-apply").click(applyJob);
 
-function togglePopup(){
+function togglePopup() {
     popup.classList.toggle("hide")
     detailSec.classList.toggle("blur")
 }
 
-function applyJob(){
+function applyJob() {
     // CSRF token taken from DOM.
     csrftoken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
 
@@ -31,13 +30,13 @@ function applyJob(){
     req.setRequestHeader("x-csrfToken", csrftoken);
 
     // Send data.
-    let statement = 'user='+user+'&gig='+gig
+    let statement = 'user=' + user + '&gig=' + gig + '&employer=' + employer
     req.send(statement);
 
     // Recieve response.
-    req.onload = ()=>{
-        
-        if(req.response == 6969){
+    req.onload = () => {
+        console.log(req.response)
+        if (req.response == 6969) {
             apply_btn.classList.add('hide')
             applied_btn.classList.remove('hide');
             togglePopup();

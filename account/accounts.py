@@ -2,7 +2,7 @@ from re import I
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 
-from account.forms import freelancer,Portofolio,employmentHistory,otherExperience
+from account.forms import employer, freelancer,Portofolio,employmentHistory,otherExperience
 from .models import Employer, Freelancer,portfolio,employment_history,Other_experience
 
 from django.contrib.auth.decorators import login_required
@@ -24,9 +24,13 @@ def account_detail(request):
             'other_exp':other_exp}
         return render(request,'account/account_detail.html',context)
     else:
-        return render(request,'account/employer_detail.html')
+        employer=Employer.objects.get(user=request.user)
+        return render(request,'account/employer_detail.html',{"employer":employer})
 def editUser(request):
     return render(request, 'userdetail/profile.html')
+
+def editemployer(request):
+    return render(request, 'userdetail/employer_edit.html')
 
 def Freelancer_info_save(request):
     user=request.user
@@ -38,6 +42,20 @@ def Freelancer_info_save(request):
     
 
     return redirect("account_detail")
+
+
+def Employer_info_save(request):
+    user=request.user
+    object=Employer.objects.get(user_id=user)
+    
+    if request.method == "POST" or request.method == "FILES":
+        form=employer(request.POST,request.FILES,instance=object)
+        form.save()
+    
+
+    return redirect("account_detail")
+
+    
 def Portoflio(request):
     user=request.user
     return render(request, 'userdetail/portfolio.html',{"user":user})

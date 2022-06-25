@@ -62,8 +62,14 @@ class employment_history(models.Model):
 
 class Employer(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name=models.CharField(verbose_name="First Name",max_length=30,blank=True, null=True)
+    last_name=models.CharField(verbose_name="Last Name",max_length=30,blank=True, null=True)
+    email=models.EmailField(verbose_name="Email",max_length=30,blank=True, null=True)
     country = models.CharField(max_length=50, null=True)
     city = models.CharField(max_length=50, null=True)
     PhoneNumber= PhoneNumberField(blank=True)
     profile_picture=models.ImageField(upload_to='',default='',blank=True, null=True)
     description=models.CharField(verbose_name="Description",max_length=300,blank=True, null=True)
+
+    def __str__(self):
+        return self.user.username

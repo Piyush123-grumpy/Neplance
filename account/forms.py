@@ -5,7 +5,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from account.models import User
 from django.db import transaction,models
-from .models import Freelancer,portfolio,employment_history,Other_experience
+from .models import Employer, Freelancer,portfolio,employment_history,Other_experience
 
 class FreelancerSignUpForm(UserCreationForm):
     username=forms.CharField(widget=forms.TextInput(attrs={'class':'but','placeholder':'Username'}))
@@ -40,6 +40,11 @@ class freelancer(forms.ModelForm):
     class Meta:
         model=Freelancer
         fields=['language','education','current_job','city','country','description','profile_picture']
+
+class employer(forms.ModelForm):
+    class Meta:
+        model=Employer
+        fields=['first_name','last_name','PhoneNumber','city','country','description','profile_picture','email']
 
 class Portofolio(forms.ModelForm):
     class Meta:

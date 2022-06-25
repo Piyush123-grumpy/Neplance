@@ -1,51 +1,44 @@
-{% extends 'base/UserNavbar.html' %}
-{% load static %}
-{% block body %}
+{% extends 'base/UserNavbar.html' %} {% load static %} {% block body %}
 <link rel="stylesheet" href="{% static 'css/postedjobs.css' %}">
 <div class="main-content">
     <div class="container mt-5">
-      <!-- Table -->  
+        <!-- Table -->
         <div class="col">
-          <div class="card shadow">
-            <div class="card-header border-0">
-              <h3 class="mb-0">User</h3>
-            </div>
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">User</h3>
+                </div>
                 <div class="table-responsive">
                     <table class="table align-items-center table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                        <th scope="col">User</th>
-                        <th scope="col">Country</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Applied Date</th>
-                        <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% csrf_token %}
-                        {% for i in applications %}
+                        <thead class="thead-light">
                             <tr>
-                            <th scope="row">
-                                <div class="media align-items-center">
-                                <a href="#" class="avatar rounded-circle mr-3">
-                                    <img alt="Image placeholder" src="{{ i.user.getFreelancer.profile_picture.url }}">
-                                </a>
-                                <div class="media-body">
-                                    <span class="mb-0 text-sm">{{i.user.username}}</span>
-                                </div>
-                                </div>
-                            </th>
-                            <td>
-                                <p style="color:black;">
-                                    {% if i.user.getFreelancer.country %}
-                                        {{i.user.getFreelancer.country}}
-                                    {% else %}
-                                        N/A
-                                    {% endif %}
-                                </p>
-                            </td>
-                            <td>
-                                <span class="badge badge-dot mr-4">
+                                <th scope="col">User</th>
+                                <th scope="col">Country</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Applied Date</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% csrf_token %} {% for i in applications %}
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <a href="#" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="{{ i.Freelancer.profile_picture.url }}">
+                                        </a>
+                                        <div class="media-body">
+                                            <span class="mb-0 text-sm">{{i.Freelancer}}</span>
+                                        </div>
+                                    </div>
+                                </th>
+                                <td>
+                                    <p style="color:black;">
+                                        {% if i.Freelancer.country %} {{i.Freelancer.country}} {% else %} N/A {% endif %}
+                                    </p>
+                                </td>
+                                <td>
+                                    <span class="badge badge-dot mr-4">
                                 <p style="color:black;">
                                     {% if i.status == "Pending" %}
                                     <i class="bg-primary"></i>
@@ -63,42 +56,40 @@
                                     {% endif %}
                                 </p>
                                 </span>
-                            </td>
+                                </td>
 
-                            <td>
-                                <span class="badge badge-dot mr-4">
+                                <td>
+                                    <span class="badge badge-dot mr-4">
                                 <p style="color:black;">{{i.applied_date}}</p>
                                 </span>
-                            </td>
+                                </td>
 
-                            <td class="text-right">
-                                <div class="dropdown">
-                                  <span class="btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <td class="text-right">
+                                    <div class="dropdown">
+                                        <span class="btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16" style="color:black;">
                                         <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
                                       </svg>
                                   </span>
-                                  <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    {% if i.status != "Hired" %}
-                                        <a class="dropdown-item btn-reject" href="#" data-status="Rejected" data-app="{{i.id}}" id="btn-reject">Reject</a>
-                                        <a class="dropdown-item btn-hire" href="#" data-status="Hired" data-app="{{i.id}}" id="btn-hire">Hire</a>
-                                    {% else %}
-                                        <a class="dropdown-item" href="#">Applicant already hired.</a>
-                                    {% endif %}
-                                  </div>
-                                </div>
-                              </td>
-                            
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                            {% if i.status != "Hired" %}
+                                            <a class="dropdown-item btn-reject" href="#" data-status="Rejected" data-app="{{i.id}}" id="btn-reject">Reject</a>
+                                            <a class="dropdown-item btn-hire" href="#" data-status="Hired" data-app="{{i.id}}" id="btn-hire">Hire</a> {% else %}
+                                            <a class="dropdown-item" href="#">Applicant already hired.</a> {% endif %}
+                                        </div>
+                                    </div>
+                                </td>
+
                             </tr>
-                        {% endfor %}
+                            {% endfor %}
                         </tbody>
-                        </table>
-                        </div>
-                        </div>
-                    </div>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-    <script src="{% static 'JS/applicationlist.js' %}"></script>
-    {% endblock %}
+</div>
+</div>
+</div>
+<script src="{% static 'JS/applicationlist.js' %}"></script>
+{% endblock %}

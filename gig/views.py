@@ -2,9 +2,9 @@ from ast import Add
 from datetime import datetime
 from django.http import HttpResponse, JsonResponse, QueryDict
 from django.db.models import Max
-from unicodedata import category
+from unicodedata import category, name
 from django.shortcuts import redirect, render
-from account.models import User
+from account.models import Employer, Freelancer, User
 
 from gig.models import Application, Category, Gig, Requirement
 from .forms import AddGigForm
@@ -25,11 +25,12 @@ def addgigs(request):
 
         # Executes after form submission.
         else:
+            employer=Employer.objects.get(id=request.user.id)
             form = AddGigForm(request.POST)
             # Save form data if the form is valid.
             if form.is_valid:
                 f = form.save()
-                f.user = request.user # Set user to current user.
+                f.Employer = employer  # Set user to current user.
                 f.save()
                 print('saved gig') # Print alert message.
                 return redirect('/')
@@ -65,13 +66,17 @@ def filterSearch(request, category, min, max):
 
 def jobdetail(request, job):
     jobdetail = Gig.objects.get(id=job)
+    
     user = request.user
-    if request.user.is_authenticated:
-        exists = Application.objects.filter(user=user, gig=job).exists()
-        return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'user': user, 'exists': exists})
+    if user.is_freelancer:
+        freelancer=Freelancer.objects.get(user_id=user)
+        if request.user.is_authenticated:
+            exists = Application.objects.filter(Freelancer=freelancer, gig=job).exists()
+            return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'user': user, 'exists': exists})
+        else:
+            return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'user': user})
     else:
         return render(request, 'jobdetail.html', {'jobdetail': jobdetail, 'user': user})
-
 
 def joblist(request):
     return render(request, 'joblist.html', {'jobs': Gig.objects.all})
@@ -94,29 +99,38 @@ def applyJob(request):
         # Recieves data in str format. Parse to int.
         userid = int(data['user'])
         gigid = int(data['gig'])
+        employer= int(data['employer'])
+        print(userid)
+        print(gigid)
+        print(employer)
 
     # CREDENTIALS VALIDATION
 
         # If user doesn't exists.
-        if not User.objects.filter(id = userid).exists():
+        if not Freelancer.objects.filter(user_id = userid).exists():
+            print("exist wala error")
             return JsonResponse(420, safe=False)
 
         # If gig doesn't exist.
         elif not Gig.objects.filter(id = gigid).exists():
+            print("gig nava error")
             return JsonResponse(69, safe=False)
 
-        user = User.objects.get(id = userid)
+        freelancer = Freelancer.objects.get(user_id = userid)
         gig = Gig.objects.get(id = gigid)
+        employa=Employer.objects.get(id=employer)
 
         # If application already exists.
-        if Application.objects.filter(user=user, gig=gig).exists():
+        if Application.objects.filter(Freelancer=freelancer, gig=gig).exists():
+            print("App vako error")
             return JsonResponse(69420, safe=False)
 
         # If all criterias are fulfilled.
         else:
             # Save application.
             application = Application()
-            application.user = user
+            application.Freelancer = freelancer
+            application.Employer = employa
             application.gig = gig
             application.save()
             return JsonResponse(6969, safe=False)
@@ -126,7 +140,7 @@ def applyJob(request):
 
 def postedGigs(request):
     if request.user.is_employer:
-        gigs = Gig.objects.filter(user = request.user)
+        gigs = Gig.objects.filter(Employer = request.user.id)
         return render(request, 'postedjobs.html', {'gigs':gigs})
     else:
         return redirect('/')
@@ -134,7 +148,8 @@ def postedGigs(request):
 def applicationList(request, gigid):
     if request.user.is_employer:
         gig = Gig.objects.get(id=gigid)
-        applications = Application.objects.filter(gig=gig)
+        employer=Employer.objects.get(user_id=request.user.id)
+        applications = Application.objects.filter(Employer=employer,gig=gig)
         return render(request, 'applicationlist.html', {'applications':applications})
 
     return redirect('/')
