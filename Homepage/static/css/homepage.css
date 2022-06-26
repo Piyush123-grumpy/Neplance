@@ -14,21 +14,22 @@ html{
     margin: auto;
 }
 
-.home{
+.home {
     display: flex;
-    background: url("/static/images/landingpage.png") no-repeat center;
-    color: #fff;
-    min-height: 500px;
+    position: relative;
+    background-image: url(/static/images/landingpage.png);
     background-size: cover;
-    /* background-attachment: fixed; */
-    font-family: 'Ubuntu', sans-serif;
     width: 100%;
-    height: auto;
-}
-.home .max-width{
+    height: 600px;
+  }
+  
+  .home .max-width{
   width: 100%;
   text-align:right;
   word-wrap: break-word;
+  position: absolute;
+  z-index: 1;
+
   /* display: flex; */
 }
 
@@ -36,6 +37,9 @@ html{
     color: rgb(2, 27, 109);
     width: 400px;
     flex-direction: row;
+    align-items: center;
+    animation: bounce; 
+    animation-duration: 2s;
 }
 
 
@@ -44,6 +48,9 @@ html{
     font-style: italic;
     color:rgb(112, 111, 111)
 }
+
+
+
 .home .home-content .text-2{
     font-size: 40px;
     font-weight: 600;
@@ -71,6 +78,68 @@ html{
     /* color: #0065ad; */
     background: none;
     border: 2px solid #4fb3fa;
+}
+
+@media screen and (max-device-width:800px){
+  .home{
+    background-image: url(/static/images/land.jpg);
+    height: 400px;
+
+  }
+  .home .max-width{
+    width: 100%;
+    text-align:center;
+    word-wrap: break-word;
+    position: relative;
+    justify-content: center;
+    display: flex;
+  }
+
+  .home .home-content .text-1{
+    font-size: 20px;
+  }
+  .home .home-content .text-2{
+    font-size: 30px;
+    font-weight: 600;
+  }
+  
+  .home .home-content a{
+    font-size: 25px;
+    padding: 3px 10px;
+  }
+  .home .home-content .text-2 span{
+    font-size: 30px;
+}
+ 
+}
+
+@media screen and (max-device-width:425px){
+  .home .max-width{
+    text-align:center;
+    /* width: 500px; */
+  }
+
+  .home .home-content{
+    color: rgb(2, 27, 109);
+    width: 500px;
+    flex-direction: row;
+}
+.home .home-content .text-1{
+  font-size: 10px;
+}
+.home .home-content .text-2{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.home .home-content a{
+  font-size: 15px;
+  padding: 2px 5px;
+}
+.home .home-content .text-2 span{
+  font-size: 20px;
+}
+
 }
 
 /* ==================================================================================================== */
@@ -255,24 +324,37 @@ form div:last-child {
 /* ==================================================================================================== */
 .card{
   height:300px;
-  margin-top: 5%;
+  margin-top: 3%;
+  width: 100%;
+  justify-content: center;
+  position: relative;
+
+}
+.card .second{
+  display: flex;
 }
 
 .card .container {
     position: relative;
     margin-top: 50px;
-    width: 500px;
-    height: 200px;
-    background-color: #b4fcbf;
-    border: none;
-    border-radius: 30px;
-    background:url("/static/images/content.jpg");
+    width: 50%;
+    height: 236px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
+  .card .container img{
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    z-index: 1;
+  }
+
+ 
    .card .title {
     position: absolute;
     width: 500px;
-    left: 0;
+    left: 3;
     top: 50px;
     font-weight: 700;
     font-size: 30px;
@@ -281,6 +363,8 @@ form div:last-child {
     color: rgb(255, 255, 255);
     z-index: 1;
     transition: top .5s ease;
+    word-wrap: break-word;
+
   }
   
   .card .container:hover .title {
@@ -294,7 +378,6 @@ form div:last-child {
     top: 100px;
     text-align: center;
     opacity: 0;
-
     transition: opacity .35s ease;
   }
   
@@ -306,7 +389,7 @@ form div:last-child {
     border-radius: 5px;
     /* border: solid 2px rgb(242, 178, 105); */
     /* background-color: rgb(105, 203, 242); */
-    z-index: 1;
+    /* z-index: 1; */
     justify-content: space-between;
   }
 
@@ -323,32 +406,107 @@ form div:last-child {
   }
 
   .card .picture{
-    width: 380px;
-    height: 150px;
+    width: 348px;
+    height: 400px;
     display: flex;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url("/static/images/advertise.png");
   }
 
-  .card .picture img{
-    width: 100%;
-    height: 200%;
+  @media screen and (max-device-width:800px) {
+    .card{
+      height: 486px;
+    }
+
+    .card .second{
+      flex-wrap: wrap;
+      width: 100%;
+    }
+
+    .card .picture{
+      display: none;
+    }
+
+    .card .pic{
+      background-image: url("/static/images/advertise2.png");
+      position: relative;
+      display: flex;
+      background-size: cover;
+      width:100%;
+      height: auto;
+    }
+
+    .card .title{
+      font-size: 20px;
+    }
+
+    .card .container {
+      margin-top: 0px;
+      height: 0px;
+      max-width: 500px;
+
+        }
+        
+
   }
+
+  
+  @media screen and (max-device-width:430px){
+    
+   .card .title {
+    font-size: 15px;
+    width: 70%;
+    flex-wrap: wrap;
+    display: flex;
+    text-align: center;
+    margin-left: 13%;
+  }
+
+  .card .image {
+    position: absolute;
+    width: 100%;
+    top: 70px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity .35s ease;
+  }
+  
+  .card .image img{
+    width: 86px;
+    height: auto;
+    padding: 3px 22px;
+    text-align: center;
+    color: white;
+    border-radius: 5px;
+    justify-content: space-between;
+  }
+
+
+  }
+
+
+
   /* ========================================================================================= */
 
   .success{
-    height: 300px;
+    /* height: 500px; */
     margin:  5% 10%;
     }
 
     .success .dream{
-      display: flex;
+    display: flex;
     align-items:center;
-      justify-content: center;
+    justify-content: center;
     }
 
   .success .dream .picture{
-    width: 680px;
-    height: 350px;
+    width: 50%;
+    height: 400px;
     display: flex;
+    background-image: url("/static/images/oppo.png");
+    background-size: contain ;
+    background-repeat: no-repeat;
   }
 
     .success .dream .container .title{
@@ -416,35 +574,128 @@ transform: translateY(-50%);
   top: 50%;
   transform: translateY(-50%);
 }
+
+@media screen and (max-device-width:800px){
+  /* .success{
+    height: 700px;
+  } */
+
+  .success .dream{
+    flex-wrap: wrap;
+  }
+  .success .dream .picture{
+    display: none;
+  }
+
+  
+  .success .dream .picture{
+    display: none;
+  }
+  .success .dream{
+    flex-wrap: wrap;
+  }
+}
+
+
 /* ========================================================================================================== */
 
 
 /* ======================================================================================== */
+/* .join {
+  display: flex;
+  position: relative;
+  background-image: url(/static/images/page.png);
+  background-size: cover;
+  width: 100%;
+  height: 400px;
+} */
+
 .join .earn{
   justify-content: center;
   position: relative;
+  flex-direction: row;
+  
+}
+
+.join .picture{
+  position: relative;
+  text-align: center;
+  /* color: white; */
 }
 
 .join .picture img{
   width: 100%;
   height: auto;
+  background-size: cover;
+  position: relative;
 }
  .join .earn .picture .text1 {
    position: absolute;
-   
+   font-size: 20px;
+  font-style: italic;
+  color:rgb(112, 111, 111)
  }
+
+ 
+ .join .earn .picture .home-content{
+  color: rgb(2, 27, 109);
+  width: 500px;
+  flex-direction: row;
+  align-items: center;
+  position: absolute;
+  top: 150px;
+  left: 16px;
+  /* position: absolute; */
+
+}
+
+.join .earn .picture .home-content .text-2{
+  font-size: 40px;
+  font-weight: 600;
+  margin-left: -3px;
+}
+
+@media screen and (max-device-width:800px){
+  .join .earn .picture .home-content{
+    width: 390px;
+}
+
+@media screen and (max-device-width:700px){
+
+  .join .earn .picture{
+    flex-wrap: wrap;
+  }
+  .join .picture .pic2{
+    background-image: url("/static/images/page1.png");
+      position: relative;
+      display: flex;
+      background-size: cover;
+      width:100%;
+      height: auto;
+  }
+  .join .picture .pic{
+    display: none;
+  }
+  .join .earn .picture .home-content{
+    position: relative;
+    top: 10px;
+    width: 90%;
+}
+}
+
+ /* ================================================================================== */
 
  ul {
   margin: 0px;
   padding: 0px;
 }
 .footer-section {
-background: #151414;
+background: #000000;
 position: relative;
 }
-.footer-cta {
+/* .footer-cta {
 border-bottom: 1px solid #373636;
-}
+} 
 .single-cta i {
 color: #ff5e14;
 font-size: 30px;
@@ -464,7 +715,7 @@ margin-bottom: 2px;
 .cta-text span {
 color: #757575;
 font-size: 15px;
-}
+} */
 .footer-content {
 position: relative;
 z-index: 2;
