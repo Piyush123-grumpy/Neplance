@@ -82,8 +82,8 @@ var config = {
             req.onload = ()=>{
                 response = JSON.parse(req.response)
                 if(response.status == true){
-                    updateApp(currentApplication, "Hired");
-                    window.location.reload();
+                    updateApp(currentApplication, "Hired")
+                    .then(window.location.reload());
                 }
             }
         },

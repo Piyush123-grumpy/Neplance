@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import categoryPage
+from .views import searchPage
 
 urlpatterns = [
-        path('', categoryPage, name='category'),
+        path('search/', searchPage, name='category'),
 ]
