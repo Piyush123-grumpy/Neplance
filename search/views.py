@@ -27,7 +27,6 @@ from gig.models import Category, Gig
 def searchPage(request):
     gigs = Gig.objects.all()
     categories = Category.objects.all()
-
     
     if 'category' in request.GET:
         category = Category.objects.get(category_name=request.GET['category'])
