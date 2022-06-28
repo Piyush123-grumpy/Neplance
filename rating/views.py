@@ -21,24 +21,13 @@ def submit_review(request,freelancer_id):
     print(freelancer_id)
     url=request.META.get('HTTP_REFERER')
     freelance=Freelancer.objects.get(user_id=freelancer_id)
-    employid=request.user.employer
+    employid=Employer.objects.get(user_id=request.user)
     print(employid)
     try:
-        review= ReviewRating.objects.get(employer=request.user.employer.id,freelancer=freelancer_id)
+        review= ReviewRating.objects.get(employer=employid,freelancer=freelance)
         form=ReviewForm(request.POST,instance=review)
         form.save()
-        return redirect(url)
-
-    except IntegrityError:
-        form=ReviewForm(request.POST)
-        if form.is_valid():
-            data=ReviewRating()
-            data.rating=form.cleaned_data["rating"]
-            data.review=form.cleaned_data["review"]
-            data.employer=employid
-            data.freelancer=freelancer_id
-            data.save()
-            return redirect(url)      
+        return redirect(url)     
     except ReviewRating.DoesNotExist:
         form=ReviewForm(request.POST)
         if form.is_valid():

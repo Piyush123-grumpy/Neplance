@@ -16,7 +16,7 @@
                                 <th scope="col">Country</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Applied Date</th>
-                                <th scope="col"></th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -63,6 +63,11 @@
                                 <p style="color:black;">{{i.applied_date}}</p>
                                 </span>
                                 </td>
+                                <td>
+
+                                    <a href="/pro/{{i.Freelancer.user_id}}">View Profile <i class="fa fa-external-link" aria-hidden="true"></i></a>
+                                </td>
+
 
                                 <td class="text-right">
                                     <div class="dropdown">

@@ -49,12 +49,12 @@ class employer(forms.ModelForm):
 class Portofolio(forms.ModelForm):
     class Meta:
         model=portfolio
-        fields="__all__"
+        fields=["Project_title","description","date"]
 class employmentHistory(forms.ModelForm):
     class Meta:
         model=employment_history
-        fields="__all__"
+        fields=["company","city","Title","period","description"]
 class otherExperience(forms.ModelForm):
     class Meta:
         model=Other_experience
-        fields="__all__"
+        fields=["SUbject","description"]

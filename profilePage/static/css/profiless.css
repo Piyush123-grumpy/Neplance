@@ -1,53 +1,148 @@
-/* body{
-    margin-top:20px;
-    color: #1a202c;
-    text-align: left;
-    background-color: #e2e8f0;    
-} */
-.main-body {
-    padding: 15px;
-}
-.card {
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+:root {
+    --white: white;
+    --gradient: linear-gradient(-45deg, #ffa600 0%, #ff5e03 50%);
+    --form: #eeefef;
+    --border-radius: 4px;
+    --form-width: 500px;
+    --form-mob-width: 320px;
 }
 
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: #fff;
-    background-clip: border-box;
-    border: 0 solid rgba(0,0,0,.125);
-    border-radius: .25rem;
+.index {
+    z-index: 6!important;
 }
 
-.card-body {
-    flex: 1 1 auto;
-    min-height: 1px;
-    padding: 1rem;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-.gutters-sm {
-    margin-right: -8px;
-    margin-left: -8px;
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
-.gutters-sm>.col, .gutters-sm>[class*=col-] {
-    padding-right: 8px;
-    padding-left: 8px;
-}
-.mb-3, .my-3 {
-    margin-bottom: 1rem!important;
+button,
+label {
+    cursor: pointer;
 }
 
-.bg-gray-300 {
-    background-color: #e2e8f0;
+label {
+    display: block;
 }
-.h-100 {
-    height: 100%!important;
+
+button,
+input,
+textarea {
+    font-family: inherit;
+    font-size: 100%;
+    border: none;
 }
-.shadow-none {
-    box-shadow: none!important;
+
+textarea {
+    resize: none;
+}
+
+[type="checkbox"] {
+    position: absolute;
+    display: none;
+    left: -9999px;
+}
+
+.feedback-label,
+.form {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    backface-visibility: hidden;
+}
+
+.feedback-label {
+    transform-origin: top right;
+    transform: rotate(-90deg) translate(50%, -100%);
+    /*uncomment this if you want to reverse the order of the characters*/
+    /*transform: rotate(90deg) translateX(50%);*/
+    z-index: 2;
+}
+
+.form {
+    width: var(--form-width);
+    max-height: 90vh;
+    transform: translate(100%, -50%);
+    padding: 30px;
+    overflow: auto;
+    background: var(--form);
+    z-index: 1;
+}
+
+.feedback-label,
+.form,
+.form button {
+    transition: all 0.35s ease-in-out;
+}
+
+.feedback-label,
+.form input,
+.form textarea,
+.form button {
+    border-radius: var(--border-radius);
+}
+
+.feedback-label,
+.form button {
+    background: var(--gradient);
+    color: var(--white);
+}
+
+.feedback-label:hover,
+.form button:hover {
+    filter: hue-rotate(-45deg);
+}
+
+.feedback-label {
+    padding: 5px 10px;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+form div:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+form div:last-child {
+    text-align: right;
+}
+
+.form input,
+.form textarea {
+    padding: 0 5px;
+    width: 100%;
+}
+
+.form button {
+    padding: 10px 20px;
+    width: 50%;
+    max-width: 120px;
+}
+
+.form input {
+    height: 40px;
+}
+
+.form textarea {
+    height: 220px;
+}
+
+[type="checkbox"]:checked+.feedback-label {
+    /*EDGE is buggy with calc + variables + transform - use a hardcoded value instead of variables*/
+    transform: rotate(-90deg) translate(50%, calc((var(--form-width) + 100%) * -1));
+    /*uncomment this if you want to reverse the order of the characters*/
+    /*transform: rotate(90deg) translate(50%, var(--form-width));*/
+}
+
+[type="checkbox"]:focus+.feedback-label {
+    outline: 2px solid rgb(77, 144, 254);
+}
+
+[type="checkbox"]:checked~.form {
+    transform: translate(0, -50%);
 }
