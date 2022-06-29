@@ -35,6 +35,8 @@ urlpatterns = [
     path('reset_password_complete/',auth_views.PasswordResetCompleteView.as_view(),name='password_reset_complete'),
     # path('', include('forgotPassword.urls')),
     path('', include('forgotPassword.urls')),
+    path('', include('Homepage.urls')),
+
 
     path("accounts/", include("django.contrib.auth.urls")),
     path('',include('forgotPassword.urls')),

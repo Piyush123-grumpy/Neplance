@@ -38,10 +38,7 @@ html{
     width: 400px;
     flex-direction: row;
     align-items: center;
-    animation: bounce; 
-    animation-duration: 2s;
 }
-
 
 .home .home-content .text-1{
     font-size: 20px;
@@ -55,6 +52,19 @@ html{
     font-size: 40px;
     font-weight: 600;
     margin-left: -3px;
+    animation: move 2s ease-in-out ;
+}
+
+@keyframes move {
+  0% {
+      transform: translate(-30%, 0);
+  }
+      50% {
+      text-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
+  }
+      100% {
+      transform: translate(30%, 0);
+  }
 }
 
 .home .home-content .text-2 span{
@@ -683,6 +693,7 @@ transform: translateY(-50%);
 }
 }
 
+
  /* ================================================================================== */
 
  ul {
@@ -693,29 +704,7 @@ transform: translateY(-50%);
 background: #000000;
 position: relative;
 }
-/* .footer-cta {
-border-bottom: 1px solid #373636;
-} 
-.single-cta i {
-color: #ff5e14;
-font-size: 30px;
-float: left;
-margin-top: 8px;
-}
-.cta-text {
-padding-left: 15px;
-display: inline-block;
-}
-.cta-text h4 {
-color: #fff;
-font-size: 20px;
-font-weight: 600;
-margin-bottom: 2px;
-}
-.cta-text span {
-color: #757575;
-font-size: 15px;
-} */
+
 .footer-content {
 position: relative;
 z-index: 2;
@@ -844,4 +833,17 @@ color: #ff5e14;
 .footer-menu li a {
 font-size: 14px;
 color: #878787;
+}
+}
+
+.reveal{
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 1s all ease;
+}
+
+.reveal.active{
+  transform: translateY(0);
+  opacity: 1;
 }

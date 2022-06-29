@@ -7,5 +7,5 @@ def home(request):
     return render(request, 'base/homepage.html')
 
 def about(request):
-    print(request.user)
+    # print(request.user)
     return render(request, 'base/about.html')

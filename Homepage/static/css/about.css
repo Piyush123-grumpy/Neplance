@@ -1,320 +1,222 @@
-header {
-    background-color: #34262B;
-    background: url('https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?ixid=MXwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80 1050w') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    
+
+    body{
+      font-family: Poppins;
+      text-align: justify;
+      text-justify: inter-word;
+      line-height: 1.7;
   }
-  
-  .more-space {
-    margin-bottom: 20%;
+
+  /* ==========================cover image at begining========================= */
+
+  /* .image{
+      display: flex;
+      width: 100%;
+      height: 750px;
+      background:url("/static/images/page.png") no-repeat center;
+      background-size: cover;
+      background-attachment: fixed;
   }
-  
-  header h1 {
-    color: #34262B;
-    font-size: 150px;
+
+  .row{
+      display: flex;
+      margin-right: -15px;
+  } */
+
+@import url('https://fonts.googleapis.com/css?family=Cairo');
+
+.title {
+	font-family: "Cairo";
+	text-align: center;
+	color: #FFF;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	letter-spacing: 1px;
+	line-height:2;
+    background-color: rgb(2, 2, 2);
+
+}
+
+h1 {
+	background-image: url(https://media.giphy.com/media/26BROrSHlmyzzHf3i/giphy.gif);
+	background-size: cover;
+	color: transparent;
+	-webkit-background-clip: text;
+	text-transform: uppercase;
+	font-size: 120px;
+	margin: 10px 0;
+}
+/* styling my button */
+
+.white-mode {
+	text-decoration: none;
+	padding: 7px 10px;
+	background-color: rgb(0, 0, 0);
+	border-radius: 3px;
+	color: #FFF;
+	transition: .35s ease-in-out;
+	position: absolute;
+	left: 15px;
+	bottom: 15px;
+	font-family: "Montserrat";
+}
+
+.white-mode:hover {
+	background-color: #FFF;
+	color: rgb(0, 0, 0);
+}
+
+
+  /* ===========================content about gharelu========================= */
+
+  .image .image-content .words {
+    color: rgb(2, 27, 109);
+      padding-top: 18rem;
+      padding-left: 3rem;
+      animation: move 2s ease-in-out ;
+}
+
+  .image .image-content .words span {
+      font-size: 40px;
+      font-weight: 800;
+      animation: move 2s ease-in-out ;
   }
-  
-  h1 {
-    font-family: "Amatic SC", sans-serif;
-  }
-  
-  .break1, .break2, .contact h2, .contact h3, p, header h4 {
-    font-family: "Coming Soon", sans-serif;
-  }
-  
-  .social-media {
-    margin-top: 7%;
-  }
-  
-  .intro {
-    margin-top: 12%;
-  }
-  
-  header h4 {
-    color: #fff;
-    font-size: 28px;
-    font-weight: bold;
-  }
-  
-  .red {
-    color: #c1292e;
-    font-weight: bold;
-  }
-  /**Navbar customs**/
-  
-  nav ul li {
-    font-size: 17px;
-    font-family: "News Cycle";
-  }
-  
-  .about-us a {
-    font-family: "News Cycle", serif;
-  }
-  
-  .navbar-brand {
-    font-size: 25px;
-    font-family: "News Cycle";
-  }
-  
-  .navbar-default {
-    background-color: #FDFFFC;
-    border: 0;
-  }
-  
-  .navbar-default .navbar-brand {
-    margin-left: 5%;
-    color: #34262B;
-  }
-  
-  .navbar-default .navbar-brand:hover,
-  .navbar-default .navbar-brand:focus {
-    color: #FDFFFC;
-    background-color: transparent;
-  }
-  
-  .navbar-default .navbar-text {
-    color: #210A2A;
-  }
-  
-  .navbar-default .navbar-nav > li > a {
-    color: #210A2A;
-  }
-  
-  .navbar-default .navbar-nav > li > a:hover,
-  .navbar-default .navbar-nav > li > a:focus {
-    color: #F9F2F6;
-    background-color: transparent;
-    border-bottom: 1px solid #F9F2F6;
-  }
-  
-  .navbar-default .navbar-nav > .active > a,
-  .navbar-default .navbar-nav > .active > a:hover,
-  .navbar-default .navbar-nav > .active > a:focus {
-    color: #F9F2F6;
-    background-color: #e7e7e7;
-  }
-  
-  .navbar-default .navbar-nav > .disabled > a,
-  .navbar-default .navbar-nav > .disabled > a:hover,
-  .navbar-default .navbar-nav > .disabled > a:focus {
-    color: #F9F2F6;
-    background-color: transparent;
-  }
-  
-  .navbar-default .navbar-toggle {
-    border-color: #ddd;
-  }
-  
-  .navbar-default .navbar-toggle:hover,
-  .navbar-default .navbar-toggle:focus {
-    background-color: #ddd;
-  }
-  
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: #888;
-  }
-  
-  .navbar-default .navbar-collapse,
-  .navbar-default .navbar-form {
-    border-color: #e7e7e7;
-  }
-  
-  .navbar-default .navbar-nav > .open > a,
-  .navbar-default .navbar-nav > .open > a:hover,
-  .navbar-default .navbar-nav > .open > a:focus {
-    color: #555;
-    background-color: #e7e7e7;
-  }
-  
-  .navbar-inner {
-    background: rgba(0, 0, 0, 0);
-  }
-  /**Navbar customs end**/
-  /***Services***/
-  
-  .works {
-  }
-  
-  .tabs {
-    background-color: #F26430;
-    border: 1px solid #210A20;
-  }
-  
-  .works p {
-    margin-top: 10%;
-  }
-  
-  .works h1 {
-    font-size: 100px;
-    margin-top: 7%;
-    margin-bottom: 5%;
-  }
-  
-  .thumbnail {
-    margin-bottom: 12%
-  }
-  
-  .thumbnail:hover {
-    -webkit-box-shadow: 2px 2px 2px 1px #ccc;  /* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
-    -moz-box-shadow:    2px 2px 2px 1px #ccc;  /* Firefox 3.5 - 3.6 */
-    box-shadow:         2px 2px 2px 1px #ccc;  /* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */
-  }
-  
-  .space {
-    margin-bottom: 10%;
-  }
-  
-  
-  .break1 {
-    background: url(https://images.unsplash.com/photo-1615933530038-314d91bb1039?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80) center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-  }
-  
-  .break2 {
-    background: url(https://images.unsplash.com/photo-1615933530038-314d91bb1039?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80) center center fixed;
-  
-    background-size: cover;
-  }
-  
-  .break2 h3 {
-    color: #fff;
-    font-size: 70px;
-    margin-top: 15%;
-    margin-bottom: 15%;
-  }
-  
-  .break1 h3 {
-    color: #fff;
-    font-size: 70px;
-    margin-top: 15%;
-    margin-bottom: 15%;
-  }
-  
-  /**End of Services stylus***/
-  /***About us****/
-  
-  .about-us {
-    background-color: #34262B;
-  }
-  
-  .about-us h1 {
-    color: #C1292E;
-    font-size: 100px;
-    margin-top: 7%;
-  }
-  
-  .about-us-p {
-    font-size: 20px;
-    color: #FDFFFC;
-    margin-left: 12%;
-    margin-right: 12%;
-    margin-top: 7%;
-    margin-bottom: 10%;
-  }
-  
-  .descript {
-    margin-bottom: 15%;
-  }
-  
-  .team {
-    margin-top: 25%;
-    border: 1px solid #FDFFFC;
-    padding: 20px 50px 20px 50px;
-    text-decoration: none;
-    color: #F9F2F6;
-  }
-  
-  .team:hover {
-    text-decoration: none;
-    background: rgba(193, 41, 46, 0.4);
-    color: #F9F2F6;
-  }
-  /* Contact */
-  
-  .contact {
-    background-color: #c1292e;
-  }
-  
-  .contact h1 {
-    font-size: 100px;
-    margin-top: 7%;
-  }
-  
-  .social-media-row-1 {
-    margin-top: 10%;
-  }
-  
-  .contact i {
-    font-size: 1000%;
-    padding: 20% 0% 20% 0%;
-  }
-  
-  .contact .icon {
-    border: 1px solid black;
-  }
-  
-  .icon a {
-    color: #fff;
-  }
-  
-  .icon:hover {
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-  
-  /* Footer */
-  
-  footer {
-    background-color: #34292b;
-  }
-  
-  .go-up-icon i {
-    color: white;
-    font-size: 400%;
-    margin-top: 15%;
-    border: 1px solid white;
-    padding: 2% 4% 3% 4%;
-    border-radius: 10%;
-  }
-  
-  .go-up-icon i:hover {
-    background-color: rgba(100, 100, 100, 0.3);
-  }
-  
-  footer p {
-    color: white;
-    padding-top: 5%;
-  }
-  
-  @media screen and (max-width: 500px) {
-    header h1, .about-us h1, .works h1, .contact h1 {
-      font-size: 50px;
-      margin-bottom: 15%;
+  @keyframes move {
+    0% {
+        transform: translate(-30%, 0);
     }
-      
-    header h4 {
+        50% {
+        text-shadow: 0 25px 50px rgba(0, 0, 0, 0.75);
+    }
+        100% {
+        transform: translate(0, 0);
+    }
+  }
+  
+
+  .image .image-content .sub-info{
+      display: flex;
+      color: rgb(2, 27, 109);
+      font-weight: 450;
       font-size: 20px;
-      margin-bottom: 15%;
-    }
-    
-    .about-us-p {
-      font-size: 14px;
-    }
-    
-    .contact i {
-      font-size: 500%;
-    }
-    
-    .intro {
-    margin-top: 50%;
-    }
+      padding-top: 1rem;
+      padding-left: 3rem;
   }
-  .linked-in-a {
-    color: #fff;
-    font-size: 300;
+
+  /* ==================================team============================= */
+
+  #instructors .team-area .container .about-content{
+        text-align: justify;
+        text-justify: inter-word;
+  }
+  p{
+      font-size: 17pxs;
+  }
+
+  /* ======================================================================================== */
+
+  .box{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-gap: 15px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    /* display: flex; */
+  }
+  .card{
+    position: relative;
+    width: 300px;
+    height: 350px;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 4px;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+  }
+  .card:before,
+  .card:after
+  {
+    content:"";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background: #fff;
+    transition: 0.5s;
+    z-index:-1;
+  }
+  .card:hover:before{
+  transform: rotate(20deg);
+  box-shadow: 0 2px 20px rgba(0,0,0,.2);
+  }
+  .card:hover:after{
+  transform: rotate(10deg);
+  box-shadow: 0 2px 20px rgba(0,0,0,.2);
+  }
+  .card .imgBx{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  bottom: 10px;
+  right: 10px;
+  background: #222;
+  transition: 0.5s;
+  z-index: 1;
+  }
+  
+  .card:hover .imgBx
+  {
+    bottom: 80px;
+  }
+
+  .card .imgBx img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .card .details{
+      position: absolute;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      height: 60px;
+      text-align: center;
+  }
+
+  .card .details h2{
+   margin: 0;
+   padding: 0;
+   font-weight: 600;
+   font-size: 20px;
+   color: #777;
+   text-transform: uppercase;
+  } 
+
+  .card .details h2 span{
+  font-weight: 500;
+  font-size: 16px;
+  color: #f38695;
+  display: block;
+  margin-top: 5px;
+   } 
+
+
+   .reveal{
+    position: relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: 1s all ease;
+  }
+  
+  .reveal.active{
+    transform: translateY(0);
+    opacity: 1;
   }
