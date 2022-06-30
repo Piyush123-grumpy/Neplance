@@ -1,21 +1,10 @@
-{% load static %}
+{% extends 'base/UserNavbar.html' %}
+
+
 {% load countries %}
 {% get_countries as countries %}
-<!DOCTYPE html>
-<html lang="en">
-    {% load static %}
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category page</title>
-    <link rel="stylesheet" href="{% static 'css/category.css' %}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
-<body>
+{% load static %}
+{% block body %}
     <div class="filter">
         <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter"
             aria-expanded="true" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
@@ -109,7 +98,6 @@
         </div>
 
 
-
         <div class="py-2 ml-3">
             <h6 class="font-weight-bold">Pay Range</h6>
             <div id="orange"><span class="fa fa-minus"></span></div>
@@ -144,10 +132,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                
                 {% endfor %}
 
                 
@@ -164,5 +148,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="{% static 'js/category.js' %}"></script>
-</body>
-</html>
+{% endblock %}

@@ -1,10 +1,9 @@
-console.log()
 let del_btns = document.getElementsByClassName('del-btn');
 var arr = [].slice.call(del_btns);
 let current = -9999;
 arr.forEach(element => {
     element.addEventListener('click', ()=>{
-        let div = document.getElementById('popup')
+        let div = document.getElementById('popup');
         div.style.transition = "500ms";
         div.style.transform = "translate(-50%, -50%)";
         div.style.display = null;
