@@ -15,56 +15,44 @@
     
     <title>Neplance</title>
 </head>
-
-<body>
-    <nav class="navbar navbar-expand-lg position-sticky" id="navbar">
-
-        <a class="navbar-brand navbar-list" href="/">Neplance</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+</body>
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-bars text-white"></i>
     </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link navbar-list" href="#">Find Freelancers <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link navbar-list" href="#">Find Jobs</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link navbar-list" href="#">About Us</a>
-                </li>
-            </ul>
-            {% if request.user.is_authenticated%}
-            <span class="navbar-text">
-        <ul class="navbar-nav mr-auto">
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
+            <form class="navbar-form navbar-right" method="GET" action="/search/">
+                <div class="form-group align-middle" style="display: flex;">
+                    <input type="text" class="form-control d-inline" name="tag" placeholder="Search">
+                    <button type="submit" class="btn d-inline"><span class="fa fa-search"></span></button>
+                </div>
 
-          <li class="nav-item active">
-            <a class="nav-link navbar-list" href="/account_detail">{{user.username}}</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link navbar-list" href="/gig/postedgigs/">My gigs</a>
-        </li>
-          <li class="nav-item">
-            <a class="nav-link navbar-list" href="{%url 'logout'%}">Logout</a>
-          </li>
+            </form>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Home</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Find Jobs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Find Freelancer</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Sign up</a>
+            </li>
         </ul>
-      </span> {% else %}
-            <span class="navbar-text">
-        <ul class="navbar-nav mr-auto">
-
-          <li class="nav-item active">
-            <a class="nav-link navbar-list" href="/register/">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <i class="bi bi-box-arrow-in-right"></i>
-
-            <a class="nav-link navbar-list" href="/login/">Login</a>
-          </li>
-        </ul>
-      </span> {% endif %}
-        </div>
-    </nav>
+    </div>
+</nav>
     {% block body%}{% endblock %}
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -75,44 +63,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     
     <script src="https://accounts.google.com/gsi/client" async defer></script> 
-</body>
-<div class="container prof-det"></div>
-<footer class="desc">
-    <!-- Footer main -->
-    <section class="ft-main ">
-        <div class="ft-main-item">
-            <h2 class="ft-title">About</h2>
-
-            <ul>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Portfolio</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Customers</a></li>
-                <li><a href="#">Careers</a></li>
-            </ul>
-        </div>
-        <div class="ft-main-item">
-            <h2 class="ft-title">Resources</h2>
-            <ul>
-                <li><a href="#">Docs</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">eBooks</a></li>
-                <li><a href="#">Webinars</a></li>
-            </ul>
-        </div>
-        <div class="ft-main-item">
-            <h2 class="ft-title">Contact</h2>
-            <ul>
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Sales</a></li>
-                <li><a href="#">Advertise</a></li>
-            </ul>
-        </div>
-        <div class="ft-main-item">
-            <h2 class="ft-title">Stay Updated</h2>
-            <p>Get free updates before others do!</p>
-        </div>
-    </section>
 
     <!-- Footer social -->
     <section class="ft-social">
