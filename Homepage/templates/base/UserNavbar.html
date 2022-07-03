@@ -23,6 +23,7 @@
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-bars text-white"></i>
     </button>
+<<<<<<< HEAD
     
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
@@ -50,6 +51,30 @@
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Sign up</a>
             </li>
+=======
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link navbar-list" href="#">Find Freelancers <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navbar-list" href="#">Find Jobs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link navbar-list" href="/about/">About Us</a>
+                </li>
+            </ul>
+            {% if request.user.is_authenticated%}
+            <span class="navbar-text">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item active">
+            <a class="nav-link navbar-list" href="/account_detail">{{user.username}}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link navbar-list" href="{%url 'logout'%}">Logout</a>
+          </li>
+>>>>>>> viewApplications
         </ul>
     </div>
 </nav>
