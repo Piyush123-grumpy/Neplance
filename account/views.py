@@ -80,6 +80,6 @@ def appliedJobs(request):
     print(applied)
     context = {'applied': applied}
     return render(request, 'account/appliedJobs.html', context)
-def addgigs(request):
-    return render(request,'account/addgigs.html')
+# def addgigs(request):
+#     return render(request,'account/addgigs.html')
 
