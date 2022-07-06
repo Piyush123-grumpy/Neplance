@@ -1,0 +1,40 @@
+.advance-sec{
+    background-color: #ecf0f1;
+    position: relative;
+}
+
+.hide{
+    display: none;
+}
+
+
+ .dropdown_list{
+     position: absolute;
+     z-index: 9;
+ }
+
+ .gig-list{
+    background-color: #ecf0f1;
+ }
+
+
+ @media (max-width: 352px){
+     .advance-sec{
+         display: flex;
+         justify-content: center;
+         background-color: orange;
+     }
+     /* .adv-title{
+         display{}
+     } */
+ }
+ 
+
+
+
+
+/* ------------------------------- */
+
+
+
+ 
