@@ -8,5 +8,9 @@ urlpatterns = [
         path('filtersearch/<int:category>/<int:min>/<int:max>', views.filterSearch, name='filterSearch'),
         path('jobdetail/<int:job>', views.jobdetail,name='jobdetail'),
         path('joblist/', views.joblist, name='joblist'),
-        path('applyjson/',views.applyJob, name='applyJson')
+        path('applyjson/', views.applyJob, name='applyJson'),
+        path('postedgigs/', views.postedGigs, name='postedGigs'),
+        path('applicationlist/<int:gigid>', views.applicationList, name='applicationlist'),
+        path('updateApplication/', views.updateApplicationStat, name='updateApplication'),
+        path('removeGig/', views.removeGig, name='removeGig'),
 ]

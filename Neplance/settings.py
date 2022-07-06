@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     'forgotPassword',
     'widget_tweaks',
     'rating',
+    'rest_framework',
+    'khalti',
+    'search',
+    'django_countries'
 ]
 SITE_ID =1
 
@@ -167,3 +171,12 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+# Phone number field settings
+PHONENUMBER_DEFAULT_FORMAT="NATIONAL"
+PHONENUMBER_DEFAULT_REGION="NP"
+
+# Khalti
+
+KHALTI_SECRET_KEY = "test_secret_key_db9ae410da944b669550db05b257d7e4"
+KHALTI_VERIFY_URL = "https://khalti.com/api/v2/payment/verify/"

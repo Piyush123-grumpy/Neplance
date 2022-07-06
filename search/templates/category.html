@@ -1,0 +1,151 @@
+{% extends 'base/UserNavbar.html' %}
+
+
+{% load countries %}
+{% get_countries as countries %}
+{% load static %}
+{% block body %}
+    <div class="filter">
+        <button class="btn btn-default" type="button" data-toggle="collapse" data-target="#mobile-filter"
+            aria-expanded="true" aria-controls="mobile-filter">Filters<span class="fa fa-filter pl-1"></span></button>
+            
+    </div>
+    <div id="mobile-filter" class="collapse">
+        <p class="pl-sm-0 pl-2"><p>Category Home|<b>Gig listing</b></p>
+        <div class="border-bottom pb-2 ml-2">
+            <h4 id="burgundy">Filters</h4>
+        </div>
+
+        <div class="py-2 border-bottom ml-3">
+            <h6 class="font-weight-bold">Keywords</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            <div class="form-group">
+                <input type="input" id="mobile-tag" class="form-control" style="width:200px;">
+            </div>
+        </div>
+
+        <div class="py-2 border-bottom ml-3">
+            <h6 class="font-weight-bold">Job Categories</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            {% for i in categories %}
+                <div class="form-group" id="mobile-categories-list">
+                    <input type="radio" class="input-category" id="mobile-{{i.category_name|lower}}-input" name="mobile-category" value="{{i.category_name|lower}}" >
+                    <label for="artisan">{{i.category_name}}</label>
+                </div>
+            {% endfor %}
+
+            
+        </div>
+
+        <div class="py-2 border-bottom ml-3">
+            <h6 class="font-weight-bold">Country</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            <select name="country" class="form-control" style="width:200px;" id="mobile-country">
+                {% for country in countries %}
+                    <option value="{{ country.name }}">{{ country.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="py-2 ml-3">
+            <h6 class="font-weight-bold">Pay Range</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+                <div class="form-group">
+                    <input type="number" class="form-control w-20" id="mobile-min-input" style="width:100px; display:inline;" placeholder="min"> 
+                    <h5 class="d-inline text-muted">-</h5> 
+                    <input type="number" class="form-control w-20" id="mobile-max-input" style="width:100px; display:inline;" placeholder="max"> 
+                </div>
+                <button class="btn btn-primary" id="mobile-btn-search">Search</button>
+        </div>
+    </div>
+    <!-- Sidebar filter section -->
+
+    <section id="sidebar">
+        <p> Category Home | <b>All Gigs</b></p>
+        <div class="border-bottom pb-2 ml-2">
+            <h4 id="burgundy">Filters</h4>
+            
+        </div>
+
+        <div class="py-2 border-bottom ml-3">
+            <h6 class="font-weight-bold">Keywords</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            <div class="form-group">
+                <input type="input" id="tag" class="form-control" style="width:200px;">
+            </div>
+        </div>
+
+        <div class="py-2 border-bottom ml-3">
+            <h6 class="font-weight-bold">Job Categories</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            {% for i in categories %}
+                <div class="form-group" id="categories-list">
+                    <input type="radio" class="input-category" id="{{i.category_name|lower}}-input" name="category" value="{{i.category_name|lower}}" >
+                    <label for="artisan">{{i.category_name}}</label>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="py-2 border-bottom ml-3">
+            <h6 class="font-weight-bold">Country</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+            <select name="country" class="form-control" style="width:200px;" id="country">
+                <option value="">Select a country</option>
+                {% for country in countries %}
+                    <option value="{{ country.name }}">{{ country.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <div class="py-2 ml-3">
+            <h6 class="font-weight-bold">Pay Range</h6>
+            <div id="orange"><span class="fa fa-minus"></span></div>
+                <div class="form-group">
+                    <input type="number" class="form-control w-20" id="min-input" style="width:100px; display:inline;" placeholder="min"> 
+                    <h5 class="d-inline text-muted">-</h5> 
+                    <input type="number" class="form-control w-20" id="max-input" style="width:100px; display:inline;" placeholder="max"> 
+                </div>
+                <button class="btn btn-primary" id="btn-search">Search</button>
+        </div>
+    </section>
+    <!-- products section -->
+    <section id="products">
+        <div class="container">
+            <div class="d-flex flex-row">
+                <div class="text-muted m-2" id="res">Showing {{gigs.count}} results.</div>
+
+            </div>
+            <div class="row">
+                {% for i in gigs %}
+                <div class="col-lg-4 col-md-6 col-sm-10 offset-md-0 offset-sm-1 mt-4">
+                    <div class="card">
+                        <img class="card-img-top"
+                            src="{{i.image.url}}">
+                        <div class="card-body">
+                            <h5 class=""><b>{{i.title}}</b> </h5>
+                            <p class="d-flex justify-content-center">Pay: Rs. {{i.pay}}</p>
+                            <div class="d-flex justify-content-center text-primary flex-row my-2">
+                                <p class="limit">{{i.company}}</p>
+                            </div>
+                            <a href="/gig/jobdetail/{{i.id}}" class="d-flex justify-content-center btn rounded my-2 btn-primary">See Details</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                
+            </div>
+        </div>
+    </section>
+</body>
+
+<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="{% static 'js/category.js' %}"></script>
+{% endblock %}
