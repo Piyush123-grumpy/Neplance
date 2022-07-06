@@ -1,6 +1,6 @@
 
 from django.http import HttpResponse
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render,redirect 
 from .forms import FreelancerSignUpForm,UserCreationForm,EmployerSignUpForm
 from django.contrib import auth, messages
@@ -67,4 +67,3 @@ def loginpage(request):
                 print("Okay")
                 return redirect("/login")
         return render(request,"account/login.html")
-
