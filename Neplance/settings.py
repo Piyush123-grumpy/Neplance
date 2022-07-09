@@ -12,10 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-<<<<<<< HEAD
 # import django_heroku
-=======
->>>>>>> Sprint3
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -29,11 +26,7 @@ SECRET_KEY = 'django-insecure-hbq(y%$%k3)f1n(p5lw)8qpe71#p#q656p%+4vx@m70vuivi+6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-<<<<<<< HEAD
 ALLOWED_HOSTS = ['neplance.azurewebsites.net', 'https://neplance.azurewebsites.net/', '127.0.0.1', '*']
-=======
-ALLOWED_HOSTS = ['neplance.azurewebsites.net', 'https://neplance.azurewebsites.net/', '*']
->>>>>>> Sprint3
 
 
 AUTH_USER_MODEL='account.User'
