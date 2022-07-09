@@ -1,0 +1,33 @@
+.popup{
+    padding:50px;
+    width:400px;
+    position:absolute;
+    top:50%;
+    left:50%;
+    /* background-color: red; */
+    transform: translate(-50%, -50%);
+}
+
+.img-div{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: #F9F2ED;
+}
+
+.hide{
+    display: none;
+}
+
+.blur{
+    filter:blur(4px);
+}
+
+#x {
+    position: absolute;
+    background: transparent;
+    border:none;
+    color: black;
+    top: 5px;
+    right: 5px;
+}

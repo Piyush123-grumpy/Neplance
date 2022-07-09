@@ -96,6 +96,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'neplance',
+        'TEST_NAME': 'neplance_test',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
