@@ -22,6 +22,20 @@
     padding-bottom: 15px;
 }
 
+.addgig_div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add_gig_plus {
+    padding-left: 23px;
+    padding-top: 23px;
+}
+
+a {
+    color: black;
+}
+
 .change_details a {
     background-color: #0065ad;
     /* Green */

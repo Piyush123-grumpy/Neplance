@@ -8,4 +8,4 @@ class ReviewRating(models.Model):
     freelancer=models.ForeignKey(Freelancer,on_delete=models.CASCADE)
     review=models.TextField(max_length=500,blank=True)
     rating=models.FloatField()
-    
+

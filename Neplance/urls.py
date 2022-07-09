@@ -45,4 +45,5 @@ urlpatterns = [
     path('', include('rating.urls')),
     
     path('khalti/', include('khalti.urls')),
+    path('',include('profilePage.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,9 +2,9 @@ from re import I
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
 
-from account.forms import freelancer,Portofolio,employmentHistory,otherExperience
+from account.forms import employer, freelancer,Portofolio,employmentHistory,otherExperience
 from .models import Employer, Freelancer,portfolio,employment_history,Other_experience
-
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 
 
@@ -24,61 +24,170 @@ def account_detail(request):
             'other_exp':other_exp}
         return render(request,'account/account_detail.html',context)
     else:
-        return render(request,'account/employer_detail.html')
+        employer=Employer.objects.get(user=request.user)
+        return render(request,'account/employer_detail.html',{"employer":employer})
 def editUser(request):
-    return render(request, 'userdetail/profile.html')
+    if request.user.is_freelancer:
+        return render(request, 'userdetail/profile.html')
+    else:
+        return redirect('/')
+
 
 def Freelancer_info_save(request):
-    user=request.user
-    object=Freelancer.objects.get(user_id=user)
-    
-    if request.method == "POST" or request.method == "FILES":
-        form=freelancer(request.POST,request.FILES,instance=object)
-        form.save()
-    
+    if request.user.is_freelancer:
+        user=request.user
+        object=Freelancer.objects.get(user_id=user)
+        
+        if request.method == "POST" or request.method == "FILES":
+            form=freelancer(request.POST,request.FILES,instance=object)
+            form.save()
+        
 
-    return redirect("account_detail")
+        return redirect("account_detail")
+    else:
+        return redirect('/')
+
+
+def editemployer(request):
+    if request.user.is_employer:
+        return render(request, 'userdetail/employer_edit.html')
+    else:
+        return redirect('/')
+
+def Employer_info_save(request):
+    if request.user.is_employer:
+        user=request.user
+        object=Employer.objects.get(user_id=user)
+        
+        if request.method == "POST" or request.method == "FILES":
+            form=employer(request.POST,request.FILES,instance=object)
+            form.save()
+        
+
+        return redirect("account_detail")
+    else:
+        return redirect('/')
+
+
+#CRUD OF PORTOFOLIO
 def Portoflio(request):
-    user=request.user
-    return render(request, 'userdetail/portfolio.html',{"user":user})
+    if request.user.is_freelancer:
+        return render(request, 'userdetail/portfolio.html',{"user":freelancer})
+    else:
+        return redirect('/')
 
 def save_protfolio(request):
-    if request.method == "POST":
-        form=Portofolio(request.POST)
-        form.save()
-    return redirect("account_detail")
-
-def delete_employment(request,pk):
-    employment_his=employment_history.objects.get(id=pk)
-    employment_his.delete()
-    return redirect("account_detail")
-    
+    if request.user.is_freelancer:
+        user=request.user
+        freelancer=Freelancer.objects.get(user_id=user)
+        if request.method == "POST":
+            form=Portofolio(request.POST)
+       
+            if form.is_valid():
+                data=portfolio()
+                data.freelancer=freelancer
+                data.Project_title=form.cleaned_data["Project_title"]
+                data.date=form.cleaned_data["date"]
+                data.description=form.cleaned_data["description"]
+                data.save()
+        return redirect("account_detail")
+    else:
+        return redirect('/')
 def delete_portofolio(request,pk):
-    portofolio=portfolio.objects.get(id=pk)
-    portofolio.delete()
-    return redirect('account_detail')
+    if request.user.is_freelancer:
+        try:
+            user=request.user
+            freelancer=Freelancer.objects.get(user_id=user)
+            portofolio=portfolio.objects.get(id=pk,freelancer=freelancer)
+            portofolio.delete()
+            return redirect('account_detail')
+        except ObjectDoesNotExist:
+            return redirect('/')
 
-def delete_other_exp(request,pk):
-    other_exp=Other_experience.objects.get(id=pk)
-    other_exp.delete()
-    return redirect('account_detail')
+    else:
+        return redirect('/')
 
+#CRUD OF EMPLOYMENT HISTORIES
 def Employment_history(request):
-    user=request.user
-    return render(request, 'userdetail/employment_history.html',{"user":user})
+    if request.user.is_freelancer:
+        
+        return render(request, 'userdetail/employment_history.html',{"user":freelancer})
+    else:
+        return redirect('/')
 
 def save_employment_history(request):
-    if request.method == "POST":
-        form=employmentHistory(request.POST)
-        form.save()
-    return redirect("account_detail")
+    
+    if request.user.is_freelancer:
+        user=request.user
+        freelancer=Freelancer.objects.get(user_id=user)
+        if request.method == "POST":
+            form=employmentHistory(request.POST)
+            if form.is_valid():
+                data=employment_history()
+                data.freelancer=freelancer
+                data.company=form.cleaned_data["company"]
+                data.city=form.cleaned_data["city"]
+                data.Title=form.cleaned_data["Title"]
+                data.period=form.cleaned_data["period"]
+                data.description=form.cleaned_data["description"]
+                data.save()
 
+        return redirect("account_detail")
+    else:
+        return redirect('/')
+
+def delete_employment(request,pk):
+    if request.user.is_freelancer:
+        try:
+            user=request.user
+            freelancer=Freelancer.objects.get(user_id=user)
+            employment_his=employment_history.objects.get(id=pk,freelancer=freelancer)
+            employment_his.delete()
+            return redirect("account_detail")
+        except ObjectDoesNotExist:
+            return redirect('/')
+    else:
+        return redirect('/')
+    
+
+#CRud of other experience
 def other_experience(request):
-    user=request.user
-    return render(request, 'userdetail/other_experiences.html',{"user":user})
+    if request.user.is_freelancer:
+        
+        return render(request, 'userdetail/other_experiences.html',{"user":freelancer})
+    else:
+        return redirect('/')
 def save_other_experience(request):
-    if request.method == "POST":
-        form=otherExperience(request.POST)
-        form.save()
-    return redirect("account_detail")
+    if request.user.is_freelancer:
+        user=request.user
+        freelancer=Freelancer.objects.get(user_id=user)
+        if request.method == "POST":
+            form=otherExperience(request.POST)
+            if form.is_valid():
+                data=Other_experience()
+                data.freelancer=freelancer
+                data.SUbject=form.cleaned_data["SUbject"]
+                data.description=form.cleaned_data["description"]
+                data.save()
+        return redirect("account_detail")
+    else:
+        return redirect('/')
+
+
+def delete_other_exp(request,pk):
+    if request.user.is_freelancer:
+        try:
+            user=request.user
+            freelancer=Freelancer.objects.get(user_id=user)
+            other_exp=Other_experience.objects.get(id=pk,freelancer=freelancer)
+            other_exp.delete()
+            return redirect('account_detail')
+        except ObjectDoesNotExist:
+            return redirect('/')
+    else:
+        return redirect('/')
+
+
+
+
 

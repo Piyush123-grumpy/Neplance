@@ -1,0 +1,152 @@
+{% extends 'base/UserNavbar.html'%}{% load static %}{% block link %}
+<link rel="stylesheet" href="{% static 'css/account_detail.css'%}">
+<link rel="stylesheet" href="{% static 'css/profiless.css'%}">{% endblock %}{% block title%} Profile{% endblock %} {% block body%}
+
+
+<div class="container prof-det">
+    <div class="Profile">
+        <div class="profile_picture">
+            {% if freelancer.profile_picture %}
+            <img src={{freelancer.profile_picture.url}} alt=""> {% else %} {% endif %}
+
+
+        </div>
+        <div class="profile_name">
+            <H3>{{freelancer.user.username|capfirst}}</H3>
+            <h8><i class="fa-solid fa-location-dot"></i> {{freelancer.city}}, {{freelancer.country}} – 12:14 am local time
+            </h8>
+        </div>
+        <div style="display: flex;justify-content:center;align-items:center;">
+            <div>
+                <i class="{% if avg_rating > 0 %}  {% if avg_rating > 0.4 and avg_rating < 0.7 %} fa-solid fa-star-half-stroke checked {% endif %} fa fa-star checked {% else %} fa fa-star {% endif %} "></i>
+                <i class="{% if avg_rating > 1 %}  {% if avg_rating > 1.4 and avg_rating < 1.7 %} fa-solid fa-star-half-stroke checked {% endif %} fa fa-star checked {% else %} fa fa-star {% endif %} "></i>
+                <i class="{% if avg_rating > 2 %}  {% if avg_rating > 2.4 and avg_rating < 2.7 %} fa-solid fa-star-half-stroke checked {% endif %} fa fa-star checked {% else %} fa fa-star {% endif %} "></i>
+                <i class="{% if avg_rating > 3 %}  {% if avg_rating > 3.4 and avg_rating < 3.7 %} fa-solid fa-star-half-stroke checked {% endif %} fa fa-star checked {% else %} fa fa-star {% endif %} "></i>
+                <i class="{% if avg_rating > 4 %}  {% if avg_rating > 4.4 and avg_rating < 4.7 %} fa-solid fa-star-half-stroke checked {% endif %} fa fa-star checked {% else %} fa fa-star {% endif %} "></i>
+            </div>
+        </div>
+
+    </div>
+    <div class="row" style="margin: 0;">
+        <div class="col-lg-4 desc ">
+            <div class="desc-margin ">
+                <h5>Hours per week</h5>
+                <p>More than 30 hrs/week</p>
+            </div>
+            <div class="desc-margin ">
+                <h5>Languages</h5>
+                <p>{{freelancer.language}}</p>
+            </div>
+            <div class="desc-margin ">
+                <h5>Education</h5>
+                <p>{{freelancer.education}}</p>
+
+            </div>
+
+        </div>
+        <div class="col-lg-8 desc" style="border-left: none;">
+            <div class="row">
+                <div class="col-lg-8 title-price">
+                    <h3>{{freelancer.current_job}}
+
+                    </h3>
+                </div>
+                <div class="col-lg-4 title-price">
+                    <h5>$5.00/hr</h5>
+                </div>
+            </div>
+            <div class="user_detail">
+                <p>{{freelancer.description}}</p>
+            </div>
+            <div class="user_detail">
+                <h4>Work History </h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus esse impedit distinctio accusantium officiis perspiciatis. Autem assumenda vero eos aut qui quidem, deserunt vitae eligendi voluptates ipsam necessitatibus modi aspernatur.</p>
+            </div>
+            <h3 class="user_detail">Portoflio</h3>
+            <div class="user_detail " style="height:200px ;overflow-y:scroll;">
+
+
+                {% for p in portoflio %}
+                <div class="portofolio">
+                    <h4>{{p.Project_title}}</h4>
+                    <p>{{p.description}}</p>
+                    <p>{{p.date}}</p>
+                    <br>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="container desc prof-det">
+    <h3 class="profile_name">Employment History </h3>
+    <div class="profile_name" style="height:230px ;width:98%;overflow-y:scroll;">
+
+
+        {% for e in Employment %}
+        <div>
+
+            <h4>{{e.company}} </h4>
+            <p>{{e.city}}</p>
+            <p>{{e.Title}}</p>
+            <p>{{e.period}}</p>
+            <p>{{e.description}}</p>
+            <br>
+        </div>
+
+        {% endfor %}
+    </div>
+</div>
+<div class="container desc prof-det">
+    <h3 class="profile_name">Other Experiences </h3>
+    <div class="profile_name" style="height:100px ;width:98%;overflow-y:scroll;">
+
+        {% for o_e in other_exp %}
+        <div>
+            <h4>{{o_e.SUbject}} </h4>
+            <p>{{o_e.description}}</p>
+        </div>
+
+        {% endfor%}
+    </div>
+</div>
+<!-- ================================================================================================================ -->
+<input type="checkbox" id="mycheckbox">
+<label for="mycheckbox" class="feedback-label index">FEEDBACK</label>
+<form class="form index" action="{% url 'submit_review' freelancer.user_id %}" method="POST">
+    {% csrf_token %}
+    <!-- creating stars -->
+    <div class="rate">
+        <input type="radio" name="rating" id="rating10" value="5" required><label for="rating10" title="5"></label>
+        <input type="radio" name="rating" id="rating9" value="4.5" required><label for="rating9" class="half" title="4.5"></label>
+        <input type="radio" name="rating" id="rating8" value="4" required><label for="rating8" title="4"></label>
+        <input type="radio" name="rating" id="rating7" value="3.5" required><label for="rating7" class="half" title="3.5"></label>
+        <input type="radio" name="rating" id="rating6" value="3" required><label for="rating6" title="3"></label>
+        <input type="radio" name="rating" id="rating5" value="2.5" required><label for="rating5" class="half" title="2.5"></label>
+        <input type="radio" name="rating" id="rating4" value="2" required><label for="rating4" title="2"></label>
+        <input type="radio" name="rating" id="rating3" value="1.5" required><label for="rating3" class="half" title="1.5"></label>
+        <input type="radio" name="rating" id="rating2" value="1" required><label for="rating2" title="1"></label>
+        <input type="radio" name="rating" id="rating1" value="0.5" required><label for="rating1" class="half" title="0.5"></label>
+
+
+
+
+    </div>
+    <div>
+        <label for="comment">Comment</label>
+        <textarea name="review" id="comment"></textarea>
+    </div>
+    <div>
+        <button onClick="refreshPage()" type="submit">Send</button>
+    </div>
+</form>
+<script>
+    function refreshPage() {
+        window.location.reload();
+    }
+</script>
+<!-- =================================================================================================== -->
+
+{% endblock %}

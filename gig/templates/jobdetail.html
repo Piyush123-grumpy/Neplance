@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'base/UserNavbar.html' %}
 {% load static %}
 {% block body %}
@@ -63,34 +64,95 @@
                                         <td>Paying Amount</td>
                                         <td>Rs. {{jobdetail.pay}}</td>
                                     </tr>
+=======
+{% extends 'base/UserNavbar.html' %} {% load static %} {% block body %}
+<link rel="stylesheet" href="{% static 'css/jobdetail.css' %}">
+>>>>>>> origin/merge
 
-                                </tbody>
-                            </table>
-                        </div>
+<div class="container detail-sec" id="detail-sec">
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">{{jobdetail.title}}</h3>
+            <h6 class="card-subtitle">Allocated by {{jobdetail.Employer}}</h6>
+            <div class="row">
+                <div class="col-lg-5 col-md-5 col-sm-6 align-middle img-div">
+                    <div class="white-box "><img src={{jobdetail.image.url}} class="img-responsive img-fluid align-middle"></div>
+                </div>
+                <div class="col-lg-7 col-md-7 col-sm-6">
+                    <h4 class="box-title mt-5">Job description</h4>
+                    <p>{{jobdetail.description}}</p>
+                    {% if user.is_authenticated %} {% if user.is_freelancer %} {% if exists %}
+                    <button class="btn btn-primary btn-rounded hide" id="apply-btn">Apply Your CV Here</button>
+                    <button class="btn btn-primary btn-rounded disabled" id="applied-btn">Applied for job</button> {% else %}
+                    <button class="btn btn-primary btn-rounded" id="apply-btn">Apply Your CV Here</button>
+                    <button class="btn btn-primary btn-rounded disabled hide" id="applied-btn">Applied for job</button> {% endif %} {% endif %} {% endif %}
+                    <h3 class="box-title mt-5">Requirements</h3>
+                    <ul class="list-unstyled">
+                        {% if jobdetail.getRequiremets %} {% for i in jobdetail.getRequiremets %}
+                        <li><i class="fa fa-check text-success"></i>{{i.requirement}}</li>
+                        {% endfor %} {% else %}
+                        <p>There are no requirements set for this gig.</p>
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <h3 class="box-title mt-5">General Info</h3>
+                    <div class="table-responsive">
+                        <table class="table table-striped table-product">
+                            <tbody>
+                                <tr>
+                                    <td width="390">Company</td>
+                                    <td>{{jobdetail.company}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Country</td>
+                                    <td>{{jobdetail.country.name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Location</td>
+                                    <td>{{jobdetail.area}}, {{jobdetail.city}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Contact</td>
+                                    <td>{{jobdetail.contact}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Vacany date</td>
+                                    <td>Valid till 20th of June</td>
+                                </tr>
+                                <tr>
+                                    <td>Working time</td>
+                                    <td>10am-4pm</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="popup hide bg-warning rounded" id="popup">
-        <button id = "x">
+</div>
+<div class="popup hide bg-warning rounded" id="popup">
+    <button id="x">
             X
         </button>
-        <div class="content">
-            {% csrf_token %}
-            <h3>Confirm your application.</h3>
-            <button class="btn btn-success" id="submit-apply">Apply</button>
-        </div>
+    <div class="content">
+        {% csrf_token %}
+        <h3>Confirm your application.</h3>
+        <button class="btn btn-success" id="submit-apply">Apply</button>
     </div>
-    <script>
-        let gig = "{{jobdetail.id}}"
-        let user = "{{user.id}}"
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</div>
+<script>
+    let gig = "{{jobdetail.id}}"
+    let user = "{{user.id}}"
+    let employer = "{{jobdetail.Employer.id}}"
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
-    <script src="{% static 'JS/jobdetail.js' %}"></script>
-    <!-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣄⣀⣀⣠⡴⠶⣄⠀⢀⣤⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
+<script src="{% static 'JS/jobdetail.js' %}"></script>
+<!-- ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣄⣀⣀⣠⡴⠶⣄⠀⢀⣤⣤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣄⠀⠹⠤⠃⠀⡏⠉⠉⠳⢾⡿⣻⡆⠀⠀⠀⠀⠀⠀⠀⠀ 
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢦⡀⠀⠀⠀⠇⠀⠀⠀⣠⠞⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣴⡀⡀⠀⣴⣆⡾⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ 
@@ -113,4 +175,4 @@
     ⠀⠀⠳⣤⣧⡀⠸⡀⠀⠀⠀⠀⠀⠀⠻⣿⠟⠀⠀⠀⠀⠀⠔⣊⡡⠤⠒⢉⡴⠋⠀⠀ 
     ⠀⠀⠀⠀⠙⠳⠦⣌⣁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣁⣤⣴⡾⠟⠋⠀⠀⠀⠀ 
     ⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠛⠒⠒⠶⠦⠤⠤⠤⠴⠶⠒⠒⠛⠉⠁⠀⠀⠀⠀⠀⠀⠀  -->
-    {% endblock %}
+{% endblock %}

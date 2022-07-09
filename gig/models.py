@@ -3,7 +3,7 @@ from email.mime import application
 from unicodedata import category
 from unittest.util import strclass
 from django.db import models
-from account.models import User
+from account.models import Employer, Freelancer, User
 from django_countries.fields import CountryField
 from phonenumber_field.modelfields import PhoneNumberField
 
@@ -27,7 +27,7 @@ class Gig (models.Model):
     pay = models.IntegerField(null=True)
     # contact = PhoneNumberField(default=None)
     contact = PhoneNumberField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    Employer = models.ForeignKey(Employer, on_delete=models.CASCADE, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
 
     def getApplicationCount(self):
@@ -52,7 +52,8 @@ class Requirement(models.Model):
         return self.gig.title
 
 class Application (models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    Freelancer = models.ForeignKey(Freelancer, on_delete=models.CASCADE, null=True)
+    Employer = models.ForeignKey(Employer, on_delete=models.CASCADE, null=True)
     gig = models.ForeignKey(Gig, on_delete=models.CASCADE, null=True)
     applied_date = models.DateField(auto_now=True)
     status = models.CharField(max_length=50, default="Pending")

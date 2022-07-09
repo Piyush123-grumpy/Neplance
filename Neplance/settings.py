@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'khalti',
     'search',
-    'django_countries'
+    # 'django_countries'
+    'profilePage'
 ]
 SITE_ID =1
 

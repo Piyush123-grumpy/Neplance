@@ -9,8 +9,10 @@ urlpatterns = [
     path('login/', views.loginpage,name='login_dashboard'),
     
     path('profile/', accounts.editUser,name='editUser'),
+    path('edit_details/', accounts.editemployer,name='editUser'),
     path('account_detail',accounts.account_detail,name='account_detail'),
     path('freelancer_Save',accounts.Freelancer_info_save,name='Freelancer_info_save'),
+    path('employer_Save',accounts.Employer_info_save,name='Employer_info_save'),
     path('portfolio',accounts.Portoflio,name='Portfolio'),
     path('save_portfolio',accounts.save_protfolio,name='Save_Portfolio'),
     path('employment_history',accounts.Employment_history,name='Employment_history'),

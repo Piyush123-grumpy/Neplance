@@ -1,0 +1,7 @@
+{% extends 'base/UserNavbar.html'%}{% block title%}{% load static %} Profile{% endblock %} {% block body%}
+    
+    {% for i in freelancer %}
+        <a href="pro/{{i.user_id}}">{{i.user}}</a>
+    {% endfor %}
+{% endblock %}
+
