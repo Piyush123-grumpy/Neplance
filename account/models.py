@@ -1,9 +1,10 @@
 from distutils.command.upload import upload
 from email.policy import default
 from django.db import models
-
+from phonenumber_field.modelfields import PhoneNumberField
 from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.base_user import BaseUserManager
+from phonenumbers import PhoneNumberDesc
 
 
 # Create your models here.
@@ -60,4 +61,13 @@ class employment_history(models.Model):
 
 
 class Employer(models.Model):
+<<<<<<< HEAD
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+=======
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    country = models.CharField(max_length=50, null=True)
+    city = models.CharField(max_length=50, null=True)
+    PhoneNumber= PhoneNumberField(blank=True)
+    profile_picture=models.ImageField(upload_to='',default='',blank=True, null=True)
+    description=models.CharField(verbose_name="Description",max_length=300,blank=True, null=True)
+>>>>>>> employer

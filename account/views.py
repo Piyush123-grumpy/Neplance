@@ -1,4 +1,5 @@
 
+from MySQLdb import ProgrammingError
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render,redirect 
@@ -76,7 +77,6 @@ def reviews(request):
 @login_required(login_url='/login/')
 def appliedJobs(request):
     applied = Application.objects.filter(user=request.user)
-    print(applied)
     context = {'applied': applied}
     return render(request, 'account/appliedJobs.html', context)
 
