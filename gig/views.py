@@ -63,7 +63,6 @@ def filterSearch(request, category, min, max):
         data = list(Gig.objects.values().filter(category = category, pay__range=[min, max]))
     return JsonResponse(data, safe=False)
 
-<<<<<<< HEAD
 def jobdetail(request, job):
     jobdetail = Gig.objects.get(id=job)
     user = request.user
@@ -172,7 +171,3 @@ def updateApplicationStat(request):
     else:
         return JsonResponse("Invalid Method.", safe=False)
     
-=======
-def jobdetail(request):
-    return render(request, 'jobdetail.html')
->>>>>>> Sprint3

@@ -6,7 +6,6 @@ urlpatterns = [
         path('addgig/', views.addgigs, name='addgig'),
         path('search/', views.search, name = 'search'),
         path('filtersearch/<int:category>/<int:min>/<int:max>', views.filterSearch, name='filterSearch'),
-<<<<<<< HEAD
         path('jobdetail/<int:job>', views.jobdetail,name='jobdetail'),
         path('joblist/', views.joblist, name='joblist'),
         path('applyjson/', views.applyJob, name='applyJson'),
@@ -14,7 +13,4 @@ urlpatterns = [
         path('applicationlist/<int:gigid>', views.applicationList, name='applicationlist'),
         path('updateApplication/', views.updateApplicationStat, name='updateApplication'),
         path('removeGig/', views.removeGig, name='removeGig'),
-=======
-        path('jobdetail/', views.jobdetail,name='jobdetail'),
->>>>>>> Sprint3
 ]
