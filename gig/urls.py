@@ -13,4 +13,5 @@ urlpatterns = [
         path('applicationlist/<int:gigid>', views.applicationList, name='applicationlist'),
         path('updateApplication/', views.updateApplicationStat, name='updateApplication'),
         path('removeGig/', views.removeGig, name='removeGig'),
+        path('userapplicationlist/', views.userapplicationlist, name='applicationlist'),
 ]

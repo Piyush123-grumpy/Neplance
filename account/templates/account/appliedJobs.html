@@ -1,4 +1,5 @@
-{% extends 'base/UserNavbar.html'%}{% block title%}{% load static %} Profile{% endblock %} {% block body%}
+{% extends 'base/UserNavbar.html'%}{% block title%}{% load static %} Profile{% endblock %}
+{% block body%}
 <link rel="stylesheet" href="{% static 'css/account_detail.css'%}">
 
 <div class="container prof-det">
@@ -20,40 +21,7 @@
                     <hr>
                 </div>
             </div>
-<<<<<<< HEAD
-<<<<<<< HEAD
-            
-            <div class="user_detail">
-                      <div class="col-lg-12 mx-auto">
-                        <div class="card rounded shadow border-0">
-                          <div class="card-body p-5 bg-white rounded">
-                            <div class="table-responsive">
-                              <table id="example" style="width:100%" class="table table-striped table-bordered">
-                                <thead>
-                                  <tr>
-                                    <th>Gig Title</th>
-                                    <th>Hiring Company</th>
-                                    <th>Location</th>
-                                    <th>Applied Date</th>
-                                    <th>Gig Expiry</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                {% for i in applied %}
-                                  <tr>
-                                    <td>{{i.gig.title}}</td>
-                                    <td>{{i.gig.user.username}}</td>
-                                    <td>Kathmandu</td>
-                                    <td>{{ i.applied_date }}</td>
-                                    <td>2011/04/25</td>
-                                    <td>{{i.status}}</td>
-                                    <td><a href="/gig/jobdetail/{{i.gig.id}}"class="btn btn-success">View Job</a></td>
-=======
->>>>>>> employer
-=======
->>>>>>> origin/merge
+
 
             <div class="user_detail">
                 <div class="col-lg-12 mx-auto">
@@ -73,15 +41,31 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {% csrf_token %}
                                         {% for i in applied %}
                                         <tr>
                                             <td>{{i.gig.title}}</td>
-                                            <td>{{i.gig.user.username}}</td>
+                                            <td>{{i.gig.company}}</td>
                                             <td>Kathmandu</td>
                                             <td>{{ i.applied_date }}</td>
                                             <td>2011/04/25</td>
                                             <td>{{i.status}}</td>
-                                            <td><a href="/gig/jobdetail/{{i.gig.id}}" class="btn btn-success">View Job</a></td>
+                                            <!-- <td><a href="/gig/jobdetail/{{i.gig.id}}" class="btn btn-success">View Job</a></td> -->
+                                            <td class="text-right">
+                                                <div class="dropdown">
+                                                    <span class="btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16" style="color:black;">
+                                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                                                  </svg>
+                                              </span>
+                                              <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                                                <a class="dropdown-item btn-reject" href="/gig/jobdetail/{{i.gig.id}}" data-status="Rejected" data-app="{{i.id}}" id="btn-reject">View Gig</a>
+                                                {% if i.status == "Hired" %}
+                                                <a class="dropdown-item btn-pending-complete" href="#" data-status="Pending Completed" data-app="{{i.id}}" id="btn-pending-complete">Mark as completed</a>
+                                                {% endif %}
+                                              </div>
+                                            </div>
+                                          </td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
@@ -98,6 +82,44 @@
     </div>
 </div>
 
+<script>
+    
+function updateApp(app, status){
+    // CSRF token taken from DOM.
+    csrftoken = document.querySelector('[name="csrfmiddlewaretoken"]').value;
+
+    // XMLHttpRequest used for sending POST request.
+    var req = new XMLHttpRequest();
+    req.open("POST", '/gig/updateApplication/', true);
+
+    // Headers.
+    req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    req.setRequestHeader("x-csrfToken", csrftoken);
+
+    // Send data.
+    let statement = 'application='+app+'&status='+status
+    req.send(statement);
+
+    // Recieve response.
+    req.onload = (data)=>{
+        window.location.reload();
+        // console.log(req.response)
+    };
+}
+
+var complete_btns = document.getElementsByClassName('btn-pending-complete');
+// complete_btns.forEach(element => {
+//     console.log(element)
+// });
+var complete_btns_arr = [].slice.call(complete_btns);
+complete_btns_arr.forEach(element => {
+    element.addEventListener('click', ()=>{
+        updateApp(element.dataset.app, "Pending Completed")
+    })
+    
+});
+
+</script>
 
 
 {% endblock %}

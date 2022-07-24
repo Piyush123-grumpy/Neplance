@@ -179,10 +179,24 @@ def updateApplicationStat(request):
                     app.status="Hired"
                     app.save()
                     return JsonResponse("Updated", safe=False)
+                elif status == "Pending Completed":
+                    app.status="Pending Completed"
+                    app.save()
+                    return JsonResponse("Updated", safe=False)
+                elif status == "Completed":
+                    app.status="Completed"
+                    app.save()
+                    return JsonResponse("Updated", safe=False)
                 else:
-                    return JsonResponse("Invalid Status", safe=False)
+                    return JsonResponse("Invalid Status: ",status , safe=False)
             else:
                 return JsonResponse("Application doesn't exist.", safe=False)
     else:
         return JsonResponse("Invalid Method.", safe=False)
     
+def userapplicationlist(request):
+    applications = Application.objects.filter(Freelancer=Freelancer.objects.get(user=request.user))
+
+    Jobs = Gig.objects.filter()
+    return render(request,'applicationlist.html', {'applications': applications})
+

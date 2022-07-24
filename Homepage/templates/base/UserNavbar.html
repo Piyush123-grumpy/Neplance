@@ -43,10 +43,11 @@
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Find Freelancer</a>
             </li>
-            
+            {% if request.user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Login</a>
+                <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>{{request.user.username}}</a>
             </li>
+            {% endif %}
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Sign up</a>
             </li>

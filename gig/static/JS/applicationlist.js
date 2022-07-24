@@ -1,4 +1,3 @@
-
 // Reject buttons
 let rejectBtns = document.getElementsByClassName('btn-reject')
 var rejArr = [].slice.call(rejectBtns);
@@ -17,7 +16,6 @@ rejArr.forEach(element => {
 
     })
 });
-
 // Hire Buttons
 let hireBtns = document.getElementsByClassName('btn-hire')
 var hireArr = [].slice.call(hireBtns);
@@ -122,8 +120,15 @@ function updateApp(app, status){
 
     // Recieve response.
     req.onload = ()=>{
-        console.log('response:::::::'+req.response);
         window.location.reload();
 
     };
 }
+
+var verify_btns = document.getElementsByClassName('btn-verify-completed');
+var verArr = [].slice.call(verify_btns);
+verArr.forEach(element=>{
+    element.addEventListener('click', ()=>{
+        updateApp(element.dataset.app, "Completed");
+    })
+})
