@@ -1,52 +1,107 @@
-<!-- {% extends 'base/UserNavbar.html' %} -->
-
-
+{% extends 'base/UserNavbar.html' %}
 
 {% load static %}
 
-<!-- {% block body %} -->
+{% block body %}
 {% load countries %}
 {% get_countries as countries %}
- <link rel="stylesheet" href="{% static 'css/category.css' %}">
+<link rel="stylesheet" href="{% static 'css/category.css' %}">
 
 <!-- This script got from frontendfreecode.com -->
 <div class="container-fluid m-0 bg-secondary">
-    <div class="row">
-        <div class="col-lg-12 card-margin">
-            <div class="card search-form">
-                <div class="card-body p-0" style="height: 60px;">
-                    <form id="search-form">
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="row no-gutters">
-                                    <div class="col-lg-3 col-md-3 col-sm-4 p-0">
-                                        <select class="form-control" id="exampleFormControlSelect1">
-                                            <option>Location</option>
-                                            <option>London</option>
-                                            <option>Boston</option>
-                                            <option>Mumbai</option>
-                                            <option>New York</option>
-                                            <option>Toronto</option>
-                                            <option>Paris</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-8 col-md-7 col-sm-6 p-0">
-                                        <input type="text" placeholder="Search..." class="form-control" id="search" name="search">
-                                    </div>
-                                    <div class="col-lg-1 col-md-2 col-sm-2 p-0">
-                                        <button type="submit" class="btn btn-base">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-                                        </button>
+    <div class="container mt-5">
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-md-10">
+                <div class="card p-3  py-4">
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-3">
+                            <div class="dropdown">
+                                <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                Select Categories
+                              </button> -->
+                                <select name="country" class="form-control" style="width:200px;" id="mobile-country">
+                                    <option value="null">Select country.</option>
+                                    {% for i in countries %}
+                                    <option value="{{ i.id }}">{{ i.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-6">
+
+                            <input type="text" class="form-control" id="mobile-tag"
+                                placeholder="Enter address e.g. street, city and state or zip">
+
+                        </div>
+
+                        <div class="col-md-3">
+
+                            <button class="btn btn-secondary btn-block">Search Results</button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="mt-3">
+
+                        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+                            aria-controls="collapseExample" class="advanced">
+                            Advance Search With Filters <i class="fa fa-angle-down"></i>
+                        </a>
+
+
+                        <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="py-2 ml-3 d-inline">
+                                            <div class="form-group d-inline">
+                                                <!-- <p class="d-inline">Pay Range</p>
+                        <input type="number" class="form-control w-20 d-inline" id="mobile-min-input" style="width:100px; display:inline;" placeholder="min"> 
+                        <h5 class="d-inline text-muted">-</h5> 
+                        <input type="number" class="form-control w-20 d-inline" id="mobile-max-input" style="width:100px; display:inline;" placeholder="max">  -->
+                                                <h6 class="font-weight-bold">Pay Range</h6>
+                                                <div id="orange"><span class="fa fa-minus"></span></div>
+                                                <div class="form-group">
+                                                    <input type="number" class="form-control w-20" id="min-input"
+                                                        style="width:100px; display:inline;" placeholder="min">
+                                                    <h5 class="d-inline text-muted">-</h5>
+                                                    <input type="number" class="form-control w-20" id="max-input"
+                                                        style="width:100px; display:inline;" placeholder="max">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 d-inline">
+                                            <select name="country" class="form-control" style="width:200px;"
+                                                id="mobile-country">
+                                                <option value="null">Select category.</option>
+                                                {% for i in categories %}
+                                                <option value="{{ i.category_name }}">{{ i.category_name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
+
+
+
+
+
         </div>
-    </div>
-    <div class="row">
+
+
+        <div class="row">
             <div class="col-12">
                 <div class="card card-margin">
                     <div class="card-body">
@@ -60,30 +115,13 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <div class="result-actions">
-                                                    <div class="py-2 ml-3">
-                                                        <div id="orange" class="d-inline"><span class="fa fa-minus"></span></div>
-                                                            <div class="form-group d-inline">
-                                                                <p class="d-inline">Pay Range</p>
-                                                                <input type="number" class="form-control w-20" id="mobile-min-input" style="width:100px; display:inline;" placeholder="min"> 
-                                                                <h5 class="d-inline text-muted">-</h5> 
-                                                                <input type="number" class="form-control w-20" id="mobile-max-input" style="width:100px; display:inline;" placeholder="max"> 
-                                                            </div>
-                                                    
-                                                    </div>
                                                     <div class="result-views">
                                                         <button type="button" class="btn btn-soft-base btn-icon">
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                width="24"
-                                                                height="24"
-                                                                viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                stroke-width="2"
-                                                                stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                class="feather feather-list"
-                                                            >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-list">
                                                                 <line x1="8" y1="6" x2="21" y2="6"></line>
                                                                 <line x1="8" y1="12" x2="21" y2="12"></line>
                                                                 <line x1="8" y1="18" x2="21" y2="18"></line>
@@ -93,18 +131,11 @@
                                                             </svg>
                                                         </button>
                                                         <button type="button" class="btn btn-soft-base btn-icon">
-                                                            <svg
-                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                width="24"
-                                                                height="24"
-                                                                viewBox="0 0 24 24"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                stroke-width="2"
-                                                                stroke-linecap="round"
-                                                                stroke-linejoin="round"
-                                                                class="feather feather-grid"
-                                                            >
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-grid">
                                                                 <rect x="3" y="3" width="7" height="7"></rect>
                                                                 <rect x="14" y="3" width="7" height="7"></rect>
                                                                 <rect x="14" y="14" width="7" height="7"></rect>
@@ -123,19 +154,23 @@
                                                     <tr>
                                                         <td>
                                                             <div class="widget-26-job-emp-img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Company" />
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png"
+                                                                    alt="Company" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-title">
                                                                 <a href="#">Senior Software Engineer / Developer</a>
-                                                                <p class="m-0"><a href="#" class="employer-name">Axiom Corp.</a> <span class="text-muted time">1 days ago</span></p>
+                                                                <p class="m-0"><a href="#" class="employer-name">Axiom
+                                                                        Corp.</a> <span class="text-muted time">1 days
+                                                                        ago</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-info">
                                                                 <p class="type m-0">Full-Time</p>
-                                                                <p class="text-muted m-0">in <span class="location">London, UK</span></p>
+                                                                <p class="text-muted m-0">in <span
+                                                                        class="location">London, UK</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -150,19 +185,14 @@
                                                         <td>
                                                             <div class="widget-26-job-starred">
                                                                 <a href="#">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="feather feather-star"
-                                                                    >
-                                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-star">
+                                                                        <polygon
+                                                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                                                        </polygon>
                                                                     </svg>
                                                                 </a>
                                                             </div>
@@ -171,19 +201,23 @@
                                                     <tr>
                                                         <td>
                                                             <div class="widget-26-job-emp-img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Company" />
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                                                                    alt="Company" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-title">
                                                                 <a href="#">Marketing & Communication Supervisor</a>
-                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI Llc.</a> <span class="text-muted time">2 days ago</span></p>
+                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI
+                                                                        Llc.</a> <span class="text-muted time">2 days
+                                                                        ago</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-info">
                                                                 <p class="type m-0">Part-Time</p>
-                                                                <p class="text-muted m-0">in <span class="location">New York, US</span></p>
+                                                                <p class="text-muted m-0">in <span class="location">New
+                                                                        York, US</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -198,19 +232,14 @@
                                                         <td>
                                                             <div class="widget-26-job-starred">
                                                                 <a href="#">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="feather feather-star"
-                                                                    >
-                                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-star">
+                                                                        <polygon
+                                                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                                                        </polygon>
                                                                     </svg>
                                                                 </a>
                                                             </div>
@@ -219,19 +248,23 @@
                                                     <tr>
                                                         <td>
                                                             <div class="widget-26-job-emp-img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Company" />
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png"
+                                                                    alt="Company" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-title">
                                                                 <a href="#">Senior Data Analyst / Scientist</a>
-                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI Inc.</a> <span class="text-muted time">4 days ago</span></p>
+                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI
+                                                                        Inc.</a> <span class="text-muted time">4 days
+                                                                        ago</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-info">
                                                                 <p class="type m-0">Part-Time</p>
-                                                                <p class="text-muted m-0">in <span class="location">New York, US</span></p>
+                                                                <p class="text-muted m-0">in <span class="location">New
+                                                                        York, US</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -246,19 +279,14 @@
                                                         <td>
                                                             <div class="widget-26-job-starred">
                                                                 <a href="#">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="feather feather-star"
-                                                                    >
-                                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-star">
+                                                                        <polygon
+                                                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                                                        </polygon>
                                                                     </svg>
                                                                 </a>
                                                             </div>
@@ -267,19 +295,23 @@
                                                     <tr>
                                                         <td>
                                                             <div class="widget-26-job-emp-img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt="Company" />
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar4.png"
+                                                                    alt="Company" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-title">
                                                                 <a href="#">UX Designer & UI Developer</a>
-                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI Inc.</a> <span class="text-muted time">5 days ago</span></p>
+                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI
+                                                                        Inc.</a> <span class="text-muted time">5 days
+                                                                        ago</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-info">
                                                                 <p class="type m-0">Part-Time</p>
-                                                                <p class="text-muted m-0">in <span class="location">Toronto, CAN</span></p>
+                                                                <p class="text-muted m-0">in <span
+                                                                        class="location">Toronto, CAN</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -294,19 +326,14 @@
                                                         <td>
                                                             <div class="widget-26-job-starred">
                                                                 <a href="#">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="feather feather-star"
-                                                                    >
-                                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-star">
+                                                                        <polygon
+                                                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                                                        </polygon>
                                                                     </svg>
                                                                 </a>
                                                             </div>
@@ -315,19 +342,23 @@
                                                     <tr>
                                                         <td>
                                                             <div class="widget-26-job-emp-img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt="Company" />
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png"
+                                                                    alt="Company" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-title">
                                                                 <a href="#">Information Security Analyst / Expert</a>
-                                                                <p class="m-0"><a href="#" class="employer-name">Axiom Corp.</a> <span class="text-muted time">6 days ago</span></p>
+                                                                <p class="m-0"><a href="#" class="employer-name">Axiom
+                                                                        Corp.</a> <span class="text-muted time">6 days
+                                                                        ago</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-info">
                                                                 <p class="type m-0">Part-Time</p>
-                                                                <p class="text-muted m-0">in <span class="location">Mumbai, IN</span></p>
+                                                                <p class="text-muted m-0">in <span
+                                                                        class="location">Mumbai, IN</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -342,19 +373,14 @@
                                                         <td>
                                                             <div class="widget-26-job-starred">
                                                                 <a href="#">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="feather feather-star starred"
-                                                                    >
-                                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-star starred">
+                                                                        <polygon
+                                                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                                                        </polygon>
                                                                     </svg>
                                                                 </a>
                                                             </div>
@@ -363,19 +389,23 @@
                                                     <tr>
                                                         <td>
                                                             <div class="widget-26-job-emp-img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Company" />
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                                                                    alt="Company" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-title">
                                                                 <a href="#">Senior Software Engineer / Developer</a>
-                                                                <p class="m-0"><a href="#" class="employer-name">Axiom Corp.</a> <span class="text-muted time">1 days ago</span></p>
+                                                                <p class="m-0"><a href="#" class="employer-name">Axiom
+                                                                        Corp.</a> <span class="text-muted time">1 days
+                                                                        ago</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-info">
                                                                 <p class="type m-0">Full-Time</p>
-                                                                <p class="text-muted m-0">in <span class="location">London, UK</span></p>
+                                                                <p class="text-muted m-0">in <span
+                                                                        class="location">London, UK</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -390,19 +420,14 @@
                                                         <td>
                                                             <div class="widget-26-job-starred">
                                                                 <a href="#">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="feather feather-star"
-                                                                    >
-                                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-star">
+                                                                        <polygon
+                                                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                                                        </polygon>
                                                                     </svg>
                                                                 </a>
                                                             </div>
@@ -411,19 +436,23 @@
                                                     <tr>
                                                         <td>
                                                             <div class="widget-26-job-emp-img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Company" />
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                                                    alt="Company" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-title">
                                                                 <a href="#">Marketing & Communication Supervisor</a>
-                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI Llc.</a> <span class="text-muted time">2 days ago</span></p>
+                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI
+                                                                        Llc.</a> <span class="text-muted time">2 days
+                                                                        ago</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-info">
                                                                 <p class="type m-0">Part-Time</p>
-                                                                <p class="text-muted m-0">in <span class="location">New York, US</span></p>
+                                                                <p class="text-muted m-0">in <span class="location">New
+                                                                        York, US</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -438,19 +467,14 @@
                                                         <td>
                                                             <div class="widget-26-job-starred">
                                                                 <a href="#">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="feather feather-star"
-                                                                    >
-                                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-star">
+                                                                        <polygon
+                                                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                                                        </polygon>
                                                                     </svg>
                                                                 </a>
                                                             </div>
@@ -459,19 +483,23 @@
                                                     <tr>
                                                         <td>
                                                             <div class="widget-26-job-emp-img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt="Company" />
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png"
+                                                                    alt="Company" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-title">
                                                                 <a href="#">Senior Data Analyst / Scientist</a>
-                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI Inc.</a> <span class="text-muted time">4 days ago</span></p>
+                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI
+                                                                        Inc.</a> <span class="text-muted time">4 days
+                                                                        ago</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-info">
                                                                 <p class="type m-0">Part-Time</p>
-                                                                <p class="text-muted m-0">in <span class="location">New York, US</span></p>
+                                                                <p class="text-muted m-0">in <span class="location">New
+                                                                        York, US</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -486,19 +514,14 @@
                                                         <td>
                                                             <div class="widget-26-job-starred">
                                                                 <a href="#">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="feather feather-star"
-                                                                    >
-                                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-star">
+                                                                        <polygon
+                                                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                                                        </polygon>
                                                                     </svg>
                                                                 </a>
                                                             </div>
@@ -507,19 +530,23 @@
                                                     <tr>
                                                         <td>
                                                             <div class="widget-26-job-emp-img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt="Company" />
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png"
+                                                                    alt="Company" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-title">
                                                                 <a href="#">UX Designer & UI Developer</a>
-                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI Inc.</a> <span class="text-muted time">5 days ago</span></p>
+                                                                <p class="m-0"><a href="#" class="employer-name">AxiomUI
+                                                                        Inc.</a> <span class="text-muted time">5 days
+                                                                        ago</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-info">
                                                                 <p class="type m-0">Part-Time</p>
-                                                                <p class="text-muted m-0">in <span class="location">Toronto, CAN</span></p>
+                                                                <p class="text-muted m-0">in <span
+                                                                        class="location">Toronto, CAN</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -534,19 +561,14 @@
                                                         <td>
                                                             <div class="widget-26-job-starred">
                                                                 <a href="#">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="feather feather-star"
-                                                                    >
-                                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-star">
+                                                                        <polygon
+                                                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                                                        </polygon>
                                                                     </svg>
                                                                 </a>
                                                             </div>
@@ -555,19 +577,23 @@
                                                     <tr>
                                                         <td>
                                                             <div class="widget-26-job-emp-img">
-                                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="Company" />
+                                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png"
+                                                                    alt="Company" />
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-title">
                                                                 <a href="#">Information Security Analyst / Expert</a>
-                                                                <p class="m-0"><a href="#" class="employer-name">Axiom Corp.</a> <span class="text-muted time">6 days ago</span></p>
+                                                                <p class="m-0"><a href="#" class="employer-name">Axiom
+                                                                        Corp.</a> <span class="text-muted time">6 days
+                                                                        ago</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
                                                             <div class="widget-26-job-info">
                                                                 <p class="type m-0">Part-Time</p>
-                                                                <p class="text-muted m-0">in <span class="location">Mumbai, IN</span></p>
+                                                                <p class="text-muted m-0">in <span
+                                                                        class="location">Mumbai, IN</span></p>
                                                             </div>
                                                         </td>
                                                         <td>
@@ -582,19 +608,14 @@
                                                         <td>
                                                             <div class="widget-26-job-starred">
                                                                 <a href="#">
-                                                                    <svg
-                                                                        xmlns="http://www.w3.org/2000/svg"
-                                                                        width="24"
-                                                                        height="24"
-                                                                        viewBox="0 0 24 24"
-                                                                        fill="none"
-                                                                        stroke="currentColor"
-                                                                        stroke-width="2"
-                                                                        stroke-linecap="round"
-                                                                        stroke-linejoin="round"
-                                                                        class="feather feather-star starred"
-                                                                    >
-                                                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                        height="24" viewBox="0 0 24 24" fill="none"
+                                                                        stroke="currentColor" stroke-width="2"
+                                                                        stroke-linecap="round" stroke-linejoin="round"
+                                                                        class="feather feather-star starred">
+                                                                        <polygon
+                                                                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                                                                        </polygon>
                                                                     </svg>
                                                                 </a>
                                                             </div>
@@ -631,15 +652,22 @@
                 </div>
             </div>
         </div>
-    </div><a style="font-size: 8pt; text-decoration: none" target="_blank" href="http://frontendfreecode.com">Free Frontend</a>
-                                                                                
+    </div><a style="font-size: 8pt; text-decoration: none" target="_blank" href="http://frontendfreecode.com">Free
+        Frontend</a>
 
-<!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> -->
 
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="{% static 'js/category.js' %}"></script>
-<!-- {% endblock %} -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="{% static 'js/category.js' %}"></script>
+    <!-- {% endblock %} -->
