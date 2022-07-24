@@ -26,19 +26,22 @@ def addgigs(request):
         # Executes after form submission.
         else:
             employer=Employer.objects.get(id=request.user.id)
-            form = AddGigForm(request.POST)
+            form = AddGigForm(request.POST, request.FILES)
             # Save form data if the form is valid.
-            if form.is_valid:
+            print('===============is_valid: ', form.is_valid())
+            if form.is_valid():
+                # print(form.cleaned_data['image'])
                 f = form.save()
-                f.Employer = employer  # Set user to current user.
+                employer = Employer.objects.get(user=request.user)
+                f.Employer = employer
                 f.save()
-                print('saved gig') # Print alert message.
-                return redirect('/')
+                return redirect('/gig/jobdetail/',f.id)
             return render(request,'addgigs.html', {'form': form})
 
     # If user is not logged in redirect to home page.
     else:
         return redirect('/')
+        
 
 def search(request):
     categories = Category.objects.all

@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     var current_fs, next_fs, previous_fs; //fieldsets
     var opacity;
     var current = 1;
@@ -47,9 +46,11 @@ $(document).ready(function () {
             .css("width", percent + "%")
     }
 
-    $(".submit").click(function () {
-        return false;
-        
-    })
-
 });
+
+$("#submit-btn").click(function () {
+    alert($("#gig-form"));
+    console.log($("#gig-form"));
+    $("#gig-form").submit();
+    
+})
