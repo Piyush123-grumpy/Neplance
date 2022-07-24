@@ -27,21 +27,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
             <div class="hori-selector"><div class="left"></div><div class="right"></div></div>
-            <div class="search-box">
-                <button class="btn-search"><i class="fas fa-search"></i></button>
-                <input type="text" class="input-search" placeholder="Type to Search...">
-              </div>
+
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Home</a>
+                <a class="nav-link" href="/"><i class="fas fa-tachometer-alt"></i>Home</a>
             </li>
             <li class="nav-item active">
                 <a href="/about" class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Find Jobs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Find Freelancer</a>
+                <a class="nav-link" href="/search"><i class="far fa-clone"></i>Find Jobs</a>
             </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item">
