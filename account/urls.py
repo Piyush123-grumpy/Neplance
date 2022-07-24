@@ -26,6 +26,8 @@ urlpatterns = [
     
     path('reviews/', views.reviews,name='reviews'),
     path('appliedjobs/', views.appliedJobs,name='appliedJobs'), 
+    path('recievable/', views.recievable,name='recievable'),
+    path('payable/', views.payable,name='payable'), 
     # path('addgigs/', views.addgigs,name='addgigs'),
 
 

@@ -85,6 +85,16 @@ def Logout(request):
     logout(request)
     return redirect('/')
 
+def recievable(request):
+    if request.user.is_freelancer:
+        applications = Application.objects.filter(Freelancer = Freelancer.objects.get(user=request.user), status="Completed")
+        return render(request, 'userdetail/recievable.html', {'applications': applications})
+    return redirect('/')
+
+
+def payable(request):
+   
+    return redirect('/')
 # def addgigs(request):
 #     return render(request,'account/addgigs.html')
 

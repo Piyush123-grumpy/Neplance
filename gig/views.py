@@ -176,6 +176,7 @@ def updateApplicationStat(request):
                     app.save()
                     return JsonResponse("Updated", safe=False)
                 elif status == "Hired":
+                    app.employer_paid = True
                     app.status="Hired"
                     app.save()
                     return JsonResponse("Updated", safe=False)
