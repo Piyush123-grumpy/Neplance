@@ -100,7 +100,7 @@ DATABASES = {
         'NAME': 'neplance',
         'TEST_NAME': 'neplance_test',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '123456abc',
         'HOST': 'localhost',
         'PORT': '3306',
     }

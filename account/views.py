@@ -81,6 +81,10 @@ def appliedJobs(request):
     context = {'applied': applied}
     return render(request, 'account/appliedJobs.html', context)
 
+def Logout(request):
+    logout(request)
+    return redirect('/')
+
 # def addgigs(request):
 #     return render(request,'account/addgigs.html')
 

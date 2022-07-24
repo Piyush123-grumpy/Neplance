@@ -19,7 +19,7 @@
 </head>
 </body>
 <nav class="navbar navbar-expand-custom navbar-mainbg">
-    <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+    <a class="navbar-brand navbar-logo" href="/home" style="color:white">Navbar</a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-bars text-white"></i>
     </button>
@@ -35,7 +35,7 @@
                 <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Home</a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>About</a>
+                <a href="/about" class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>About</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Find Jobs</a>
@@ -45,12 +45,29 @@
             </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item">
+<<<<<<< HEAD
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>{{request.user.username}}</a>
             </li>
             {% endif %}
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Sign up</a>
             </li>
+=======
+                <a href='/login' class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>{{request.user}}</a>
+            </li>
+            <li class="nav-item">
+                <a href='/logout' class="nav-link" href="/logout"><i class="far fa-copy"></i>Log Out</a>
+            </li>
+            {% else %}
+            <li class="nav-item">
+                <a href='/login' class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Login</a>
+            </li>
+            <li class="nav-item">
+                <a href='/register' class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Sign up</a>
+            </li>
+            {% endif %}
+            
+>>>>>>> c65b8678861e15418e0ca1862b926033bcf2449e
         </ul>
     </div>
 </nav>
@@ -66,29 +83,6 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script> 
 
     <!-- Footer social -->
-    <section class="ft-social">
-        <ul class="ft-social-list">
-            <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-            <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-            <li><a href="#"><i class="fab fa-github"></i></a></li>
-            <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
-            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-        </ul>
-    </section>
-    <div id="g_id_onload"
-        data-client_id="YOUR_GOOGLE_CLIENT_ID"
-        data-login_uri="https://your.domain/your_login_endpoint"
-        data-your_own_param_1_to_login="any_value"
-        data-your_own_param_2_to_login="any_value">
-    </div>
-    <!-- Footer legal -->
-    <section class="ft-legal">
-        <ul class="ft-legal-list">
-            <li><a href="#">Terms &amp; Conditions</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-            <li>&copy; 2021 by Meow Media, LLC</li>
-        </ul>
-    </section>
+    
 </footer>
 {% endblock %} {% block content %} {% endblock %}
