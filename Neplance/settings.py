@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'khalti',
     'search',
-    # 'django_countries'
+    'django_countries',
     'profilePage'
 ]
 SITE_ID =1
@@ -100,7 +100,7 @@ DATABASES = {
         'NAME': 'neplance',
         'TEST_NAME': 'neplance_test',
         'USER': 'root',
-        'PASSWORD': '123456abc',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }

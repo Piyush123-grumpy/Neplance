@@ -1,6 +1,6 @@
 
     body{
-      font-family: Poppins;
+      /* font-family: Poppins; */
       text-align: justify;
       text-justify: inter-word;
       line-height: 1.7;
@@ -22,10 +22,10 @@
       margin-right: -15px;
   } */
 
-@import url('https://fonts.googleapis.com/css?family=Cairo');
+/* @import url('https://fonts.googleapis.com/css?family=Cairo'); */
 
 .title {
-	font-family: "Cairo";
+	/* font-family: "Cairo"; */
 	text-align: center;
 	color: #FFF;
 	display: flex;

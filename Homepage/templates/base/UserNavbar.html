@@ -19,7 +19,7 @@
 </head>
 </body>
 <nav class="navbar navbar-expand-custom navbar-mainbg">
-    <a class="navbar-brand navbar-logo" href="/home" style="color:white">Navbar</a>
+    <a class="navbar-brand navbar-logo" href="/home" style="color:white">Neplance</a>
     <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-bars text-white"></i>
     </button>
@@ -45,14 +45,6 @@
             </li>
             {% if request.user.is_authenticated %}
             <li class="nav-item">
-<<<<<<< HEAD
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>{{request.user.username}}</a>
-            </li>
-            {% endif %}
-            <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Sign up</a>
-            </li>
-=======
                 <a href='/login' class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>{{request.user}}</a>
             </li>
             <li class="nav-item">
@@ -67,7 +59,6 @@
             </li>
             {% endif %}
             
->>>>>>> c65b8678861e15418e0ca1862b926033bcf2449e
         </ul>
     </div>
 </nav>

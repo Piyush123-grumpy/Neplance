@@ -21,7 +21,7 @@ class Gig (models.Model):
     company = models.CharField(max_length=50, null=False)
     image = models.ImageField(upload_to ='gigs/', null=False, default="gigs/default.png")
     description = models.CharField(max_length=255, null=True)
-    country = country = CountryField(null=False, blank_label='(select country)')
+    country = CountryField(null=False, blank_label='(select country)')
     city = models.CharField(max_length=50, null=False)
     area = models.CharField(max_length=50, null=False) # Locality area name
     pay = models.IntegerField(null=True)
