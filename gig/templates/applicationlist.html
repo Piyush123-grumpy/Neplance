@@ -84,9 +84,11 @@
                                       </svg>
                                   </span>
                                   <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    {% if i.status == "Hired" %}
+                                    {% if i.status == "Pending" %}
                                         <a class="dropdown-item btn-reject" href="#" data-status="Rejected" data-app="{{i.id}}" id="btn-reject">Reject</a>
                                         <button class="dropdown-item btn-hire" data-status="Hired" data-app="{{i.id}}" data-user="{{i.user.username}}" data-amount="{{i.gig.pay}}" id="btn-hire">Hire</button>
+                                    {% elif i.status == "Completed" %}
+                                        <a class="dropdown-item" href="#">Applicant already hired.</a>
                                     {% elif i.status == "Pending Completed" %}
                                         <button class="dropdown-item btn-verify-completed" href="#" data-app="{{i.id}}">Verify Completed</button>
                                     {% elif i.status == "Completed" %}
@@ -115,7 +117,7 @@
             {% csrf_token %}
             <h3 id="hire-message">Are you sure you want to hire?</h3>
             <p text-primary>Note: Please make the necessary payment in order to hire the applicant.</p>
-            <button class="pay-btn" id="payment-button">Pay with Khalti</button>
+            <button class="pay-btn" id="payment-button" style="background-color:rgb(92, 45, 145); color:white;">Pay with Khalti</button>
         </div>
     </div>
     <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
