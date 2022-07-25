@@ -72,10 +72,10 @@
                     <p>User hasn't added any descriptions.</p>
                 {% endif %}
             </div>
-            <h3 class="user_detail">Portoflio <a href="/portfolio"><span
+            <h3 class="user_detail bg-light rounded">Portoflio <a href="/portfolio"><span
                         class="fa-solid fa-pencil edit-icon"></span></a></h3>
                         <hr>
-            <div class="user_detail bg-light rounded" style="height:200px ;overflow-y:scroll;">
+            <div class="user_detail" style="height:200px ;overflow-y:scroll;">
                 {% for p in portoflio %}
                 <div class="portofolio">
                     <h4>{{p.Project_title}} <a href="{% url 'delete_portofolio' p.id %}"><span

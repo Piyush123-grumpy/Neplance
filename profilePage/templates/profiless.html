@@ -58,26 +58,24 @@
             <div class="user_detail">
                 <p>{{freelancer.description}}</p>
             </div>
-            <div class="user_detail">
-                <h4>Work History </h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus esse impedit distinctio accusantium officiis perspiciatis. Autem assumenda vero eos aut qui quidem, deserunt vitae eligendi voluptates ipsam necessitatibus modi aspernatur.</p>
-            </div>
-            <h3 class="user_detail">Portoflio</h3>
-            <div class="user_detail " style="height:200px ;overflow-y:scroll;">
-
-
+            
+            <div class="bg-light rounded">
+            <h3 class="user_detail">Portoflio </h3>
+                <hr>
+            <div class="user_detail" style="height:200px ;overflow-y:scroll;">
                 {% for p in portoflio %}
                 <div class="portofolio">
-                    <h4>{{p.Project_title}}</h4>
+                    <h4>{{p.Project_title}} <a href="{% url 'delete_portofolio' p.id %}"><span
+                                class="fa-solid fa-trash edit-icon"></span></a></h4>
                     <p>{{p.description}}</p>
                     <p>{{p.date}}</p>
-                    <br>
+                    <hr>
                 </div>
 
                 {% endfor %}
             </div>
         </div>
-
+    </div>
     </div>
 </div>
 <div class="container desc prof-det">

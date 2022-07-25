@@ -4,12 +4,10 @@
 
 <div class="container prof-det">
     <div class="Profile">
-        <div class="profile_picture">
-            <img src="https://www.qries.com/images/banner_logo.png" alt="">
-        </div>
+
         <div class="profile_name">
-            <H3>{{request.user.username}}</H3>
-            <h8><i class="fa-solid fa-location-dot"></i> Kathmandu, Nepal – 12:14 am local time</h8>
+            <H3>{{request.user.username | capfirst}}</H3>
+            <h8><i class="fa-solid fa-location-dot"></i> Kathmandu, Nepal</h8>
         </div>
 
     </div>
