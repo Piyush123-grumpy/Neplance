@@ -19,8 +19,8 @@
                                 <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
                                 Select Categories
                               </button> -->
-                                <select name="country" class="form-control" style="width:200px;" id="country">
-                                    <option value="" disabled selected>Select country</option>
+                                <select name="country" class="form-control btn btn-secondary btn-bloc" style="width:200px;" id="country">
+                                    <option value="" disabled selected >Select country</option>
                                     {% for i in countries %}
                                     <option value="{{ i.name }}">{{ i.name }}</option>
                                     {% endfor %}
