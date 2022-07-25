@@ -13,7 +13,8 @@
         </div>
         <div class="profile_name">
             <H3>{{user.username|capfirst}}</H3>
-            <h8><i class="fa-solid fa-location-dot"></i> {{freelancer.city}}, {{freelancer.country}} – 12:14 am local time
+            <h8><i class="fa-solid fa-location-dot"></i> {{freelancer.city}}, {{freelancer.country}} – 12:14 am local
+                time
             </h8>
         </div>
         <div class="change_details">
@@ -36,42 +37,52 @@
 
             </div>
             <div class="desc-margin">
-                <a href="/appliedjobs" class="btn btn-success">
-                    <h3>Applied Jobs</h3>
-                </a>
-                <!-- <p>Siddartha vanasthali institute</p> -->
 
+                <h5> <a href="/appliedjobs" class="text-success text-decoration-none">Applied Jobs</a></h5>
+                <p>View jobs you have applied to.</p>
             </div>
+
+            {% if request.user.is_freelancer %}
+            <div class="desc-margin">
+                <h5><a href="/recievable" class="text-success text-decoration-none">My payments</a></h5>
+                <p>View your payment statuses.</p>
+            </div>
+            {% endif %}
         </div>
         <div class="col-lg-8 desc" style="border-left: none;">
             <div class="row">
                 <div class="col-lg-8 title-price">
-                    <h3>{{freelancer.current_job}}
-
-                    </h3>
+                    {% if freelancer.current_job %}
+                        <h3>{{freelancer.current_job}}</h3>
+                    {% else %}
+                        <h3>Currently Unemployed</h3>
+                    {% endif %}
                 </div>
                 <div class="col-lg-4 title-price">
                     <h5>$5.00/hr</h5>
                 </div>
+                
             </div>
+            <hr>
             <div class="user_detail">
-                <p>{{freelancer.description}}</p>
-            </div>
-            <div class="user_detail">
-                <h4>Work History <a href=""><span class="fa-solid fa-pencil edit-icon"></span></a></h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus esse impedit distinctio accusantium officiis perspiciatis. Autem assumenda vero eos aut qui quidem, deserunt vitae eligendi voluptates ipsam necessitatibus modi aspernatur.</p>
+                <h3>About {{freelancer.user.username | capfirst}}</h3>
+                {% if freelancer.description %}
+                    <p>{{freelancer.description}}</p>
+                {% else %}
+                    <p>User hasn't added any descriptions.</p>
+                {% endif %}
             </div>
             <h3 class="user_detail">Portoflio <a href="/portfolio"><span
                         class="fa-solid fa-pencil edit-icon"></span></a></h3>
-            <div class="user_detail " style="height:200px ;overflow-y:scroll;">
-
-
+                        <hr>
+            <div class="user_detail bg-light rounded" style="height:200px ;overflow-y:scroll;">
                 {% for p in portoflio %}
                 <div class="portofolio">
-                    <h4>{{p.Project_title}} <a href="{% url 'delete_portofolio' p.id %}"><span class="fa-solid fa-trash edit-icon"></span></a></h4>
+                    <h4>{{p.Project_title}} <a href="{% url 'delete_portofolio' p.id %}"><span
+                                class="fa-solid fa-trash edit-icon"></span></a></h4>
                     <p>{{p.description}}</p>
                     <p>{{p.date}}</p>
-                    <br>
+                    <hr>
                 </div>
 
                 {% endfor %}
@@ -89,7 +100,8 @@
         {% for e in Employment %}
         <div>
 
-            <h4>{{e.company}} <a href="{% url 'delete_employment' e.id %}"><span class="fa-solid fa-trash edit-icon"></span></a></h4>
+            <h4>{{e.company}} <a href="{% url 'delete_employment' e.id %}"><span
+                        class="fa-solid fa-trash edit-icon"></span></a></h4>
             <p>{{e.city}}</p>
             <p>{{e.Title}}</p>
             <p>{{e.period}}</p>
@@ -107,7 +119,8 @@
 
         {% for o_e in other_exp %}
         <div>
-            <h4>{{o_e.SUbject}} <a href="{% url 'delete_other_exp' o_e.id %}"><span class="fa-solid fa-trash edit-icon"></span></a></h4>
+            <h4>{{o_e.SUbject}} <a href="{% url 'delete_other_exp' o_e.id %}"><span
+                        class="fa-solid fa-trash edit-icon"></span></a></h4>
             <p>{{o_e.description}}</p>
         </div>
 

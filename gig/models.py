@@ -29,6 +29,7 @@ class Gig (models.Model):
     contact = PhoneNumberField()
     Employer = models.ForeignKey(Employer, on_delete=models.CASCADE, null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    
 
     def getApplicationCount(self):
         count = self.application_set.all().count()
@@ -57,6 +58,14 @@ class Application (models.Model):
     gig = models.ForeignKey(Gig, on_delete=models.CASCADE, null=True)
     applied_date = models.DateField(auto_now=True)
     status = models.CharField(max_length=50, default="Pending")
+    employer_paid = models.BooleanField(default=False)
+    paid_freelancer = models.BooleanField(default=False)
+
+    def getTax(self):
+        return round(self.gig.pay * 0.1, 2)
+    def getNetPayable(self):
+        return self.gig.pay - round(self.gig.pay * 0.1, 2)
+
     def __str__(self):
         return self.gig.title
 
