@@ -66,17 +66,18 @@
                                                 <h6 class="font-weight-bold">Pay Range</h6>
                                                 <div id="orange"><span class="fa fa-minus"></span></div>
                                                 <div class="form-group">
-                                                    <input type="number" class="form-control w-20" id="min-input"
-                                                        style="width:100px; display:inline;" placeholder="min">
+                                                    <input type="number" class="form-control w-20" id="min-input" min="0" style="width:100px; display:inline;" placeholder="min">
                                                     <h5 class="d-inline text-muted">-</h5>
                                                     <input type="number" class="form-control w-20" id="max-input"
-                                                        style="width:100px; display:inline;" placeholder="max">
+                                                        style="width:100px; display:inline;" min="0" placeholder="max">
                                                 </div>
 
                                             </div>
                                         </div>
-
-                                        <div class="col-md-4 d-inline" style="margin-top: 52px;">
+                                        <div class="form-group d-inline  mx-3">
+                                        <h6 class="font-weight-bold">Category</h6>
+                                        <div class="col-md-4 d-inline">
+                                            
                                             <select name="category" class="form-control" style="width:200px;"
                                                 id="category">
                                                 <option value="" disabled selected>Select category</option>
@@ -85,6 +86,7 @@
                                                 {% endfor %}
                                             </select>
                                         </div>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
@@ -163,8 +165,7 @@
                 </div>
             </div>
         </div>
-    </div><a style="font-size: 8pt; text-decoration: none" target="_blank" href="http://frontendfreecode.com">Free
-        Frontend</a>
+
 
 
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>

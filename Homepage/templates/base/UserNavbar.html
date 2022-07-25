@@ -35,8 +35,37 @@
                 <a href="/about" class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/search"><i class="far fa-clone"></i>Find Jobs</a>
+                <a class="nav-link" href="/search"><i class="far fa-clone"></i>Find Gigs</a>
             </li>
+
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_employer %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/gig/postedgigs">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-app-indicator" viewBox="0 0 16 16">
+                            <path d="M5.5 2A3.5 3.5 0 0 0 2 5.5v5A3.5 3.5 0 0 0 5.5 14h5a3.5 3.5 0 0 0 3.5-3.5V8a.5.5 0 0 1 1 0v2.5a4.5 4.5 0 0 1-4.5 4.5h-5A4.5 4.5 0 0 1 1 10.5v-5A4.5 4.5 0 0 1 5.5 1H8a.5.5 0 0 1 0 1H5.5z"/>
+                            <path d="M16 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                          </svg>
+                        My gigs
+                    </a>
+                </li>
+                {% endif %}
+            {% endif %}
+            
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_employer %}
+                <li class="nav-item">
+                    <a class="nav-link" href="/gig/addgig">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle mx-1" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                          </svg>
+                        Add a gig
+                    </a>
+                </li>
+                {% endif %}
+            {% endif %}
+
             {% if request.user.is_authenticated %}
             <li class="nav-item">
                 <a href='/account_detail' class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>{{request.user}}</a>
