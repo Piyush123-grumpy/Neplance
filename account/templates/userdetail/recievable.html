@@ -1,0 +1,89 @@
+{% extends 'base/UserNavbar.html' %} {% load static %} {% block body %}
+<link rel="stylesheet" href="{% static 'css/postedjobs.css' %}">
+<div class="main-content content-div">
+    <div class="container mt-5">
+        <!-- Table -->
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-header border-0">
+                    <h3 class="mb-0">Freelancer Payments</h3>
+                </div>
+                <div class="table-responsive">
+                    <table class="table align-items-center table-flush">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Gig</th>
+                                <th scope="col">Total pay</th>
+                                <th scope="col">Commission</th>
+                                <th scope="col">Net Recievable</th>
+                                <th scope="col">Payment Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% csrf_token %}
+                            {% for i in applications %}
+                            <tr>
+                                <th scope="row">
+                                    <div class="media align-items-center">
+                                        <a href="#" class="avatar rounded-circle mr-3">
+                                            <img alt="Image placeholder" src="{{ i.gig.image.url }}">
+                                        </a>
+                                        <div class="media-body">
+                                            <span class="mb-0 text-sm">{{i.gig.title}}</span>
+                                            <!-- <span class="mb-0 text-sm">{{i.gig.image.url}}</span> -->
+                                        </div>
+                                    </div>
+                                </th>
+                                <td>
+                                    <p style="color:black;">
+                                        Rs. {{ i.gig.pay }}
+                                    </p>
+                                </td>
+                                <td>
+                                    <p style="color:black;">
+                                        Rs. {{ i.getTax }}
+                                    </p>
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-dot mr-4">
+                                <p style="color:black;">{{i.getNetPayable}}</p>
+                                </span>
+                                </td>
+                                <td>
+                                    <span class="badge badge-dot mr-4">
+                                    <p style="color:black;">
+                                        {% if i.paid_freelancer %}
+                                        Paid
+                                        {% else %}
+                                        Pending
+                                        {% endif %}
+                                    </p>
+                                </span>
+                                </td>
+                            
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="popup hide bg-light rounded" id="popup">
+        <button id = "x">
+            X
+        </button>
+        <div class="content">
+            {% csrf_token %}
+            <h3 id="hire-message">Are you sure you want to hire?</h3>
+            <p text-primary>Note: Please make the necessary payment in order to hire the applicant.</p>
+            <button class="pay-btn" id="payment-button">Pay with Khalti</button>
+        </div>
+    </div>
+    <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
+
+    
+    <script src="{% static 'JS/applicationlist.js' %}"></script>
+    {% endblock %}
