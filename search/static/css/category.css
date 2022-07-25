@@ -140,6 +140,15 @@ body{
   box-shadow: none;
 }
 
+.col-md-4{
+  width: 100%;
+  display: flex;
+}
+
+#collapseExample{
+  display: flex;
+  flex-wrap: nowrap;
+}
 
 .advanced{
 
