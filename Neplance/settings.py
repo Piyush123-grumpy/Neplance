@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import tkinter
+
 # import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -96,13 +98,14 @@ WSGI_APPLICATION = 'Neplance.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'neplance',
         'TEST_NAME': 'neplance_test',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
-        'PORT': '3306',
+        'USER': 'neplance@neplance',
+        'PASSWORD': 'Softwarica@123',
+        'HOST': 'neplance.postgres.database.azure.com',
+        'PORT': '5432',
+        'OPTIONS': {"sslmode":"require"}
     }
 }
 
@@ -142,9 +145,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
 # STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'static')
-STATIC_ROOT = '/static'
+STATIC_ROOT = BASE_DIR/'static'
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 
 # Default primary key field type
