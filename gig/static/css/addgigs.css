@@ -15,7 +15,8 @@
   padding-top:10px;
   padding-bottom:10px;
   border: 1px solid #aaa;
-  color:#aaa
+  color:#aaa;
+  width: 100%;
 
 }
 body {

@@ -7,9 +7,12 @@
 {%block body%}
 <link rel="stylesheet" href="{% static 'css/addgigs.css' %}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<form method="POST" id="gig-form" enctype='multipart/form-data'>
 {% comment %} <div class="container d-flex justify-content-center my-4">
+<div id="contact">
   <div class="col-lg-5">
-    <form id="contact" method="POST">
+    
       {% csrf_token %}
       <h3>Post Your Job</h3>
       <fieldset>
@@ -36,7 +39,7 @@
         <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
       </fieldset>
 
-    </form>
+    </div>
   </div>
 </div> {% endcomment %}
 <div class="container-fluid">
@@ -45,7 +48,7 @@
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2 id="heading">Sign Up Your User Account</h2>
                 <p>Fill all form field to go to next step</p>
-                <form id="contact" method='POST'>
+                <div id="contact">
                     {% csrf_token %}
                     <!-- progressbar -->
                     <ul id="progressbar">
@@ -101,6 +104,11 @@
                             <br>
                             {{form.country}}
                             <br>
+                            {{form.city.label}}
+                            {{form.city}}
+                            {{form.area.label}}
+                            {{form.area}}
+                            <br>
                             {{form.contact.label}}
                             {{form.contact}}
 
@@ -121,7 +129,9 @@
                             {{form.image.label}}
                             {{form.image}}
                         </div>
-                         <input type="submit" name="submit" id="contact-submit" data-submit="...Sending" class="next action-button" value="Submit" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        <input type="submit" value="Submit" id="submit-btn">
+                         <!-- <input type="submit" name="submit" id="contact-submit" data-submit="...Sending" class="next action-button" value="Submit" /> -->
+                         <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>
                         <div class="form-card">
@@ -144,10 +154,11 @@
                             </div>
                         </div>
                     </fieldset>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 </div>
+</form>
 <script src="{% static 'JS/addgigs.js' %}"></script>
 {% endblock%}

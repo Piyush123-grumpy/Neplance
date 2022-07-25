@@ -75,7 +75,8 @@ var config = {
             req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
             req.setRequestHeader("x-csrfToken", csrftoken);
             // Send data.
-            let statement = 'token=' + payload.token + '&amount=' + currentAmount;
+            let amount_in_rs = currentAmount*100;
+            let statement = 'token=' + payload.token + '&amount=' + amount_in_rs;
             req.send(statement);
             req.onload = ()=>{
                 response = JSON.parse(req.response)
@@ -98,7 +99,7 @@ var checkout = new KhaltiCheckout(config);
 var btn = document.getElementById("payment-button");
 btn.onclick = function () {
     // minimum transaction amount must be 10, i.e 1000 in paisa.
-    checkout.show({amount: currentAmount});
+    checkout.show({amount: currentAmount*100});
 }
 
 
