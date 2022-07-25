@@ -146,3 +146,22 @@ form div:last-child {
 [type="checkbox"]:checked~.form {
     transform: translate(0, -50%);
 }
+
+.send {
+    display: flex;
+    margin-right: 20px;
+}
+
+.send a {
+    background-color: #0065ad;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 9px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 25px;
+}

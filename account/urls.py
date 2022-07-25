@@ -6,7 +6,7 @@ urlpatterns = [
     path('register/', views.register,name='register'),
     path('signup_freelancer/',views.signup_freelancer,name='signup_freelancer'),
     path('signup_employer/',views.signup_employer,name='signup_employer'),
-    path('login/', views.loginpage,name='login_dashboard'),
+    path('login/', views.loginpage,name='logina'),
     
     path('profile/', accounts.editUser,name='editUser'),
     path('edit_details/', accounts.editemployer,name='editUser'),
@@ -26,7 +26,7 @@ urlpatterns = [
     
     path('reviews/', views.reviews,name='reviews'),
     path('appliedjobs/', views.appliedJobs,name='appliedJobs'), 
-    path('addgigs/', views.addgigs,name='addgigs'),
+
 
 
 ]

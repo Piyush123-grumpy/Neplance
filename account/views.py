@@ -2,7 +2,8 @@
 from MySQLdb import ProgrammingError
 from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
-from django.shortcuts import render,redirect 
+from django.shortcuts import render,redirect
+from requests import request 
 from .forms import FreelancerSignUpForm,UserCreationForm,EmployerSignUpForm, freelancer
 from django.contrib import auth, messages
 from .models import Employer, Freelancer
@@ -82,6 +83,6 @@ def appliedJobs(request):
     context = {'applied': applied}
     return render(request, 'account/appliedJobs.html', context)
 
-def addgigs(request):
-    return render(request,'account/addgigs.html')
+
+
 

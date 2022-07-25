@@ -1,0 +1,142 @@
+body {
+    background-color: #f1f2f4;
+}
+
+.head {
+    background: #0065ad;
+    color: white;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+.chats {
+    height: 40px;
+    color: #0065ad;
+    font-weight: bold;
+    border-color: black;
+    border-bottom: solid;
+    border-width: 0.5px!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rooms {
+    height: 60px;
+    font-weight: bold;
+    border-color: black;
+    border-bottom: solid;
+    border-width: 0.5px!important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rooms a {
+    text-decoration: none;
+    color: black;
+}
+
+.borderstyle_chats {
+    border: solid;
+    border-width: 0.5px!important;
+}
+
+.message-box {
+    border-top: solid;
+    border-right: solid;
+    border-bottom: solid;
+    border-width: 0.5px!important;
+}
+
+.discussion li {
+    display: flex;
+}
+
+.avatar {
+    width: 40px;
+}
+
+.avatar img {
+    width: 40px;
+    display: block;
+    height: 30px;
+}
+
+.other {
+    padding: 20px;
+    display: flex;
+}
+
+.self {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+    /* switch vertical layout */
+    align-items: flex-end;
+}
+
+.body {
+    display: flex;
+    background-color: white;
+    overflow-y: auto;
+    height: 400px;
+}
+
+.list_body {
+    display: flex;
+    background-color: white;
+    overflow-y: auto;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+}
+
+.messages {
+    padding: 10px;
+    background-color: #0065ad;
+    color: whitesmoke;
+    border-radius: 15px;
+}
+
+.textbox {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #0065ad;
+    height: 70px;
+}
+
+.textbox input {
+    height: 40px;
+    width: 380px;
+    border-radius: 25px;
+    border: none;
+    padding: 13px;
+    outline: none;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.submit button {
+    background-color: white;
+    /* Green */
+    border: solid;
+    border-width: 0.5px!important;
+    color: #0065ad;
+    padding: 9px 35px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 25px;
+}

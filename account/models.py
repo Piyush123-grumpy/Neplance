@@ -14,6 +14,9 @@ class User(AbstractUser):
     is_employer=models.BooleanField(default=False)
     def getFreelancer(self):
         return self.freelancer_set.get(user=self)
+    def getRoom(self):
+        return self.participants_set.all()
+
 
 class Freelancer(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -65,11 +68,11 @@ class Employer(models.Model):
     first_name=models.CharField(verbose_name="First Name",max_length=30,blank=True, null=True)
     last_name=models.CharField(verbose_name="Last Name",max_length=30,blank=True, null=True)
     email=models.EmailField(verbose_name="Email",max_length=30,blank=True, null=True)
-    country = models.CharField(max_length=50, null=True)
-    city = models.CharField(max_length=50, null=True)
+    country = models.CharField(max_length=50,blank=True, null=True)
+    city = models.CharField(max_length=50,blank=True, null=True)
     PhoneNumber= PhoneNumberField(blank=True)
     profile_picture=models.ImageField(upload_to='',default='',blank=True, null=True)
-    description=models.CharField(verbose_name="Description",max_length=300,blank=True, null=True)
+    
 
     def __str__(self):
         return self.user.username

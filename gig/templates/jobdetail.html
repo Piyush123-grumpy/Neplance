@@ -5,7 +5,9 @@
     <div class="card">
         <div class="card-body">
             <h3 class="card-title">{{jobdetail.title}}</h3>
-            <h6 class="card-subtitle">Allocated by {{jobdetail.Employer}}</h6>
+            <h6 class="card-subtitle">Allocated by {{jobdetail.Employer}} </h6>
+            {% if user.is_freelancer %}
+            <a href="/send/{{jobdetail.Employer.user.username}}">Send message   <i class="fa-solid fa-message"></i></a> {% endif %}
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-6 align-middle img-div">
                     <div class="white-box "><img src={{jobdetail.image.url}} class="img-responsive img-fluid align-middle"></div>

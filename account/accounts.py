@@ -40,6 +40,8 @@ def Freelancer_info_save(request):
         
         if request.method == "POST" or request.method == "FILES":
             form=freelancer(request.POST,request.FILES,instance=object)
+            print(request.POST)
+            print(request.FILES)
             form.save()
         
 
@@ -61,8 +63,11 @@ def Employer_info_save(request):
         
         if request.method == "POST" or request.method == "FILES":
             form=employer(request.POST,request.FILES,instance=object)
+            print(form)
+            print(request.POST)
+            print(request.FILES)
             form.save()
-        
+
 
         return redirect("account_detail")
     else:

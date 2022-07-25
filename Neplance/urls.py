@@ -40,4 +40,5 @@ urlpatterns = [
     path('',include('forgotPassword.urls')),
     path('', include('rating.urls')),
     path('',include('profilePage.urls')),
+    path('',include('chatsystem.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

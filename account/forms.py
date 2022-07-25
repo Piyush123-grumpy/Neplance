@@ -44,7 +44,7 @@ class freelancer(forms.ModelForm):
 class employer(forms.ModelForm):
     class Meta:
         model=Employer
-        fields=['first_name','last_name','PhoneNumber','city','country','description','profile_picture','email']
+        fields=['first_name','last_name','PhoneNumber','city','country','profile_picture','email']
 
 class Portofolio(forms.ModelForm):
     class Meta:

@@ -1,0 +1,37 @@
+{% extends 'base/UserNavbar.html'%}{% block title%}{% load static %} Chat{% endblock %} {% block body%}
+<link rel="stylesheet" href="{% static 'css/chatbox.css' %}">
+<div class="container" style="margin-top: 80px;">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3 borderstyle_chats" style="padding: 0%;background: white;">
+            <div class="Chats" id="chat">Chats</div>
+            {% for i in Session %}
+            <div class="rooms">
+                <a href="/chat/{{i.session.name}}">{{i.session.name}}</a>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-6 message-box" style="padding: 0%;">
+            <div class="head">
+                <div>
+                    <i class="fa-solid fa-comment"></i> Messages
+                </div>
+            </div>
+            <div class="list_body">
+                <div>
+                    <div style="display: flex;justify-content: center;
+                    align-items: center;">
+                        <i class="fa-solid fa-paper-plane" style="font-size: 50px;text-align: center;"></i>
+
+                    </div>
+
+                    <p>Messages</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

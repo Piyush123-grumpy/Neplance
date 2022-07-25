@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'phonenumber_field',
     'rating',
-    'profilePage'
+    'profilePage',
+    'chatsystem'
 ]
 SITE_ID =1
 
